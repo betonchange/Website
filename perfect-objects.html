@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Objects - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-bottom: 50px;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+    }
+    
+    .nav-home-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .home-circle {
+        width: 12px;
+        height: 12px;
+        background-color: #FF6600;
+        border-radius: 50%;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    
+    .home-circle:hover {
+        transform: scale(1.2);
+    }
+    
+    .nav-home {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-home:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-arrow {
+        color: #666;
+        margin-right: 20px;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .nav-links a {
+        color: #666;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-links a:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-links a.current {
+        color: #000;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        font-weight: 300;
+        margin-bottom: 30px;
+        color: #000;
+        letter-spacing: -0.02em;
+    }
+    
+    .intro-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #333;
+        margin-bottom: 40px;
+        max-width: 700px;
+    }
+    
+    .criteria-list {
+        margin-bottom: 60px;
+        padding-left: 0;
+        list-style: none;
+    }
+    
+    .criteria-item {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 16px;
+        color: #555;
+    }
+    
+    .criteria-concept {
+        font-weight: 500;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+    }
+    
+    .criteria-concept:hover {
+        border-bottom-color: #FF6600;
+    }
+    
+    .criteria-attribution {
+        color: #999;
+        font-style: italic;
+    }
+    
+    .objects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+    
+    .object-item {
+        position: relative;
+        aspect-ratio: 16/10;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .object-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 102, 0, 0.15);
+        border-color: #FF6600;
+    }
+    
+    .object-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+        z-index: 1;
+        transition: opacity 0.3s ease;
+    }
+    
+    .object-item:hover::before {
+        opacity: 0.8;
+    }
+    
+    .object-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 2;
+        color: white;
+    }
+    
+    .object-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .object-name {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.3;
+    }
+    
+    .object-brand {
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+        text-align: right;
+    }
+    
+    .object-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    .object-designer {
+        font-size: 0.85rem;
+        opacity: 0.8;
+    }
+    
+    .object-year {
+        font-size: 0.85rem;
+        opacity: 0.8;
+        text-align: right;
+    }
+    
+    .placeholder-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #999, #bbb);
+        z-index: 0;
+    }
+    
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 15px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        .intro-text {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .objects-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .object-overlay {
+            padding: 20px;
+        }
+        
+        .nav {
+            font-size: 0.9rem;
+        }
+        
+        .nav-home-container {
+            margin-right: 15px;
+        }
+        
+        .nav-arrow {
+            margin-right: 15px;
+        }
+        
+        .nav-links {
+            gap: 12px;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="imperfect-work.html">Work</a>
+                <a href="perfect-objects.html" class="current">Objects</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+
+```
+    <h1>Perfect Objects</h1>
+    <div class="intro-text">
+        Objects I believe approach perfection in their design, function, and enduring appeal. Each represents a philosophy of thoughtful creation that transcends trends and time.
+    </div>
+    
+    <ul class="criteria-list">
+        <li class="criteria-item">
+            <a href="https://www.vitsoe.com/us/about/good-design" class="criteria-concept">Less is better</a> — 
+            <span class="criteria-attribution">Dieter Rams</span>
+        </li>
+        <li class="criteria-item">
+            <span class="criteria-concept">Just enough</span> — 
+            <span class="criteria-attribution">Hara Kenya</span>
+        </li>
+        <li class="criteria-item">
+            <a href="https://www.azquotes.com/quote/1367648" class="criteria-concept">Beauty is the harmony of purpose and form</a> — 
+            <span class="criteria-attribution">Alvar Aalto</span>
+        </li>
+        <li class="criteria-item">
+            <span class="criteria-concept">Design should improve with use</span> — 
+            <span class="criteria-attribution">Soetsu Yanagi</span>
+        </li>
+    </ul>
+</div>
+
+<div class="objects-grid">
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">Casing Card Wallet</div>
+                <div class="object-brand">Veilance</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">Lars McKinnon<br>Shane Ellis</div>
+                <div class="object-year">2020</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">Beosound 9000</div>
+                <div class="object-brand">Bang & Olufsen</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">David Lewis</div>
+                <div class="object-year">1996</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">GR III</div>
+                <div class="object-brand">Ricoh</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">Ricoh Design Team</div>
+                <div class="object-year">2019</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">Plotter Notebook</div>
+                <div class="object-brand">Designphil</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">Masuko Unayama</div>
+                <div class="object-year">2017</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">Round Tin Container</div>
+                <div class="object-brand">Syuro</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">Masuko Unayama</div>
+                <div class="object-year">1999</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">Best Wine Key</div>
+                <div class="object-brand">Craighill</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">Hunter Craighill<br>André H. Mack</div>
+                <div class="object-year">2015</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="object-item">
+        <div class="placeholder-bg"></div>
+        <div class="object-overlay">
+            <div class="object-top">
+                <div class="object-name">Cassette Player TPS-L2</div>
+                <div class="object-brand">Sony</div>
+            </div>
+            <div class="object-bottom">
+                <div class="object-designer">Nobutoshi Kihara</div>
+                <div class="object-year">1979</div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</body>
+</html>

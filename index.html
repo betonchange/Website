@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-bottom: 60px;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .home-circle {
+        width: 12px;
+        height: 12px;
+        background-color: #FF6600;
+        border-radius: 50%;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+    
+    .home-circle:hover {
+        transform: scale(1.2);
+    }
+    
+    .nav-home {
+        color: #000;
+        text-decoration: none;
+        font-weight: 500;
+        line-height: 1;
+        font-size: 0.95rem;
+    }
+    
+    .nav-arrow {
+        color: #666;
+        margin-right: 20px;
+        line-height: 1;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+        line-height: 1;
+    }
+    
+    .nav-links a {
+        color: #666;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links a:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 40px;
+        color: #000;
+        letter-spacing: -0.02em;
+    }
+    
+    .main-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 60px;
+        color: #333;
+    }
+    
+    p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .highlight {
+        font-weight: 500;
+        color: #000;
+    }
+    
+    .metric {
+        color: #FF6600;
+        font-weight: 500;
+    }
+    
+    .work-gallery {
+        margin: 40px 0;
+    }
+    
+    .carousel-container {
+        position: relative;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .project-carousel {
+        overflow: hidden;
+        border-radius: 4px;
+    }
+    
+    .project-track {
+        display: flex;
+        transition: transform 0.3s ease;
+    }
+    
+    .project-item {
+        min-width: 280px;
+        height: 160px;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 0.9rem;
+        margin-right: 15px;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .project-item:hover {
+        background-color: #f0f0f0;
+        border-color: #FF6600;
+    }
+    
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    .carousel-btn {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        transition: all 0.2s ease;
+    }
+    
+    .carousel-btn:hover {
+        border-color: #FF6600;
+        color: #FF6600;
+    }
+    
+    .carousel-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+    
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #ddd;
+        transition: background-color 0.2s ease;
+    }
+    
+    .indicator.active {
+        background-color: #FF6600;
+    }
+    
+    .navigation {
+        margin: 30px 0;
+        padding: 30px 0;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #999;
+        text-align: center;
+    }
+    
+    .contact {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .contact-links {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .contact-links a {
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .contact-links a:hover {
+        border-bottom-color: #FF6600;
+    }
+    
+    .location {
+        font-size: 0.9rem;
+        color: #999;
+    }
+    
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 15px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+        
+        .main-content {
+            font-size: 1rem;
+        }
+        
+        .nav {
+            font-size: 0.9rem;
+        }
+        
+        .nav-home-container {
+            margin-right: 15px;
+        }
+        
+        .nav-arrow {
+            margin-right: 15px;
+        }
+        
+        .nav-links {
+            gap: 12px;
+        }
+        
+        .contact-links {
+            gap: 20px;
+        }
+        
+        .project-item {
+            min-width: 100%;
+            margin-right: 0;
+        }
+        
+        .carousel-nav {
+            gap: 10px;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="imperfect-work.html">Work</a>
+                <a href="perfect-objects.html">Objects</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+        <h1>JB (Jong Beom) Kang</h1>
+        <div class="contact-links">
+            <a href="mailto:betonchange@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/betonchange">LinkedIn</a>
+            <a href="https://instagram.com/betonchange">Instagram</a>
+        </div>
+    </div>
+
+```
+<div class="main-content">
+    <p>I'm a marketing leader with <span class="metric">13+ years</span> turning complex products into stories people love. My journey started at P&G building brands like SK-II, where I learned the fundamentals of connecting with consumers through compelling narratives.</p>
+    
+    <p>I spent over four years at Meta working across Facebook and Instagram, launching the company's first brand platforms and helping billions of people connect. Currently, I lead Instagram's brand marketing team, where we're repositioning the platform away from superficial perfection toward celebrating everyday creativity.</p>
+    
+    <p>My expertise spans brand building, user growth, and product marketing across US and APAC markets. I'm passionate about ensuring technology creates positive change—building products that are safe and beneficial for everyone.</p>
+</div>
+
+<div class="work-gallery">
+    <div class="carousel-container">
+        <div class="project-carousel">
+            <div class="project-track" id="projectTrack">
+                <div class="project-item">Instagram 'Make it Anyway'</div>
+                <div class="project-item">Facebook 'More Together'</div>
+                <div class="project-item">SK-II '#changedestiny'</div>
+                <div class="project-item">Facebook Super Bowl</div>
+                <div class="project-item">Instagram Notes Launch</div>
+                <div class="project-item">Meta Brand Refresh</div>
+                <div class="project-item">FB Marketplace Trust</div>
+                <div class="project-item">APAC #shemeansbusiness</div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="carousel-btn" id="prevBtn">‹</button>
+            <button class="carousel-btn" id="nextBtn">›</button>
+        </div>
+        <div class="carousel-indicators" id="indicators"></div>
+    </div>
+</div>
+
+<div class="contact">
+    <div class="location">Originally from Seoul, now in New York</div>
+</div>
+
+<script>
+    const track = document.getElementById('projectTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicators = document.getElementById('indicators');
+    const items = track.children;
+    
+    let currentIndex = 0;
+    const itemsToShow = window.innerWidth > 768 ? 2.5 : 1;
+    const maxIndex = Math.max(0, items.length - Math.ceil(itemsToShow));
+    
+    for (let i = 0; i <= maxIndex; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator';
+        if (i === 0) indicator.classList.add('active');
+        indicators.appendChild(indicator);
+    }
+    
+    function updateCarousel() {
+        const itemWidth = items[0].offsetWidth + 15;
+        const translateX = -currentIndex * itemWidth;
+        track.style.transform = `translateX(${translateX}px)`;
+        
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+        
+        indicators.querySelectorAll('.indicator').forEach((ind, i) => {
+            ind.classList.toggle('active', i === currentIndex);
+        });
+    }
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+    
+    updateCarousel();
+    
+    window.addEventListener('resize', () => {
+        currentIndex = 0;
+        updateCarousel();
+    });
+</script>
+```
+
+</body>
+</html>
