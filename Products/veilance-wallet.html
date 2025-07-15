@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veilance Wallet - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-bottom: 50px;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .home-circle {
+        width: 12px;
+        height: 12px;
+        background-color: #FF6600;
+        border-radius: 50%;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+    
+    .home-circle:hover {
+        transform: scale(1.2);
+    }
+    
+    .nav-home {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-arrow {
+        color: #666;
+        margin-right: 20px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+        line-height: 1;
+    }
+    
+    .nav-links a {
+        color: #666;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links a:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-links a.current {
+        color: #000;
+    }
+    
+    .product-overview {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.5;
+        max-width: 600px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+        font-weight: 300;
+        margin-bottom: 20px;
+        color: #000;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+    
+    .product-meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .meta-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .meta-label {
+        font-size: 0.8rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+    }
+    
+    .meta-value {
+        font-size: 0.95rem;
+        color: #000;
+        font-weight: 400;
+    }
+    
+    .why-perfect {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #333;
+        margin-bottom: 60px;
+        max-width: 650px;
+    }
+    
+    .gallery-section {
+        margin-bottom: 60px;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+    
+    .gallery-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .image-container {
+        aspect-ratio: 4/3;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9rem;
+    }
+    
+    .image-commentary {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.5;
+    }
+    
+    .navigation-footer {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-product {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-product:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-product.disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+    
+    .disclaimer-section {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .disclaimer-text {
+        font-size: 0.8rem;
+        color: #777;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    
+    .sources {
+        font-size: 0.8rem;
+        color: #777;
+    }
+    
+    .sources-title {
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #666;
+    }
+    
+    .sources-list {
+        line-height: 1.6;
+    }
+    
+    .source-link {
+        color: #777;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .source-link:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 15px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+        }
+        
+        .product-meta {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .why-perfect {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .navigation-footer {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .nav {
+            font-size: 0.9rem;
+        }
+        
+        .nav-home-container {
+            margin-right: 15px;
+        }
+        
+        .nav-arrow {
+            margin-right: 15px;
+        }
+        
+        .nav-links {
+            gap: 12px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="../index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="../imperfect-work.html">Work</a>
+                <a href="../perfect-objects.html" class="current">Objects</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+
+    <div class="product-overview">
+        A wallet that gets better with every day you carry it. Technical materials meet thoughtful design in something that feels inevitable once you hold it.
+    </div>
+    
+    <h1>Seque Card Wallet</h1>
+    
+    <div class="product-meta">
+        <div class="meta-item">
+            <div class="meta-label">Brand</div>
+            <div class="meta-value">Veilance</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Designer</div>
+            <div class="meta-value">Arc'teryx Team</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Country</div>
+            <div class="meta-value">Canada</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Year</div>
+            <div class="meta-value">2018</div>
+        </div>
+    </div>
+    
+    <div class="why-perfect">
+        There's something quietly satisfying about carrying this wallet. It's not trying to impress anyone - no logos, no flashy details, just thoughtful engineering made tangible. The leather molds to your cards over time, creating this perfect clam-like fit that feels custom-made. I love how it pairs with my iPhone - the rounded corners align perfectly, making them feel like they were designed together. Veilance removed everything unnecessary, even the stitches, leaving only what serves a purpose. It's the kind of object that makes you appreciate good design every time you reach for it.
+    </div>
+</div>
+
+<div class="gallery-section">
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Gets Better With Time</div>
+            </div>
+            <div class="image-commentary">
+                The leather learns from your cards, creating this perfect clam-like enclosure. After months of use, it feels custom-made for exactly what you carry. Incredibly satisfying to touch.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Perfect iPhone Companion</div>
+            </div>
+            <div class="image-commentary">
+                The rounded corners align perfectly with my iPhone's edges. They feel like they were designed to be held together - two objects that become one in your hand.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">No Unnecessary Details</div>
+            </div>
+            <div class="image-commentary">
+                Even the stitches were removed. It's pure function without ornament - the kind of restraint that makes everyday objects feel special.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Quiet Confidence</div>
+            </div>
+            <div class="image-commentary">
+                No logos, no flash. Just technical materials and thoughtful engineering that speaks to those who recognize good design. It doesn't need to announce itself.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation-footer">
+    <a href="sony-walkman-tps-l2.html" class="nav-product">← Previous: Sony Walkman</a>
+    <a href="beosound-9000.html" class="nav-product">Next: Beosound 9000 →</a>
+</div>
+
+<div class="disclaimer-section">
+    <p class="disclaimer-text">
+        Product images used for editorial/educational purposes. All images © their respective owners. Not affiliated with Veilance or Arc'teryx. Will remove upon request.
+    </p>
+    <div class="sources">
+        <p class="sources-title">Sources:</p>
+        <p class="sources-list">
+            [1] <a href="#" class="source-link">Veilance Official Product Documentation</a><br>
+            [2] <a href="#" class="source-link">Arc'teryx Design Philosophy</a><br>
+            [3] <a href="#" class="source-link">Technical Apparel Industry Analysis</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
