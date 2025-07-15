@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beosound 9000 - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-bottom: 50px;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .home-circle {
+        width: 12px;
+        height: 12px;
+        background-color: #FF6600;
+        border-radius: 50%;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+    
+    .home-circle:hover {
+        transform: scale(1.2);
+    }
+    
+    .nav-home {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-arrow {
+        color: #666;
+        margin-right: 20px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+        line-height: 1;
+    }
+    
+    .nav-links a {
+        color: #666;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links a:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-links a.current {
+        color: #000;
+    }
+    
+    .product-overview {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.5;
+        max-width: 600px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+        font-weight: 300;
+        margin-bottom: 20px;
+        color: #000;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+    
+    .product-meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .meta-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .meta-label {
+        font-size: 0.8rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+    }
+    
+    .meta-value {
+        font-size: 0.95rem;
+        color: #000;
+        font-weight: 400;
+    }
+    
+    .why-perfect {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #333;
+        margin-bottom: 60px;
+        max-width: 650px;
+    }
+    
+    .gallery-section {
+        margin-bottom: 60px;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+    
+    .gallery-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .image-container {
+        aspect-ratio: 4/3;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        transition: border-color 0.2s ease;
+    }
+    
+    .image-container:hover {
+        border-color: #FF6600;
+    }
+    
+    .image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9rem;
+    }
+    
+    .image-commentary {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.5;
+    }
+    
+    .navigation-footer {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-product {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-product:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-product.disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+    
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 15px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+        }
+        
+        .product-meta {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .why-perfect {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .navigation-footer {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .nav {
+            font-size: 0.9rem;
+        }
+        
+        .nav-home-container {
+            margin-right: 15px;
+        }
+        
+        .nav-arrow {
+            margin-right: 15px;
+        }
+        
+        .nav-links {
+            gap: 12px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="../index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="../imperfect-work.html">Work</a>
+                <a href="../perfect-objects.html" class="current">Objects</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+
+    <div class="product-overview">
+        A CD player that turned music into art. Six albums displayed like paintings, making the act of choosing what to hear feel ceremonial.
+    </div>
+    
+    <h1>Beosound 9000</h1>
+    
+    <div class="product-meta">
+        <div class="meta-item">
+            <div class="meta-label">Brand</div>
+            <div class="meta-value">Bang & Olufsen</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Designer</div>
+            <div class="meta-value">David Lewis</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Country</div>
+            <div class="meta-value">Denmark</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Year</div>
+            <div class="meta-value">1996</div>
+        </div>
+    </div>
+    
+    <div class="why-perfect">
+        Most stereo equipment tries to disappear. This one demands to be seen - and rightfully so. David Lewis looked at six CDs in a record store window and saw the future: your music collection as wall art. The way it displays albums vertically, the motorized glass that opens with anticipation, the seamless track switching - every interaction feels special. It appeared in countless movies not as product placement, but because it represented a certain sophistication. This is what happens when someone refuses to hide beautiful technology and instead celebrates it.
+    </div>
+</div>
+
+<div class="gallery-section">
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Vertical Display Innovation</div>
+            </div>
+            <div class="image-commentary">
+                Six CDs arranged vertically, breaking away from conventional horizontal players. This wasn't just functional - it transformed album covers into a rotating art gallery in your living room.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Intentional Curation</div>
+            </div>
+            <div class="image-commentary">
+                In our digital age, choosing CDs becomes a deliberate act of taste curation. Six slots force you to be selective, displaying not just music but your aesthetic choices as visual statements.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Weekly Ritual</div>
+            </div>
+            <div class="image-commentary">
+                Six CDs make Sunday planning a joy - selecting one to open each morning of the week. What might have been a design constraint becomes a delightful ritual of musical anticipation.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Motorized Theater</div>
+            </div>
+            <div class="image-commentary">
+                The motorized glass lid creates ceremony around music selection. Every interaction becomes a performance, elevating the simple act of choosing what to hear into something special.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation-footer">
+    <a href="veilance-seque-card-wallet.html" class="nav-product">← Previous: Veilance Wallet</a>
+    <a href="craighill-wine-key.html" class="nav-product">Next: Craighill Wine Key →</a>
+</div>
+
+</body>
+</html>
