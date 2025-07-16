@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craighill Wine Key - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-bottom: 50px;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .home-circle {
+        width: 12px;
+        height: 12px;
+        background-color: #FF6600;
+        border-radius: 50%;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+    
+    .home-circle:hover {
+        transform: scale(1.2);
+    }
+    
+    .nav-home {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-home:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-arrow {
+        color: #666;
+        margin-right: 20px;
+        font-size: 0.95rem;
+        line-height: 1;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+        line-height: 1;
+    }
+    
+    .nav-links a {
+        color: #666;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links a:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-links a.current {
+        color: #000;
+    }
+    
+    .product-overview {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.5;
+        max-width: 600px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+        font-weight: 300;
+        margin-bottom: 20px;
+        color: #000;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+    
+    .product-meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .meta-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .meta-label {
+        font-size: 0.8rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+    }
+    
+    .meta-value {
+        font-size: 0.95rem;
+        color: #000;
+        font-weight: 400;
+    }
+    
+    .why-perfect {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #333;
+        margin-bottom: 60px;
+        max-width: 650px;
+    }
+    
+    .gallery-section {
+        margin-bottom: 60px;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+    
+    .gallery-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .image-container {
+        aspect-ratio: 4/3;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9rem;
+    }
+    
+    .image-commentary {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.5;
+    }
+    
+    .navigation-footer {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-product {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-product:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-product.disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+    
+    .disclaimer-section {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .disclaimer-text {
+        font-size: 0.8rem;
+        color: #777;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    
+    .sources {
+        font-size: 0.8rem;
+        color: #777;
+    }
+    
+    .sources-title {
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #666;
+    }
+    
+    .sources-list {
+        line-height: 1.6;
+    }
+    
+    .source-link {
+        color: #777;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .source-link:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 15px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+        }
+        
+        .product-meta {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .why-perfect {
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .navigation-footer {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .nav {
+            font-size: 0.9rem;
+        }
+        
+        .nav-home-container {
+            margin-right: 15px;
+        }
+        
+        .nav-arrow {
+            margin-right: 15px;
+        }
+        
+        .nav-links {
+            gap: 12px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="../index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="../imperfect-work.html">Work</a>
+                <a href="../perfect-objects.html" class="current">Objects</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+
+    <div class="product-overview">
+        A bold chance to rethink the wine opener design that has been static for decades. Sometimes the best innovations come from questioning the established.
+    </div>
+    
+    <h1>Craighill Wine Key</h1>
+    
+    <div class="product-meta">
+        <div class="meta-item">
+            <div class="meta-label">Brand</div>
+            <div class="meta-value">Craighill</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Designer</div>
+            <div class="meta-value">Hunter Craighill & André Hueston Mack</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Country</div>
+            <div class="meta-value">United States</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">Year</div>
+            <div class="meta-value">2021</div>
+        </div>
+    </div>
+    
+    <div class="why-perfect">
+        Hunter Craighill and sommelier André Hueston Mack took a pass at advancing a very established product. The sommelier's wine key shape has been fixed for decades - everyone thought there wasn't more you could push, despite known problems. That's exactly what made it interesting. André brought real-world experience from behind the bar, Hunter brought design thinking. The result feels inevitable once you hold it - perfect weight, precisely angled foil knife, ratcheted mechanism that makes cork removal effortless. They proved that even the most established tools can be reimagined.
+    </div>
+</div>
+
+<div class="gallery-section">
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Sommelier Collaboration</div>
+            </div>
+            <div class="image-commentary">
+                Hunter Craighill partnered with sommelier André Hueston Mack (from Bon Appetit and Per Se) to identify real-world pain points. True co-creation - designer thinking meets professional experience.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Advancing the Established</div>
+            </div>
+            <div class="image-commentary">
+                The sommelier's wine key shape has been fixed for decades. Everyone thought there wasn't more you could push, despite known problems. That's what made this challenge so compelling.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Ratcheted Innovation</div>
+            </div>
+            <div class="image-commentary">
+                The ratcheted swing-arm mechanism transforms cork extraction from tedious chore to smooth ritual. Sometimes the best innovations are the ones that feel obvious in hindsight.
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <div class="image-container">
+                <div class="image-placeholder">Professional Authority</div>
+            </div>
+            <div class="image-commentary">
+                Substantial weight and precise angles give it presence in your hand. This isn't just a tool - it's a statement about taking wine service seriously, whether professional or personal.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation-footer">
+    <a href="beosound-9000.html" class="nav-product">← Previous: Beosound 9000</a>
+    <a href="plotter-leather-binder.html" class="nav-product">Next: Plotter Binder →</a>
+</div>
+
+<div class="disclaimer-section">
+    <p class="disclaimer-text">
+        Product images used for editorial/educational purposes. All images © their respective owners. Not affiliated with Craighill. Will remove upon request.
+    </p>
+    <div class="sources">
+        <p class="sources-title">Sources:</p>
+        <p class="sources-list">
+            [1] <a href="#" class="source-link">Craighill Official Product Page</a><br>
+            [2] <a href="#" class="source-link">Hunter Craighill Design Portfolio</a><br>
+            [3] <a href="#" class="source-link">Contemporary Tool Design Analysis</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
