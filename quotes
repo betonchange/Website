@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes Preview - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 50px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            line-height: 1;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+
+        .nav-links a.current {
+            color: #000;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #000;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .intro {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Quote Display */
+        .quote-display {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .current-quote {
+            margin-bottom: 40px;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #000;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .quote-attribution {
+            text-align: center;
+        }
+
+        .quote-author {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .quote-source {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* Quote Controls */
+        .quote-controls {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 30px;
+        }
+
+        .next-note-btn {
+            background: transparent;
+            color: #666;
+            border: none;
+            padding: 8px 16px;
+            font-size: 1rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+
+        .next-note-btn:hover {
+            color: #000;
+        }
+
+        .btn-arrow {
+            font-size: 0.9rem;
+            color: #999;
+            transition: all 0.2s ease;
+        }
+
+        .next-note-btn:hover .btn-arrow {
+            color: #666;
+            transform: translateX(2px);
+        }
+
+        /* Sample Data Styles */
+        .sample-container {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+
+        .sample-label {
+            font-size: 0.85rem;
+            color: #999;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav {
+                font-size: 0.9rem;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+            }
+
+            .quote-display {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="imperfect-work.html">Work</a>
+                <a href="perfect-objects.html">Objects</a>
+                <a href="quotes.html" class="current">Quotes</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+
+        <h1>Quotes</h1>
+        
+        <div class="intro">
+            Thoughts worth sharing.
+        </div>
+    </div>
+
+    <div class="sample-container">
+        <div class="sample-label">Sample Preview - How Your Quotes Will Look</div>
+        
+        <div class="quote-display">
+            <div class="current-quote">
+                <div class="quote-text">
+                    "Design is not just what it looks like and feels like. Design is how it works."
+                </div>
+                <div class="quote-attribution">
+                    <div class="quote-author">
+                        Steve Jobs, CEO
+                    </div>
+                    <div class="quote-source">
+                        Stanford Commencement Address, 2005
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-controls">
+                <button class="next-note-btn">
+                    next note
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f8f8; border-radius: 8px;">
+        <h3 style="margin-bottom: 16px; font-size: 1.1rem;">Format Breakdown:</h3>
+        <div style="font-family: monospace; font-size: 0.9rem; line-height: 1.8;">
+            <div><strong>Quote:</strong> "Your quote text here"</div>
+            <div><strong>Author Line:</strong> — Author Name, Occupation</div>
+            <div><strong>Source Line:</strong> &lt;Source Information&gt;</div>
+        </div>
+        
+        <h3 style="margin: 24px 0 16px 0; font-size: 1.1rem;">Required Notion Database Columns:</h3>
+        <ul style="margin-left: 20px; line-height: 1.6;">
+            <li><strong>Quote</strong> (Text) - The actual quote</li>
+            <li><strong>Author</strong> (Text) - Person's name</li>
+            <li><strong>Occupation</strong> (Text) - Their title/role</li>
+            <li><strong>Source</strong> (Text) - Where the quote is from</li>
+            <li><strong>Status</strong> (Select) - Set to "Active" to display</li>
+        </ul>
+    </div>
+</body>
+</html>
