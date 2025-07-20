@@ -257,10 +257,11 @@
     <div class="quote-display" id="quoteDisplay">
         <div class="current-quote">
             <div class="quote-text fade-transition" id="quoteText">
-                "Loading your quotes..."
+                "We cannot direct the wind, but we can adjust our sails"
             </div>
             <div class="quote-attribution fade-transition" id="quoteAttribution">
-                <div class="quote-author" id="quoteAuthor" style="display: none;">
+                <div class="quote-author" id="quoteAuthor">
+                    Aristotle
                 </div>
                 <div class="quote-source" id="quoteSource" style="display: none;">
                 </div>
@@ -276,68 +277,37 @@
     </div>
 
     <script>
-        let quotes = [];
+        // All your Active quotes from Notion
+        const quotes = [
+            {
+                text: "We cannot direct the wind, but we can adjust our sails",
+                author: "Aristotle",
+                occupation: "",
+                source: ""
+            },
+            {
+                text: "Always we hope someone else has the answer, some other place will be better, some other time it will all turn out. This is it; no one else has the answer, no other place will be better, and it has already turned out. At the center of your being, you have the answer; you know who you are and you know what you want.",
+                author: "M.J. Ryan",
+                occupation: "Author",
+                source: "A Grateful Heart: Daily Blessings for the Evening Meal from Buddha to the Beatles"
+            },
+            {
+                text: "Think of yourself as dead. You have lived your life. Now take what's left and live it properly.",
+                author: "Marcus Aurelius",
+                occupation: "Roman Emperor",
+                source: ""
+            },
+            {
+                text: "Pain + Reflection = Progress",
+                author: "",
+                occupation: "",
+                source: ""
+            }
+        ];
+
         let currentQuoteIndex = 0;
 
-        // Fetch quotes from Vercel function (which calls Notion API)
-        async function fetchQuotesFromNotion() {
-            try {
-                // This calls your Vercel function
-                const response = await fetch('/api/quotes');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                
-                if (data.error) {
-                    throw new Error(data.message || 'API returned an error');
-                }
-                
-                console.log('Successfully loaded quotes from Notion:', data.quotes);
-                return data.quotes;
-                
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
-                
-                // Fallback quotes if API fails
-                return [
-                    {
-                        text: "Design is not just what it looks like and feels like. Design is how it works.",
-                        author: "Steve Jobs",
-                        occupation: "CEO",
-                        source: "New York Times Interview, 2003"
-                    },
-                    {
-                        text: "The only way to do great work is to love what you do.",
-                        author: "Steve Jobs", 
-                        occupation: "CEO",
-                        source: "Stanford Commencement Address, 2005"
-                    },
-                    {
-                        text: "Less is better",
-                        author: "Dieter Rams",
-                        occupation: "Designer",
-                        source: "Ten Principles of Good Design"
-                    },
-                    {
-                        text: "Just enough",
-                        author: "Hara Kenya",
-                        occupation: "Designer", 
-                        source: "Designing Design, 2007"
-                    }
-                ];
-            }
-        }
-
         function getRandomQuote() {
-            if (quotes.length === 0) {
-                console.log('No quotes available');
-                return;
-            }
-
-            const quoteDisplay = document.getElementById('quoteDisplay');
             const quoteText = document.getElementById('quoteText');
             const quoteAttribution = document.getElementById('quoteAttribution');
             const quoteAuthor = document.getElementById('quoteAuthor');
@@ -345,7 +315,6 @@
             const nextNoteBtn = document.getElementById('nextNoteBtn');
 
             // Add loading state
-            quoteDisplay.classList.add('loading');
             nextNoteBtn.disabled = true;
             nextNoteBtn.innerHTML = 'loading...';
 
@@ -376,7 +345,7 @@
                         }
                     }
                     
-                    // Format: Source (no brackets, just clean text)
+                    // Format: Source (clean text)
                     let sourceText = '';
                     if (selectedQuote.source && selectedQuote.source.trim()) {
                         sourceText = selectedQuote.source;
@@ -402,22 +371,35 @@
                     quoteAttribution.style.opacity = '1';
                     
                     // Remove loading state and restore button with arrow
-                    quoteDisplay.classList.remove('loading');
                     nextNoteBtn.disabled = false;
                     nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
                 }, 200);
             }, 400);
         }
 
-        // Load quotes on page load
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Fetch quotes from Vercel function
-            quotes = await fetchQuotesFromNotion();
-            
-            // Load initial random quote
+        // Load initial quote
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up the first quote properly
             setTimeout(() => {
-                getRandomQuote();
-            }, 300);
+                const selectedQuote = quotes[0];
+                const quoteAuthor = document.getElementById('quoteAuthor');
+                const quoteSource = document.getElementById('quoteSource');
+                
+                let authorText = selectedQuote.author;
+                if (selectedQuote.occupation && selectedQuote.occupation.trim()) {
+                    authorText += `, ${selectedQuote.occupation}`;
+                }
+                
+                if (authorText) {
+                    quoteAuthor.textContent = authorText;
+                    quoteAuthor.style.display = 'block';
+                }
+                
+                if (selectedQuote.source && selectedQuote.source.trim()) {
+                    quoteSource.textContent = selectedQuote.source;
+                    quoteSource.style.display = 'block';
+                }
+            }, 100);
         });
 
         // Home circle click functionality
