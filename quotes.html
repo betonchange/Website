@@ -137,16 +137,6 @@
             letter-spacing: -0.01em;
         }
 
-        .quote-text::before {
-            content: '"';
-            color: #999;
-        }
-
-        .quote-text::after {
-            content: '"';
-            color: #999;
-        }
-
         .quote-attribution {
             text-align: center;
         }
@@ -267,14 +257,12 @@
     <div class="quote-display" id="quoteDisplay">
         <div class="current-quote">
             <div class="quote-text fade-transition" id="quoteText">
-                "The only way to do great work is to love what you do."
+                "Loading your quotes..."
             </div>
             <div class="quote-attribution fade-transition" id="quoteAttribution">
                 <div class="quote-author" id="quoteAuthor" style="display: none;">
-                    Steve Jobs, CEO
                 </div>
                 <div class="quote-source" id="quoteSource" style="display: none;">
-                    Stanford Commencement Address, 2005
                 </div>
             </div>
         </div>
@@ -294,7 +282,7 @@
         // Fetch quotes from Vercel function (which calls Notion API)
         async function fetchQuotesFromNotion() {
             try {
-                // This will be your Vercel function URL after deployment
+                // This calls your Vercel function
                 const response = await fetch('/api/quotes');
                 
                 if (!response.ok) {
@@ -302,6 +290,11 @@
                 }
                 
                 const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.message || 'API returned an error');
+                }
+                
                 console.log('Successfully loaded quotes from Notion:', data.quotes);
                 return data.quotes;
                 
@@ -327,6 +320,12 @@
                         author: "Dieter Rams",
                         occupation: "Designer",
                         source: "Ten Principles of Good Design"
+                    },
+                    {
+                        text: "Just enough",
+                        author: "Hara Kenya",
+                        occupation: "Designer", 
+                        source: "Designing Design, 2007"
                     }
                 ];
             }
@@ -377,7 +376,7 @@
                         }
                     }
                     
-                    // Format: <Source> (no brackets, just clean text)
+                    // Format: Source (no brackets, just clean text)
                     let sourceText = '';
                     if (selectedQuote.source && selectedQuote.source.trim()) {
                         sourceText = selectedQuote.source;
@@ -426,20 +425,5 @@
             window.location.href = 'index.html';
         });
     </script>
-
-    <!-- 
-    QUOTES MANAGEMENT:
-    
-    To add/update quotes, simply modify the quotes array above.
-    
-    For future Notion integration, you'll need a backend service like:
-    - Vercel Functions
-    - Netlify Functions 
-    - Cloudflare Workers
-    
-    This handles the API calls server-side, avoiding CORS browser restrictions.
-    
-    Current quotes are curated and will work perfectly for your portfolio site!
-    -->
 </body>
 </html>
