@@ -112,7 +112,7 @@
         .intro {
             font-size: 1rem;
             color: #666;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             line-height: 1.6;
             max-width: 600px;
         }
@@ -122,11 +122,11 @@
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
-            padding: 60px 0;
+            padding: 0;
         }
 
         .current-quote {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .quote-text {
@@ -265,7 +265,7 @@
     <div class="quote-display" id="quoteDisplay">
         <div class="current-quote">
             <div class="quote-text fade-transition" id="quoteText">
-                "We cannot direct the wind, but we can adjust our sails"
+                "Loading a random quote..."
             </div>
             <div class="quote-attribution fade-transition" id="quoteAttribution">
                 <div class="quote-author" id="quoteAuthor">
@@ -663,11 +663,17 @@
 
         // Load initial quote
         document.addEventListener('DOMContentLoaded', function() {
+            // Start with a random quote instead of always the first one
+            currentQuoteIndex = Math.floor(Math.random() * quotes.length);
+            const selectedQuote = quotes[currentQuoteIndex];
+            
             // Set up the first quote properly
             setTimeout(() => {
-                const selectedQuote = quotes[0];
+                const quoteText = document.getElementById('quoteText');
                 const quoteAuthor = document.getElementById('quoteAuthor');
                 const quoteSource = document.getElementById('quoteSource');
+                
+                quoteText.textContent = `"${selectedQuote.text}"`;
                 
                 let authorText = selectedQuote.author;
                 if (selectedQuote.occupation && selectedQuote.occupation.trim()) {
@@ -677,11 +683,15 @@
                 if (authorText) {
                     quoteAuthor.textContent = authorText;
                     quoteAuthor.style.display = 'block';
+                } else {
+                    quoteAuthor.style.display = 'none';
                 }
                 
                 if (selectedQuote.source && selectedQuote.source.trim()) {
                     quoteSource.textContent = selectedQuote.source;
                     quoteSource.style.display = 'block';
+                } else {
+                    quoteSource.style.display = 'none';
                 }
             }, 100);
         });
