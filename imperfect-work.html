@@ -113,14 +113,14 @@
     
     .work-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
         margin-bottom: 60px;
     }
     
     .work-item {
         position: relative;
-        aspect-ratio: 16/10;
+        aspect-ratio: 16/9;
         background-color: #f5f5f5;
         border-radius: 4px;
         overflow: hidden;
@@ -159,7 +159,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 25px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -235,6 +235,10 @@
         .work-grid {
             grid-template-columns: 1fr;
             gap: 20px;
+        }
+        
+        .work-item {
+            aspect-ratio: 16/10;
         }
         
         .work-overlay {
