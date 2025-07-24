@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Together - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .project-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+            padding: 30px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #666;
+            white-space: nowrap;
+        }
+        
+        .meta-value {
+            font-size: 0.9rem;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .project-overview {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .overview-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+        }
+        
+        .project-media {
+            margin-bottom: 60px;
+        }
+        
+        .media-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .media-item {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+        }
+        
+        .media-item.large {
+            aspect-ratio: 16/9;
+        }
+        
+        .media-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .media-coverage {
+            margin-bottom: 60px;
+        }
+        
+        .coverage-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .coverage-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+        
+        .coverage-link:hover {
+            color: #FF6600;
+        }
+        
+        .disclaimer {
+            margin-top: 80px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .project-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .overview-text {
+                font-size: 1rem;
+            }
+            
+            .media-grid {
+                gap: 20px;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+            }
+            
+            .nav-home-container {
+                margin-right: 15px;
+            }
+            
+            .nav-arrow {
+                margin-right: 15px;
+            }
+            
+            .nav-links {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="index.html" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="imperfect-work.html">Work</a>
+                <a href="perfect-objects.html">Objects</a>
+                <a href="mailto:betonchange@gmail.com">Contact</a>
+            </div>
+        </nav>
+
+        <h1 class="project-title">More Together</h1>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Facebook App</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Type</div>
+                <div class="meta-value">Brand Platform</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Audience</div>
+                <div class="meta-value">Community Builders</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">2020-2021</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-overview">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="overview-text">
+            "More Together" emerged during a time when physical distance threatened to divide communities worldwide. The campaign positioned Facebook as the platform that makes meaningful connections possible, emphasizing that we're stronger when we come together around shared interests, causes, and experiences.
+            <br><br>
+            The platform encompassed multiple touchpoints including the 2021 Super Bowl campaign, community-building initiatives, and product features that facilitated group formation and engagement. We focused on authentic stories of how Facebook Groups, Events, and messaging helped people maintain relationships and build new ones during challenging times. The campaign celebrated ordinary people doing extraordinary things when they unite around common purpose.
+            <br><br>
+            The work spanned from intimate community stories to mass-market moments like the Super Bowl, consistently reinforcing that Facebook's greatest strength lies in bringing people together. Post-campaign metrics showed increased group creation, event attendance, and overall community engagement across the platform.
+        </div>
+    </div>
+
+    <div class="project-media">
+        <h2 class="section-title">Campaign Assets</h2>
+        
+        <div class="media-grid">
+            <div class="media-item large">
+                <span>Super Bowl Campaign Film</span>
+            </div>
+            <div class="media-caption">Emotional storytelling about connection during difficult times</div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <div class="media-item">
+                    <span>Community Stories Series</span>
+                </div>
+                <div class="media-item">
+                    <span>Group Formation Tools</span>
+                </div>
+            </div>
+            <div class="media-caption">Real community builder spotlights and platform features</div>
+        </div>
+    </div>
+
+    <div class="media-coverage">
+        <h2 class="section-title">Media Coverage</h2>
+        <div class="coverage-links">
+            <a href="#" class="coverage-link">Super Bowl Spot Analysis - Ad Age</a>
+            <a href="#" class="coverage-link">Community Building Focus - Marketing Land</a>
+            <a href="#" class="coverage-link">Platform Evolution - TechCrunch</a>
+            <a href="#" class="coverage-link">Brand Positioning - Campaign Magazine</a>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work completed at Facebook/Meta and respects brand intellectual property rights.
+    </div>
+
+</body>
+</html>
