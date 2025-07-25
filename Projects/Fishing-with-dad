@@ -90,7 +90,7 @@
         .project-title {
             font-size: 2.8rem;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: #000;
             letter-spacing: -0.02em;
         }
@@ -98,9 +98,9 @@
         .project-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 25px;
             margin-bottom: 50px;
-            padding: 30px 0;
+            padding: 20px 0;
             border-top: 1px solid #e0e0e0;
             border-bottom: 1px solid #e0e0e0;
         }
@@ -108,18 +108,21 @@
         .meta-item {
             display: flex;
             align-items: baseline;
-            gap: 10px;
+            gap: 8px;
+            min-width: 120px;
         }
         
         .meta-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
             white-space: nowrap;
         }
         
         .meta-value {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #000;
             font-weight: 400;
         }
@@ -220,6 +223,10 @@
                 gap: 15px;
             }
             
+            .meta-item {
+                min-width: auto;
+            }
+            
             .overview-text {
                 font-size: 1rem;
             }
@@ -257,7 +264,8 @@
             <div class="nav-links">
                 <a href="imperfect-work.html">Work</a>
                 <a href="perfect-objects.html">Objects</a>
-                <a href="mailto:betonchange@gmail.com">Contact</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="contacts.html">Contact</a>
             </div>
         </nav>
 
@@ -270,15 +278,15 @@
             </div>
             <div class="meta-item">
                 <div class="meta-label">Type</div>
-                <div class="meta-value">Emotional Brand Story</div>
-            </div>
-            <div class="meta-item">
-                <div class="meta-label">Audience</div>
-                <div class="meta-value">Families & Connections</div>
+                <div class="meta-value">Campaign Film</div>
             </div>
             <div class="meta-item">
                 <div class="meta-label">Year</div>
                 <div class="meta-value">2022</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Audience</div>
+                <div class="meta-value">Consumer, Tech Engaged</div>
             </div>
         </div>
     </div>
@@ -286,11 +294,9 @@
     <div class="project-overview">
         <h2 class="section-title">Project Overview</h2>
         <div class="overview-text">
-            "Fishing with Dad" was an intimate, heartfelt campaign that explored how Meta technologies help preserve and share life's precious moments across generations. The story followed a father and son's fishing tradition, showing how sharing these experiences through Meta platforms creates lasting memories that can be revisited and cherished.
+            As Facebook rebranded to Meta and expanded into AR/VR and Metaverse technologies, questions emerged around technology's role in the company's mission of connecting people and bringing the world closer together. Rather than explaining technical complexities, we needed to help people see the human potential through authentic, lived experiences.
             <br><br>
-            The campaign emphasized Meta's role in connecting families and preserving personal narratives in an increasingly digital world. Through authentic storytelling, we demonstrated how technology can enhance rather than replace meaningful human experiences. The work focused on emotional resonance over feature explanations, showing the human impact of staying connected.
-            <br><br>
-            The campaign performed exceptionally well in terms of emotional engagement metrics and brand sentiment, particularly among family-focused demographics. It reinforced Meta's positioning as a company that understands and facilitates the relationships that matter most, moving beyond utility to tap into deeper human truths about connection and legacy.
+            It was critical that we don't tell an artificial story, but one that is true and has the potential to resonate with everyone. This is when we discovered Carlson and her Dad's story, who continued on their cherished fishing tradition over VR to stay connected despite COVID's physical barriers. It's a reminder that technology at it's best enhances rather than replacing human connection.
         </div>
     </div>
 
@@ -298,29 +304,23 @@
         <h2 class="section-title">Campaign Assets</h2>
         
         <div class="media-grid">
-            <div class="media-item large">
-                <span>Father & Son Story Film</span>
-            </div>
-            <div class="media-caption">Cinematic narrative about family traditions and memory-making</div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
-                <div class="media-item">
-                    <span>Behind-the-Scenes Content</span>
-                </div>
-                <div class="media-item">
-                    <span>Extended Family Stories</span>
-                </div>
-            </div>
-            <div class="media-caption">Production insights and additional family connection stories</div>
+            <iframe src="https://player.vimeo.com/video/818140667?h=c45a9bcb92" 
+                    width="100%" 
+                    height="400" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                    style="border-radius: 8px;"
+                    title="Fishing with Dad">
+            </iframe>
+            <div class="media-caption">The film was shot with Carlson and her dad, via fully remote settings. Documenting the shared VR experience took three crews working in tandem – one capturing the dad in Missouri. Another capturing the daughter in California. And a third capturing them fishing together inside the metaverse.</div>
         </div>
     </div>
 
     <div class="media-coverage">
         <h2 class="section-title">Media Coverage</h2>
         <div class="coverage-links">
-            <a href="#" class="coverage-link">Emotional Storytelling - Adweek</a>
-            <a href="#" class="coverage-link">Family Connection Focus - Campaign</a>
-            <a href="#" class="coverage-link">Meta's Brand Evolution - Marketing Dive</a>
+            <a href="https://www.adweek.com/social-marketing/meta-kicks-off-2-campaigns-aimed-at-sharing-its-vision-for-the-metaverse/" class="coverage-link" target="_blank">Meta's Metaverse Vision - Adweek</a>
+            <a href="https://shortyawards.com/15th/fishing-with-dad" class="coverage-link" target="_blank">Shorty Awards Finalist</a>
         </div>
     </div>
 
