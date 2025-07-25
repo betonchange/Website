@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,383 +11,355 @@
             box-sizing: border-box;
         }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        line-height: 1.6;
-        color: #000;
-        background-color: #fff;
-        padding: 40px 20px;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .header {
-        margin-bottom: 60px;
-    }
-    
-    .nav {
-        display: flex;
-        align-items: baseline;
-        margin-bottom: 40px;
-        font-size: 0.95rem;
-        line-height: 1;
-    }
-    
-    .nav-home-container {
-        display: flex;
-        align-items: center;
-        margin-right: 30px;
-    }
-    
-    .home-circle {
-        width: 12px;
-        height: 12px;
-        background-color: #FF6600;
-        border-radius: 50%;
-        margin-right: 8px;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-        flex-shrink: 0;
-        align-self: center;
-    }
-    
-    .home-circle:hover {
-        transform: scale(1.2);
-    }
-    
-    .nav-home {
-        color: #000;
-        text-decoration: none;
-        font-weight: 500;
-        line-height: 1;
-        font-size: 0.95rem;
-    }
-    
-    .nav-arrow {
-        color: #666;
-        margin-right: 20px;
-        line-height: 1;
-        font-size: 0.95rem;
-    }
-    
-    .nav-links {
-        display: flex;
-        gap: 15px;
-        line-height: 1;
-    }
-    
-    .nav-links a {
-        color: #666;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        transition: all 0.2s ease;
-        font-size: 0.95rem;
-    }
-    
-    .nav-links a:hover {
-        color: #000;
-        border-bottom-color: #FF6600;
-    }
-    
-    h1 {
-        font-size: 3.2rem;
-        font-weight: 300;
-        margin-bottom: 20px;
-        color: #000;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-    }
-    
-    .main-content {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 40px;
-        color: #666;
-        margin-top: 0px;
-        max-width: 600px;
-    }
-    
-    p {
-        margin-bottom: 1.5rem;
-    }
-    
-    .highlight {
-        font-weight: 500;
-        color: #000;
-    }
-    
-    .metric {
-        color: #FF6600;
-        font-weight: 500;
-    }
-    
-    .citation {
-        color: #000;
-        text-decoration: none;
-        font-size: 0.8em;
-        vertical-align: super;
-        transition: color 0.2s ease;
-    }
-    
-    .citation:hover {
-        color: #FF6600;
-    }
-    
-    .section-divider {
-        width: 100%;
-        height: 1px;
-        background-color: #e0e0e0;
-        margin: 60px 0 40px 0;
-    }
-    
-    .resume-section {
-        margin-bottom: 60px;
-    }
-    
-    .resume-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        margin-bottom: 20px;
-        transition: all 0.2s ease;
-    }
-    
-    .resume-header:hover {
-        color: #FF6600;
-    }
-    
-    .resume-header:hover .resume-toggle {
-        color: #FF6600;
-    }
-    
-    .resume-title {
-        font-size: 1.3rem;
-        color: #000;
-        font-weight: 500;
-    }
-    
-    .resume-toggle {
-        font-size: 1.2rem;
-        color: #666;
-        transition: transform 0.2s ease;
-    }
-    
-    .resume-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        margin-top: 30px;
-    }
-    
-    .resume-content.expanded {
-        max-height: 1000px;
-    }
-    
-    .role-item {
-        margin-bottom: 40px;
-    }
-    
-    .role-period {
-        font-size: 1rem;
-        color: #333;
-        margin-bottom: 4px;
-    }
-    
-    .role-title {
-        font-size: 1rem;
-        color: #000;
-        font-weight: 500;
-        margin-bottom: 2px;
-    }
-    
-    .role-company {
-        font-size: 1rem;
-        color: #666;
-    }
-    
-    .contact {
-        text-align: center;
-        margin-top: 20px;
-    }
-    
-    .contact-links {
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-        margin-bottom: 15px;
-    }
-    
-    .contact-links a {
-        color: #000;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        transition: all 0.2s ease;
-    }
-    
-    .contact-links a:hover {
-        border-bottom-color: #FF6600;
-    }
-    
-    .location {
-        font-size: 0.9rem;
-        color: #999;
-    }
-    
-    .footnote {
-        font-size: 0.9rem;
-        color: #999;
-        text-align: center;
-        margin-top: 60px;
-        padding-top: 40px;
-        border-top: 1px solid #e0e0e0;
-    }
-    
-    @media (max-width: 600px) {
         body {
-            padding: 20px 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        h1 {
-            font-size: 2rem;
-        }
-        
-        .main-content {
-            font-size: 1rem;
+        .header {
+            margin-bottom: 50px;
         }
         
         .nav {
-            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
         }
         
         .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
             margin-right: 20px;
         }
         
         .nav-links {
-            gap: 12px;
+            display: flex;
+            gap: 15px;
         }
         
-        .contact-links {
-            gap: 20px;
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
         }
-    }
-</style>
-
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            color: #333;
+            max-width: 700px;
+        }
+        
+        .main-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight {
+            font-weight: 500;
+            color: #000;
+        }
+        
+        .metric {
+            color: #FF6600;
+            font-weight: 500;
+        }
+        
+        .citation {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.8em;
+            vertical-align: super;
+            transition: color 0.2s ease;
+        }
+        
+        .citation:hover {
+            color: #FF6600;
+        }
+        
+        /* SECTION DIVIDER */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 60px 0 40px 0;
+        }
+        
+        /* RESUME SECTION */
+        .resume-section {
+            margin-bottom: 60px;
+        }
+        
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+        }
+        
+        .resume-header:hover {
+            color: #FF6600;
+        }
+        
+        .resume-header:hover .resume-toggle {
+            color: #FF6600;
+        }
+        
+        .resume-title {
+            font-size: 1.4rem;
+            color: #000;
+            font-weight: 500;
+        }
+        
+        .resume-toggle {
+            font-size: 1.2rem;
+            color: #666;
+            transition: transform 0.2s ease;
+        }
+        
+        .resume-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 30px;
+        }
+        
+        .resume-content.expanded {
+            max-height: 1000px;
+        }
+        
+        .role-item {
+            margin-bottom: 40px;
+        }
+        
+        .role-period {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .role-title {
+            font-size: 1rem;
+            color: #000;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .role-company {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* FOOTER */
+        .footnote {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            line-height: 1.5;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .main-content {
+                font-size: 1rem;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+            }
+            
+            .nav-home-container {
+                margin-right: 15px;
+            }
+            
+            .nav-links {
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <nav class="nav">
             <div class="nav-home-container">
                 <div class="home-circle"></div>
-                <a href="index.html" class="nav-home">JB Kang</a>
+                <a href="https://jb-kang.com/index" class="nav-home">JB Kang</a>
             </div>
+            <span class="nav-arrow">←</span>
             <div class="nav-links">
-                <a href="imperfect-work.html">Work</a>
-                <a href="perfect-objects.html">Objects</a>
-                <a href="quotes.html">Quotes</a>
-                <a href="contact.html">Contact</a>
+                <a href="https://jb-kang.com/imperfect-work">Work</a>
+                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
             </div>
         </nav>
-        <h1>JB (Jong Beom) Kang</h1>
+        
+        <h1 class="page-title">JB (Jong Beom) Kang</h1>
     </div>
 
-<div class="main-content">
-    <p>I started my career at P&G learning the fundamentals of marketing-led business building. I've spent the last 9 years at Meta learning all aspects of marketing — from business, product, policy and brand marketing - working across Facebook, Meta, and <span class="highlight">currently a Brand Lead at Instagram</span>.</p>
-    
-    <p>I've been lucky to work on brands going through transformational phases: navigating a brand crisis <a href="#" class="citation">[1]</a>, expanding a corporate vision <a href="#" class="citation">[2]</a>, regaining relevance with younger audiences <a href="#" class="citation">[3]</a>, and communicating social impact to governments <a href="#" class="citation">[4]</a>. Through it all, I've learned that everything starts with the effort to understand the audience deeply and telling the story from their perspective.</p>
-    
-    <p>I'm a designer at heart. I have a deep appreciation for thoughtfully designed products<a href="#" class="citation">[5]</a>, and hope to leave one behind. I believe that ultimately, product makes the brand.</p>
-    
-    <p>I want to make sure technology creates positive change. I will continue to choose to build and fix problems from within, and tell stories that inspire more good.</p>
-</div>
-
-<div class="section-divider"></div>
-
-<div class="resume-section">
-    <div class="resume-header" onclick="toggleResume()">
-        <span class="resume-title">Experience</span>
-        <span class="resume-toggle" id="resumeToggle">→</span>
+    <div class="main-content">
+        <p>I started my career at P&G learning the fundamentals of marketing-led business building. I've spent the last 9 years at Meta learning all aspects of marketing — from business, product, policy and brand marketing - working across Facebook, Meta, and <span class="highlight">currently a Brand Lead at Instagram</span>.</p>
+        
+        <p>I've been lucky to work on brands going through transformational phases: navigating a brand crisis <a href="#" class="citation">[1]</a>, expanding a corporate vision <a href="#" class="citation">[2]</a>, regaining relevance with younger audiences <a href="#" class="citation">[3]</a>, and communicating social impact to governments <a href="#" class="citation">[4]</a>. Through it all, I've learned that everything starts with the effort to understand the audience deeply and telling the story from their perspective.</p>
+        
+        <p>I'm a designer at heart. I have a deep appreciation for thoughtfully designed products<a href="#" class="citation">[5]</a>, and hope to leave one behind. I believe that ultimately, product makes the brand.</p>
+        
+        <p>I want to make sure technology creates positive change. I will continue to choose to build and fix problems from within, and tell stories that inspire more good.</p>
     </div>
-    
-    <div class="resume-content" id="resumeContent">
-        <div class="role-item">
-            <div class="role-period">2023 — Now</div>
-            <div class="role-title">Global Integrated Marketing Lead</div>
-            <div class="role-company">Instagram, New York</div>
+
+    <div class="section-divider"></div>
+
+    <div class="resume-section">
+        <div class="resume-header" onclick="toggleResume()">
+            <span class="resume-title">Experience</span>
+            <span class="resume-toggle" id="resumeToggle">→</span>
         </div>
         
-        <div class="role-item">
-            <div class="role-period">2022 — 2022</div>
-            <div class="role-title">Brand Manager, Corporate Brand</div>
-            <div class="role-company">Meta, New York</div>
-        </div>
-        
-        <div class="role-item">
-            <div class="role-period">2019 — 2022</div>
-            <div class="role-title">Brand Manager, Facebook App</div>
-            <div class="role-company">Meta, New York</div>
-        </div>
-        
-        <div class="role-item">
-            <div class="role-period">2018 — 2019</div>
-            <div class="role-title">Product Marketing Manager</div>
-            <div class="role-company">Meta, New York & Singapore</div>
-        </div>
-        
-        <div class="role-item">
-            <div class="role-period">2016 — 2018</div>
-            <div class="role-title">Business & Policy Marketing Manager, APAC</div>
-            <div class="role-company">Meta, Seoul & Singapore</div>
-        </div>
-        
-        <div class="role-item">
-            <div class="role-period">2015 — 2016</div>
-            <div class="role-title">Product Innovation Manager, SK-II</div>
-            <div class="role-company">Procter & Gamble, Singapore</div>
-        </div>
-        
-        <div class="role-item">
-            <div class="role-period">2012 — 2015</div>
-            <div class="role-title">Global Brand Manager, SK-II</div>
-            <div class="role-company">Procter & Gamble, Singapore</div>
-        </div>
-        
-        <div class="role-item">
-            <div class="role-period">2011 — 2012</div>
-            <div class="role-title">Country Manager, SK-II MEN</div>
-            <div class="role-company">Procter & Gamble, Seoul</div>
+        <div class="resume-content" id="resumeContent">
+            <div class="role-item">
+                <div class="role-period">2023 — Now</div>
+                <div class="role-title">Global Integrated Marketing Lead</div>
+                <div class="role-company">Instagram, New York</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2022 — 2022</div>
+                <div class="role-title">Brand Manager, Corporate Brand</div>
+                <div class="role-company">Meta, New York</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2019 — 2022</div>
+                <div class="role-title">Brand Manager, Facebook App</div>
+                <div class="role-company">Meta, New York</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2018 — 2019</div>
+                <div class="role-title">Product Marketing Manager</div>
+                <div class="role-company">Meta, New York & Singapore</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2016 — 2018</div>
+                <div class="role-title">Business & Policy Marketing Manager, APAC</div>
+                <div class="role-company">Meta, Seoul & Singapore</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2015 — 2016</div>
+                <div class="role-title">Product Innovation Manager, SK-II</div>
+                <div class="role-company">Procter & Gamble, Singapore</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2012 — 2015</div>
+                <div class="role-title">Global Brand Manager, SK-II</div>
+                <div class="role-company">Procter & Gamble, Singapore</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-period">2011 — 2012</div>
+                <div class="role-title">Country Manager, SK-II MEN</div>
+                <div class="role-company">Procter & Gamble, Seoul</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="footnote">
-    This website was made with the help of Claude
-</div>
+    <div class="footnote">
+        This website was made with the help of Claude
+    </div>
 
-<script>
-    // Simple script for home circle hover effect
-    const homeCircle = document.querySelector('.home-circle');
-    homeCircle.addEventListener('click', () => {
-        window.location.href = 'index.html';
-    });
-    
-    // Resume toggle functionality
-    function toggleResume() {
-        const content = document.getElementById('resumeContent');
-        const toggle = document.getElementById('resumeToggle');
+    <script>
+        // Simple script for home circle hover effect
+        const homeCircle = document.querySelector('.home-circle');
+        homeCircle.addEventListener('click', () => {
+            window.location.href = 'https://jb-kang.com/index';
+        });
         
-        if (content.classList.contains('expanded')) {
-            content.classList.remove('expanded');
-            toggle.textContent = '→';
-            toggle.style.transform = 'rotate(0deg)';
-        } else {
-            content.classList.add('expanded');
-            toggle.textContent = '↓';
-            toggle.style.transform = 'rotate(0deg)';
+        // Resume toggle functionality
+        function toggleResume() {
+            const content = document.getElementById('resumeContent');
+            const toggle = document.getElementById('resumeToggle');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.textContent = '→';
+                toggle.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('expanded');
+                toggle.textContent = '↓';
+                toggle.style.transform = 'rotate(0deg)';
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>
