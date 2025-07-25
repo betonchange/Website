@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Rewards Launch - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .project-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            min-width: 120px;
+        }
+        
+        .meta-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            white-space: nowrap;
+        }
+        
+        .meta-value {
+            font-size: 0.95rem;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .project-overview {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .overview-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            max-width: 700px;
+        }
+        
+        .project-media {
+            margin-bottom: 60px;
+        }
+        
+        .media-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .media-item {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+        }
+        
+        .media-item.large {
+            aspect-ratio: 16/9;
+        }
+        
+        .media-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .media-coverage {
+            margin-bottom: 60px;
+        }
+        
+        .coverage-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .coverage-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+        
+        .coverage-link:hover {
+            color: #FF6600;
+        }
+        
+        .disclaimer {
+            margin-top: 80px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .project-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .meta-item {
+                min-width: auto;
+            }
+            
+            .overview-text {
+                font-size: 1rem;
+            }
+            
+            .media-grid {
+                gap: 20px;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+            }
+            
+            .nav-home-container {
+                margin-right: 15px;
+            }
+            
+            .nav-arrow {
+                margin-right: 15px;
+            }
+            
+            .nav-links {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="https://jb-kang.com/index" class="nav-home">JB Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="https://jb-kang.com/imperfect-work">Work</a>
+                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
+            </div>
+        </nav>
+
+        <h1 class="project-title">Facebook Rewards Launch</h1>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Facebook App</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Type</div>
+                <div class="meta-value">Product Launch Campaign</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">2019</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Audience</div>
+                <div class="meta-value">Small Business, Consumer</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-overview">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="overview-text">
+            In Southeast Asia, Facebook pages are the essential tool for local small businesses to engage with their customers. Rewards was a loyalty program that was pitched to the global product team - designed to help businesses re-engage customers, while solidifying Facebook's position in the midst of competitive platforms.
+            <br><br>
+            Given the limited media budgets, we had to identify a unique medium to reach the audience effectively - and we've found a unique solution in in-store receipts. Being at the moment of purchase, QR codes and coupons were printed at the end of the receipt in partner stores, and we launched this through a unique stop motion film - using receipts.
+            <br><br>
+            The unique creative helped secure key partners at launch, and activation won Gold award at Gong Festival of creativity for Craft and Medium.
+        </div>
+    </div>
+
+    <div class="project-media">
+        <h2 class="section-title">Campaign Assets</h2>
+        
+        <div class="media-grid">
+            <iframe src="https://player.vimeo.com/video/257865661" 
+                    width="100%" 
+                    height="450" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                    style="border-radius: 8px; aspect-ratio: 16/9;"
+                    title="Facebook Rewards Launch">
+            </iframe>
+            <div class="media-caption">To communicate its ease of use and benefits, we created an explainer video using a device familiar to merchants: the receipt printer.</div>
+
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work completed for Facebook and respects brand intellectual property rights.
+    </div>
+
+</body>
+</html>
