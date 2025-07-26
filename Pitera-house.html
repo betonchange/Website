@@ -68,6 +68,13 @@
         .nav-arrow {
             color: #666;
             margin-right: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-arrow:hover {
+            color: #FF6600;
+            transform: translateX(-2px);
         }
         
         .nav-links {
@@ -155,20 +162,50 @@
             margin-top: 30px;
         }
         
-        .media-item {
-            background-color: #f8f8f8;
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
             border-radius: 8px;
-            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .campaign-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .campaign-images img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-placeholder {
+            background-color: #f8f8f8;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
-            font-size: 1rem;
+            color: #999;
+            font-size: 0.9rem;
             border: 2px dashed #ddd;
+            transition: border-color 0.2s ease;
+            min-height: 200px;
         }
         
-        .media-item.large {
-            aspect-ratio: 16/9;
+        .image-placeholder:hover {
+            border-color: #FF6600;
         }
         
         .media-caption {
@@ -176,28 +213,6 @@
             color: #666;
             margin-top: 10px;
             font-style: italic;
-        }
-        
-        .media-coverage {
-            margin-bottom: 60px;
-        }
-        
-        .coverage-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .coverage-link {
-            color: #666;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.2s ease;
-        }
-        
-        .coverage-link:hover {
-            color: #FF6600;
         }
         
         .disclaimer {
@@ -235,20 +250,37 @@
                 gap: 20px;
             }
             
+            .campaign-images {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
             .nav {
                 font-size: 0.9rem;
+                flex-wrap: nowrap;
             }
             
             .nav-home-container {
-                margin-right: 15px;
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-home {
+                white-space: nowrap;
             }
             
             .nav-arrow {
-                margin-right: 15px;
+                margin-right: 5px;
+                flex-shrink: 0;
             }
             
             .nav-links {
-                gap: 12px;
+                gap: 5px;
+                flex-shrink: 1;
+            }
+            
+            .nav-links a {
+                white-space: nowrap;
             }
         }
     </style>
@@ -258,11 +290,11 @@
         <nav class="nav">
             <div class="nav-home-container">
                 <div class="home-circle"></div>
-                <a href="https://jb-kang.com/index" class="nav-home">JB Kang</a>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
             </div>
-            <span class="nav-arrow">←</span>
+            <span class="nav-arrow" onclick="goBack()">←</span>
             <div class="nav-links">
-                <a href="https://jb-kang.com/imperfect-work">Work</a>
+                <a href="https://jb-kang.com/selected-works">Work</a>
                 <a href="https://jb-kang.com/perfect-objects">Objects</a>
                 <a href="https://jb-kang.com/quotes">Quotes</a>
                 <a href="https://jb-kang.com/contacts">Contact</a>
@@ -306,21 +338,48 @@
         <h2 class="section-title">Experience Design</h2>
         
         <div class="media-grid">
-            <iframe src="https://www.youtube.com/embed/FuKLx2W8rUg?cc_load_policy=1&cc_lang_pref=en" 
-                    width="100%" 
-                    height="450" 
-                    frameborder="0" 
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-                    style="border-radius: 8px; aspect-ratio: 16/9;"
-                    title="SK-II Pitera House Experience">
-            </iframe>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/FuKLx2W8rUg?cc_load_policy=1&cc_lang_pref=en" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                        title="SK-II Pitera House Experience">
+                </iframe>
+            </div>
             <div class="media-caption">The SK-II Pitera House transformed traditional skincare retail into an interactive experience, as a fun activity you can enjoy with a friend while visiting a cafe.</div>
+            
+            <div class="campaign-images">
+                <img src="images/pitera3.jpeg" alt="SK-II Pitera House - Interior Experience" loading="lazy">
+                <img src="images/pitera2.jpg" alt="SK-II Pitera House - Customer Interaction" loading="lazy">
+                <img src="images/pitera1.jpg" alt="SK-II Pitera House - Retail Design" loading="lazy">
+                <img src="images/pitera4.jpeg" alt="SK-II Pitera House - Technology Setup" loading="lazy">
+            </div>
+            <div class="media-caption" style="margin-top: 10px;">Interior design and customer experience moments from the SK-II Pitera House installation.</div>
         </div>
     </div>
 
     <div class="disclaimer">
         <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work completed for SK-II and respects brand intellectual property rights.
     </div>
+
+    <script>
+        // Simple script for home circle hover effect
+        const homeCircle = document.querySelector('.home-circle');
+        homeCircle.addEventListener('click', () => {
+            window.location.href = 'https://jb-kang.com/index';
+        });
+        
+        // Back arrow functionality
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                // Fallback to homepage if no history
+                window.location.href = 'https://jb-kang.com/index';
+            }
+        }
+    </script>
 
 </body>
 </html>
