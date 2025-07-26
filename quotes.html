@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotes - JB Kang</title>
+    <title>Contact - JB Kang</title>
     <style>
         * {
             margin: 0;
@@ -114,98 +114,60 @@
             margin-bottom: 60px;
             max-width: 700px;
         }
-
-        /* Quote Display */
-        .quote-display {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 0;
-        }
-
-        .current-quote {
-            margin-bottom: 30px;
-        }
-
-        .quote-text {
-            font-size: 1.6rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #000;
-            margin-bottom: 32px;
-            letter-spacing: -0.01em;
-        }
-
-        .quote-attribution {
-            text-align: center;
-        }
-
-        .quote-author {
-            font-size: 0.95rem;
-            color: #666;
-            font-weight: 400;
-            margin-bottom: 6px;
-        }
-
-        .quote-source {
-            font-size: 0.9rem;
-            color: #999;
-            font-weight: 400;
-        }
-
-        /* Quote Controls */
-        .quote-controls {
-            border-top: 1px solid #e0e0e0;
-            padding-top: 30px;
-        }
-
-        .next-note-btn {
-            background: transparent;
-            color: #666;
-            border: none;
-            padding: 8px 16px;
-            font-size: 1rem;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: inherit;
+        
+        /* CONTACT LIST STYLING */
+        .contact-list {
             display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 500px;
+        }
+        
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            margin: 0 auto;
-        }
-
-        .next-note-btn:hover {
-            color: #000;
-        }
-
-        .next-note-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .btn-arrow {
-            font-size: 0.9rem;
-            color: #999;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
             transition: all 0.2s ease;
         }
-
-        .next-note-btn:hover .btn-arrow {
+        
+        .contact-item:hover {
+            padding-left: 10px;
+            border-bottom-color: #FF6600;
+        }
+        
+        .contact-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000;
+        }
+        
+        .contact-link {
+            color: #666;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .contact-link:hover {
             color: #FF6600;
-            transform: translateX(2px);
+            border-bottom-color: #FF6600;
         }
-
-        /* Loading State */
-        .loading .current-quote {
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
+        
+        .contact-arrow {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+            padding: 5px;
         }
-
-        /* Fade Transition */
-        .fade-transition {
-            transition: opacity 0.4s ease;
+        
+        .contact-arrow:hover {
+            color: #FF6600;
+            transform: translateX(3px);
         }
-
+        
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             body {
@@ -248,14 +210,17 @@
             .nav-links a {
                 white-space: nowrap;
             }
-
-            .quote-text {
-                font-size: 1.4rem;
+            
+            .contact-list {
+                gap: 20px;
             }
-
-            .quote-display {
-                padding: 0 !important;
-                margin-top: 0 !important;
+            
+            .contact-item {
+                padding: 15px 0;
+            }
+            
+            .contact-item:hover {
+                padding-left: 5px;
             }
         }
     </style>
@@ -271,473 +236,41 @@
             <div class="nav-links">
                 <a href="https://jb-kang.com/selected-works">Work</a>
                 <a href="https://jb-kang.com/perfect-objects">Objects</a>
-                <a href="https://jb-kang.com/quotes" class="current">Quotes</a>
-                <a href="https://jb-kang.com/contacts">Contact</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts" class="current">Contact</a>
             </div>
         </nav>
 
-        <h1 class="page-title">Quotes</h1>
+        <h1 class="page-title">Contact</h1>
         
         <div class="intro">
-            Thoughts worth sharing.
+            Let's connect and create something meaningful together. My preferred channel is email.
         </div>
     </div>
 
-    <div class="quote-display" id="quoteDisplay">
-        <div class="current-quote">
-            <div class="quote-text fade-transition" id="quoteText">
-                "Loading a random quote..."
-            </div>
-            <div class="quote-attribution fade-transition" id="quoteAttribution">
-                <div class="quote-author" id="quoteAuthor">
-                    Aristotle
-                </div>
-                <div class="quote-source" id="quoteSource" style="display: none;">
-                </div>
-            </div>
+    <div class="contact-list">
+        <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:betonchange@gmail.com" class="contact-link">betonchange@gmail.com</a>
         </div>
-
-        <div class="quote-controls">
-            <button class="next-note-btn" id="nextNoteBtn" onclick="getRandomQuote()">
-                next quote
-                <span class="btn-arrow">→</span>
-            </button>
+        
+        <div class="contact-item">
+            <span class="contact-label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/betonchange" target="_blank" rel="noopener noreferrer" class="contact-arrow">→</a>
+        </div>
+        
+        <div class="contact-item">
+            <span class="contact-label">Instagram</span>
+            <a href="https://instagram.com/betonchange" target="_blank" rel="noopener noreferrer" class="contact-arrow">→</a>
+        </div>
+        
+        <div class="contact-item">
+            <span class="contact-label">Resume</span>
+            <a href="resume.pdf" target="_blank" class="contact-arrow">→</a>
         </div>
     </div>
 
     <script>
-        // All your quotes from Notion (including all statuses)
-        const quotes = [
-            {
-                text: "We cannot direct the wind, but we can adjust our sails",
-                author: "Aristotle",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Always we hope someone else has the answer, some other place will be better, some other time it will all turn out. This is it; no one else has the answer, no other place will be better, and it has already turned out. At the center of your being, you have the answer; you know who you are and you know what you want.",
-                author: "M.J. Ryan",
-                occupation: "Author",
-                source: "A Grateful Heart: Daily Blessings for the Evening Meal from Buddha to the Beatles"
-            },
-            {
-                text: "Think of yourself as dead. You have lived your life. Now take what's left and live it properly.",
-                author: "Marcus Aurelius",
-                occupation: "Roman Emperor",
-                source: ""
-            },
-            {
-                text: "Pain + Reflection = Progress",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Embarrassment is the biggest barrier to growth",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Surround yourself with people strong enough to change your mind",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Pain is inevitable, suffering is optional",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "One of my biggest fears has always been that the world is passing me by and I haven't been paying attention",
-                author: "Ada Limon",
-                occupation: "Poet",
-                source: ""
-            },
-            {
-                text: "At some point it's not about the skill, but its about being open",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Courage and confidence makes decision making",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Abitare è essere ovunque a casa propria. (Living is being at home everywhere)",
-                author: "Italian Proverb",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Do ut des (I give that you may give)",
-                author: "Latin Proverb",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "You don't always have to turn on the light to see more. Sometimes you have to be more in the dark",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "One of the benefits of aging is that now I am comfortable with my perfect imperfection",
-                author: "Joan E. Biren",
-                occupation: "Photographer and Film-maker",
-                source: ""
-            },
-            {
-                text: "When I look up at the falling snow, I feel like I'm standing at the bottom of an hourglass",
-                author: "",
-                occupation: "",
-                source: "Honey & Clover, Japanese Movie"
-            },
-            {
-                text: "If you start believing what you don't understand you are going to start suffering. So fuck that shit",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "If it's not a law of nature, effectively it's just a theory.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "If you want to build a ship, don't drum up people to collect wood and don't assign them tasks and work, but rather teach them to long for the endless immensity of the sea",
-                author: "Antoine de Saint Exupéry",
-                occupation: "Author of 'The Little Prince'",
-                source: ""
-            },
-            {
-                text: "Stop confusing confidence for competence - Dunning Kruger effect. The more sure they are about their opinions the more cautious we should be",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Leadership is learning how to tell people something they don't want to hear in the timing and manner that they can receive it",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Why do companies stop innovating? - companies start by innovating but they start investing those resources for optimizing",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Experimentation over safety. Intuition over process. Compasses over maps. Systems over objects. Emergence over Authority. Resilience over force. Diversity over Uniformity. Practice over theory. Pull over Push.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Happiness is about letting go of what you thought life was supposed to be and embracing where you are today",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Single most powerful thing about human is to ask questions about yourself. Don't just react to stimuli but ask the question, 'Why?'",
-                author: "Robert Greene",
-                occupation: "Author",
-                source: ""
-            },
-            {
-                text: "Identity is not about what you believe but it's what you value. You cannot be stuck in what you believe. Rethinking is a way of learning",
-                author: "Adam Grant",
-                occupation: "Author and Professor",
-                source: ""
-            },
-            {
-                text: "Reason you get lost in the forest is not because there isn't a path, it's because there are too many",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Aging, like bankruptcy in Hemingway's description, happens two ways, slowly and then all at once.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "It will seem difficult at first, but everything is difficult at first. Bows are difficult to draw, halberds are difficult to wield; as you become accustomed to the bow so your pull will become stronger",
-                author: "Miyamoto Musashi",
-                occupation: "Samurai",
-                source: ""
-            },
-            {
-                text: "Start where you are. Use what you have. Do what you can do.",
-                author: "Arthur Ashe",
-                occupation: "Tennis Player",
-                source: ""
-            },
-            {
-                text: "Everyday I let go of 'worry' a little more. Worrying less about what others might think of me etc. If you worry what others might be thinking of you, you will never be your true self coz you will be changing little bits about you to fit in and adjust to mould their opinion of you. When you let go of that worry, your life gets way more fun, and be able to fall in love with yourself.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "The best life is where one smiled the most",
-                author: "92 year old Grandma",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Loving yourself: It's like taking a shower. It takes daily work. Remember that even the best of us have moments of doubt and that's intrinsically human. You must love yourself before you let others love you.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "'죽어서 이긴다'와 죽어도 이긴다'. 둘은 전혀 다른 거야, 메구미.최선을 다해. 좀 더 욕심을 내!!",
-                author: "",
-                occupation: "",
-                source: "주술회전"
-            },
-            {
-                text: "천재는 완벽에서 제일 먼 존재라고 생각해. 그래서 재미있지",
-                author: "",
-                occupation: "",
-                source: "하이큐"
-            },
-            {
-                text: "선택의 수가 늘어난다는 걸 알고도 하지 않는다면 너무 시시하잖아.",
-                author: "",
-                occupation: "",
-                source: "하이큐"
-            },
-            {
-                text: "뭐지 이건? 긴장과는 또 달라. 머리는 맑고 차분하다. 하지만 가슴이 두근거려.",
-                author: "",
-                occupation: "",
-                source: "하이큐"
-            },
-            {
-                text: "가장 무의미한 일은 '그냥' 하는 거야. '생각하고' '해보고' '실패한다' 그건 아무 문제 없어.",
-                author: "",
-                occupation: "",
-                source: "하이큐"
-            },
-            {
-                text: "예컨데 위기일 때 강한 서브로 공격하느냐, 실수를 피해 '넣어가느냐', 언뜻 어느 한 쪽을 선택해야만 할 것 처럼 보이지. 하지만 그게 아니라 정답은 '강한 서브를 실패하지 않는다'야.",
-                author: "",
-                occupation: "",
-                source: "하이큐"
-            },
-            {
-                text: "강한 녀석이나 강해지는 녀석은 항상 새롭게 변신하면서도 '중심'은 갖고 있지.",
-                author: "",
-                occupation: "",
-                source: "하이큐"
-            },
-            {
-                text: "Success is 10% inspiration, 90% perspiration. It's all about what you put into it. There's no easy way of doing our jobs and it really is all about the work. I try to live by that and work hard every day.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Be the best part of someone else's day. Everybody has an opportunity to make someone else's day better. If we all do that, I think there's real power in that",
-                author: "Matt Jacobson",
-                occupation: "Meta Employee #7",
-                source: ""
-            },
-            {
-                text: "행동이 따르지 않는 자문자답은 헛된 짓이네. 답은 항상 '발을 내디딘 건너편'에 있지. 자네 생각이 정답인지 아닌지 답지를 맞춰보게. 반창고를 뗄 때랑 같아. 단번에 가라!",
-                author: "",
-                occupation: "",
-                source: "우주형제"
-            },
-            {
-                text: "남자라면 아버지보다 즐겨라",
-                author: "",
-                occupation: "",
-                source: "우주형제"
-            },
-            {
-                text: "You will need time to adjust your eyes. And correcting our vision will allow us, but also force us, to see more. Maybe the thing we're trying not to look at is the ultimate deadline—the only one that matters, the one that's coming for us all. Life is one long soft opening. We might as well experiment, stumble, fail, and sometimes not even finish. Esther Murphy met her final deadline without a masterpiece to show for it, but her friends always remembered her stentorian speeches, and the fact that she gilded every dinner she ever attended with her presence. I still think about her now. Did she hit her mark?",
-                author: "Amy Odell",
-                occupation: "Author",
-                source: ""
-            },
-            {
-                text: "Follow your curiosity and gut even when it doesn't make too much sense. Making smart guesses on where I am and what's next progress. Just be focused on the interesting problem you can solve. And head over to what you are excited about - go there.",
-                author: "Kate Rouch",
-                occupation: "CMO, OpenAI (previously Meta and Coinbase)",
-                source: ""
-            },
-            {
-                text: "To survive in this world, you must learn to be both the fox and the wolf",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "We lost ourselves. We lost our dream. In the pursuit of great, we failed to do good.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "It's not enough to give people what they need to survive. We need to give them what they need to live.",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "No change is too small - the reverse theory of death by a thousand cuts",
-                author: "",
-                occupation: "",
-                source: ""
-            },
-            {
-                text: "Design as a tool for mediation, not a superior position.",
-                author: "Peter Mabeo",
-                occupation: "Architect",
-                source: ""
-            }
-        ];
-
-        let currentQuoteIndex = 0;
-        let shuffledQuotes = [];
-        let currentShuffleIndex = 0;
-
-        // Fisher-Yates shuffle algorithm
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-
-        // Initialize a new shuffled set of quotes
-        function initializeShuffledQuotes() {
-            shuffledQuotes = shuffleArray(quotes);
-            currentShuffleIndex = 0;
-        }
-
-        function getRandomQuote() {
-            const quoteText = document.getElementById('quoteText');
-            const quoteAttribution = document.getElementById('quoteAttribution');
-            const quoteAuthor = document.getElementById('quoteAuthor');
-            const quoteSource = document.getElementById('quoteSource');
-            const nextNoteBtn = document.getElementById('nextNoteBtn');
-
-            // Add loading state
-            nextNoteBtn.disabled = true;
-            nextNoteBtn.innerHTML = 'loading...';
-
-            // Fade out current quote
-            quoteText.style.opacity = '0';
-            quoteAttribution.style.opacity = '0';
-
-            // Get next quote from shuffled array
-            setTimeout(() => {
-                // If we've gone through all quotes, create a new shuffle
-                if (currentShuffleIndex >= shuffledQuotes.length) {
-                    initializeShuffledQuotes();
-                }
-
-                const selectedQuote = shuffledQuotes[currentShuffleIndex];
-                currentShuffleIndex++;
-
-                // Update content after fade out
-                setTimeout(() => {
-                    quoteText.textContent = `"${selectedQuote.text}"`;
-                    
-                    // Format: Author, Occupation
-                    let authorText = '';
-                    if (selectedQuote.author && selectedQuote.author.trim()) {
-                        authorText = selectedQuote.author;
-                        if (selectedQuote.occupation && selectedQuote.occupation.trim()) {
-                            authorText += `, ${selectedQuote.occupation}`;
-                        }
-                    }
-                    
-                    // Format: Source (clean text)
-                    let sourceText = '';
-                    if (selectedQuote.source && selectedQuote.source.trim()) {
-                        sourceText = selectedQuote.source;
-                    }
-                    
-                    // Show/hide author and source based on availability
-                    if (authorText) {
-                        quoteAuthor.textContent = authorText;
-                        quoteAuthor.style.display = 'block';
-                    } else {
-                        quoteAuthor.style.display = 'none';
-                    }
-                    
-                    if (sourceText) {
-                        quoteSource.textContent = sourceText;
-                        quoteSource.style.display = 'block';
-                    } else {
-                        quoteSource.style.display = 'none';
-                    }
-                    
-                    // Fade in new quote
-                    quoteText.style.opacity = '1';
-                    quoteAttribution.style.opacity = '1';
-                    
-                    // Remove loading state and restore button with arrow
-                    nextNoteBtn.disabled = false;
-                    nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
-                }, 200);
-            }, 400);
-        }
-
-        // Load initial quote
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize the shuffled quotes array
-            initializeShuffledQuotes();
-            
-            // Start with the first quote from the shuffled array
-            const selectedQuote = shuffledQuotes[currentShuffleIndex];
-            currentShuffleIndex++;
-            
-            // Set up the first quote properly
-            setTimeout(() => {
-                const quoteText = document.getElementById('quoteText');
-                const quoteAuthor = document.getElementById('quoteAuthor');
-                const quoteSource = document.getElementById('quoteSource');
-                
-                quoteText.textContent = `"${selectedQuote.text}"`;
-                
-                let authorText = selectedQuote.author;
-                if (selectedQuote.occupation && selectedQuote.occupation.trim()) {
-                    authorText += `, ${selectedQuote.occupation}`;
-                }
-                
-                if (authorText) {
-                    quoteAuthor.textContent = authorText;
-                    quoteAuthor.style.display = 'block';
-                } else {
-                    quoteAuthor.style.display = 'none';
-                }
-                
-                if (selectedQuote.source && selectedQuote.source.trim()) {
-                    quoteSource.textContent = selectedQuote.source;
-                    quoteSource.style.display = 'block';
-                } else {
-                    quoteSource.style.display = 'none';
-                }
-            }, 100);
-        });
-
         // Home circle click functionality
         document.querySelector('.home-circle').addEventListener('click', function() {
             window.location.href = 'https://jb-kang.com/index';
@@ -753,5 +286,6 @@
             }
         }
     </script>
+
 </body>
 </html>
