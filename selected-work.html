@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Works - JB Kang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-links a.current {
+            color: #000;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        .intro-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 60px;
+            max-width: 700px;
+        }
+        
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .work-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .work-item:hover {
+            border-color: #FF6600;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .work-image {
+            aspect-ratio: 4/3;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .work-item:hover .work-image img {
+            transform: scale(1.05);
+        }
+        
+        .work-image-placeholder {
+            color: #999;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .work-info {
+            padding: 20px;
+        }
+        
+        .work-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .work-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .work-brand {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .work-type {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .work-year {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .intro-text {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+                flex-wrap: nowrap;
+            }
+            
+            .nav-home-container {
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-home {
+                white-space: nowrap;
+            }
+            
+            .nav-arrow {
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-links {
+                gap: 5px;
+                flex-shrink: 1;
+            }
+            
+            .nav-links a {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
+            </div>
+            <span class="nav-arrow">←</span>
+            <div class="nav-links">
+                <a href="https://jb-kang.com/imperfect-work" class="current">Work</a>
+                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
+            </div>
+        </nav>
+
+        <h1 class="page-title">Selected Works</h1>
+        
+        <div class="intro-text">
+            I've been fortunate to work with global brands during transformational moments, creating marketing that reintroduced them to the world. From consumer campaigns to business, product, and policy impact work.
+        </div>
+    </div>
+
+    <div class="work-grid">
+        <a href="projects/make-it-anyway.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Make it Anyway</div>
+                <div class="work-meta">
+                    <div class="work-brand">Instagram</div>
+                    <div class="work-type">Brand Platform</div>
+                    <div class="work-year">2025</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/mta-card.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Instagram x NYC MTA</div>
+                <div class="work-meta">
+                    <div class="work-brand">Instagram</div>
+                    <div class="work-type">Partnership</div>
+                    <div class="work-year">2024</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/everyday-creativity.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Everyday Creativity</div>
+                <div class="work-meta">
+                    <div class="work-brand">Instagram</div>
+                    <div class="work-type">Brand Campaign</div>
+                    <div class="work-year">2023</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/fishing-with-dad.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Fishing with Dad</div>
+                <div class="work-meta">
+                    <div class="work-brand">Meta</div>
+                    <div class="work-type">Brand Campaign</div>
+                    <div class="work-year">2022</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/more-together.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">More Together</div>
+                <div class="work-meta">
+                    <div class="work-brand">Facebook App</div>
+                    <div class="work-type">Brand Platform</div>
+                    <div class="work-year">2018 - 2023</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/rewards.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Facebook Rewards</div>
+                <div class="work-meta">
+                    <div class="work-brand">Facebook App</div>
+                    <div class="work-type">Product Launch</div>
+                    <div class="work-year">2019</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/madeby.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Made by ____, Loved by the world</div>
+                <div class="work-meta">
+                    <div class="work-brand">Facebook App</div>
+                    <div class="work-type">Business + Policy Campaign</div>
+                    <div class="work-year">2018</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/shemeansbusiness.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">She Means Business</div>
+                <div class="work-meta">
+                    <div class="work-brand">Facebook App</div>
+                    <div class="work-type">Business + Policy Campaign</div>
+                    <div class="work-year">2017</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/changedestiny.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">Change Destiny</div>
+                <div class="work-meta">
+                    <div class="work-brand">SK-II</div>
+                    <div class="work-type">Brand Platform</div>
+                    <div class="work-year">2014</div>
+                </div>
+            </div>
+        </a>
+        
+        <a href="projects/sk-ii-house.html" class="work-item">
+            <div class="work-image">
+                <div class="work-image-placeholder">Project Image</div>
+            </div>
+            <div class="work-info">
+                <div class="work-name">SK-II Pitera House</div>
+                <div class="work-meta">
+                    <div class="work-brand">SK-II</div>
+                    <div class="work-type">IRL Activation</div>
+                    <div class="work-year">2013</div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        // Simple script for home circle hover effect
+        const homeCircle = document.querySelector('.home-circle');
+        homeCircle.addEventListener('click', () => {
+            window.location.href = 'https://jb-kang.com/index';
+        });
+    </script>
+
+</body>
+</html>
