@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,379 +11,395 @@
             box-sizing: border-box;
         }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    color: #000;
-    background-color: #fff;
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.header {
-    margin-bottom: 60px;
-}
-
-.nav {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 40px;
-    font-size: 0.95rem;
-    line-height: 1;
-}
-
-.nav-home-container {
-    display: flex;
-    align-items: center;
-    margin-right: 30px;
-}
-
-.home-circle {
-    width: 12px;
-    height: 12px;
-    background-color: #FF6600;
-    border-radius: 50%;
-    margin-right: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-    align-self: center;
-}
-
-.home-circle:hover {
-    transform: scale(1.2);
-}
-
-.nav-home {
-    color: #666;
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
-    font-size: 0.95rem;
-    line-height: 1;
-}
-
-.nav-home:hover {
-    color: #000;
-    border-bottom-color: #FF6600;
-}
-
-.nav-links {
-    display: flex;
-    gap: 15px;
-    line-height: 1;
-}
-
-.nav-links a {
-    color: #666;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
-    font-size: 0.95rem;
-}
-
-.nav-links a:hover {
-    color: #000;
-    border-bottom-color: #FF6600;
-}
-
-.nav-links a.current {
-    color: #000;
-}
-
-h1 {
-    font-size: 2.8rem;
-    font-weight: 300;
-    margin-bottom: 20px;
-    color: #000;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-}
-
-.intro {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 600px;
-}
-
-.quotes-section {
-    margin-bottom: 50px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.quote {
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-.quote-text {
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.quote-author {
-    color: #666;
-    font-size: 0.85rem;
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.product-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.product-card:hover {
-    border-color: #FF6600;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.product-image {
-    aspect-ratio: 4/3;
-    background-color: #f8f8f8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-image img {
-    transform: scale(1.05);
-}
-
-.product-image-placeholder {
-    color: #999;
-    font-size: 0.85rem;
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.product-info {
-    padding: 20px;
-}
-
-.product-name {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #000;
-}
-
-.product-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.product-brand {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.product-designer {
-    font-size: 0.85rem;
-    color: #999;
-}
-
-.product-year {
-    font-size: 0.85rem;
-    color: #999;
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 20px 15px;
-    }
-    
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    .products-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .nav {
-        font-size: 0.9rem;
-    }
-
-    .nav-home-container {
-        margin-right: 20px;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-}
-
-</style>
-
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-links a.current {
+            color: #000;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        .intro {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 60px;
+            max-width: 700px;
+        }
+        
+        .quotes-section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .quote {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .quote-text {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .quote-author {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .product-card:hover {
+            border-color: #FF6600;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            aspect-ratio: 4/3;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-image-placeholder {
+            color: #999;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .product-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .product-brand {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .product-designer {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .product-year {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .intro {
+                font-size: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+                flex-wrap: nowrap;
+            }
+            
+            .nav-home-container {
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-home {
+                white-space: nowrap;
+            }
+            
+            .nav-arrow {
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-links {
+                gap: 5px;
+                flex-shrink: 1;
+            }
+            
+            .nav-links a {
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <nav class="nav">
             <div class="nav-home-container">
                 <div class="home-circle"></div>
-                <a href="index.html" class="nav-home">JB Kang</a>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
             </div>
+            <span class="nav-arrow">←</span>
             <div class="nav-links">
-                <a href="imperfect-work.html">Work</a>
-                <a href="perfect-objects.html" class="current">Objects</a>
-                <a href="quotes.html">Quotes</a>
-                <a href="mailto:betonchange@gmail.com">Contact</a>
+                <a href="https://jb-kang.com/imperfect-work">Work</a>
+                <a href="https://jb-kang.com/perfect-objects" class="current">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
             </div>
         </nav>
 
-<h1>Perfect Objects</h1>
+        <h1 class="page-title">Perfect Objects</h1>
 
-<div class="intro">
-    Objects I believe approach perfection in their design, function, and enduring appeal. Each represents a philosophy of thoughtful creation that transcends trends and time.
-</div>
-
-<div class="quotes-section">
-    <div class="quote">
-        <div class="quote-text">"Less is better"</div>
-        <div class="quote-author">— Dieter Rams</div>
-    </div>
-    <div class="quote">
-        <div class="quote-text">"Beauty is the harmony of purpose and form"</div>
-        <div class="quote-author">— Alvar Aalto</div>
-    </div>
-    <div class="quote">
-        <div class="quote-text">"Design should improve with use"</div>
-        <div class="quote-author">— Soetsu Yanagi</div>
-    </div>
-</div>
-
-</div>
-
-<div class="products-grid">
-    <a href="products/ricoh-gr-ii.html" class="product-card">
-        <div class="product-image">
-            <img src="images/GR_preview.jpg" alt="Ricoh GR II Digital Camera" loading="lazy">
+        <div class="intro">
+            Objects I believe approach perfection in their design, function, and enduring appeal. Each represents a philosophy of thoughtful creation that transcends trends and time. Below are some principles that I look at for "Perfect" objects.
         </div>
-        <div class="product-info">
-            <div class="product-name">GR II Digital Camera</div>
-            <div class="product-meta">
-                <div class="product-brand">Ricoh</div>
-                <div class="product-designer">Toshiya Inaba</div>
-                <div class="product-year">2015</div>
+
+        <div class="quotes-section">
+            <div class="quote">
+                <div class="quote-text">"Less is better"</div>
+                <div class="quote-author">— Dieter Rams</div>
+            </div>
+            <div class="quote">
+                <div class="quote-text">"Beauty is the harmony of purpose and form"</div>
+                <div class="quote-author">— Alvar Aalto</div>
+            </div>
+            <div class="quote">
+                <div class="quote-text">"Design should improve with use"</div>
+                <div class="quote-author">— Soetsu Yanagi</div>
             </div>
         </div>
-    </a>
+    </div>
 
-<a href="products/sony-walkman-tps-l2.html" class="product-card">
-    <div class="product-image">
-        <img src="images/Walkman2_preview.jpg" alt="Sony Walkman TPS-L2" loading="lazy">
-    </div>
-    <div class="product-info">
-        <div class="product-name">Cassette Player TPS-L2</div>
-        <div class="product-meta">
-            <div class="product-brand">Sony</div>
-            <div class="product-designer">Nobutoshi Kihara</div>
-            <div class="product-year">1979</div>
-        </div>
-    </div>
-</a>
+    <div class="products-grid">
+        <a href="products/ricoh-gr-ii.html" class="product-card">
+            <div class="product-image">
+                <img src="images/GR_preview.jpg" alt="Ricoh GR II Digital Camera" loading="lazy">
+            </div>
+            <div class="product-info">
+                <div class="product-name">GR II Digital Camera</div>
+                <div class="product-meta">
+                    <div class="product-brand">Ricoh</div>
+                    <div class="product-designer">Toshiya Inaba</div>
+                    <div class="product-year">2015</div>
+                </div>
+            </div>
+        </a>
 
-<a href="products/veilance-seque-card-wallet.html" class="product-card">
-    <div class="product-image">
-        <img src="images/Wallet.jpg" alt="Veilance Seque Card Wallet" loading="lazy">
-    </div>
-    <div class="product-info">
-        <div class="product-name">Seque Card Wallet</div>
-        <div class="product-meta">
-            <div class="product-brand">Veilance</div>
-            <div class="product-designer">Arc'teryx Team</div>
-            <div class="product-year">2018</div>
-        </div>
-    </div>
-</a>
+        <a href="products/sony-walkman-tps-l2.html" class="product-card">
+            <div class="product-image">
+                <img src="images/Walkman2_preview.jpg" alt="Sony Walkman TPS-L2" loading="lazy">
+            </div>
+            <div class="product-info">
+                <div class="product-name">Cassette Player TPS-L2</div>
+                <div class="product-meta">
+                    <div class="product-brand">Sony</div>
+                    <div class="product-designer">Nobutoshi Kihara</div>
+                    <div class="product-year">1979</div>
+                </div>
+            </div>
+        </a>
 
-<a href="products/beosound-9000.html" class="product-card">
-    <div class="product-image">
-        <img src="images/Beosound.jpg" alt="Bang & Olufsen Beosound 9000" loading="lazy">
-    </div>
-    <div class="product-info">
-        <div class="product-name">Beosound 9000</div>
-        <div class="product-meta">
-            <div class="product-brand">Bang & Olufsen</div>
-            <div class="product-designer">David Lewis</div>
-            <div class="product-year">1996</div>
-        </div>
-    </div>
-</a>
+        <a href="products/veilance-seque-card-wallet.html" class="product-card">
+            <div class="product-image">
+                <img src="images/Wallet.jpg" alt="Veilance Seque Card Wallet" loading="lazy">
+            </div>
+            <div class="product-info">
+                <div class="product-name">Seque Card Wallet</div>
+                <div class="product-meta">
+                    <div class="product-brand">Veilance</div>
+                    <div class="product-designer">Arc'teryx Team</div>
+                    <div class="product-year">2018</div>
+                </div>
+            </div>
+        </a>
 
-<a href="products/craighill-wine-key.html" class="product-card">
-    <div class="product-image">
-        <img src="images/Craighill2.jpg" alt="Craighill Wine Key" loading="lazy">
-    </div>
-    <div class="product-info">
-        <div class="product-name">Craighill Wine Key</div>
-        <div class="product-meta">
-            <div class="product-brand">Craighill</div>
-            <div class="product-designer">Hunter Craighill</div>
-            <div class="product-year">2021</div>
-        </div>
-    </div>
-</a>
+        <a href="products/beosound-9000.html" class="product-card">
+            <div class="product-image">
+                <img src="images/Beosound.jpg" alt="Bang & Olufsen Beosound 9000" loading="lazy">
+            </div>
+            <div class="product-info">
+                <div class="product-name">Beosound 9000</div>
+                <div class="product-meta">
+                    <div class="product-brand">Bang & Olufsen</div>
+                    <div class="product-designer">David Lewis</div>
+                    <div class="product-year">1996</div>
+                </div>
+            </div>
+        </a>
 
-<a href="products/plotter-leather-binder.html" class="product-card">
-    <div class="product-image">
-        <img src="images/Plotter_preview.PNG" alt="Plotter Leather Binder System" loading="lazy">
-    </div>
-    <div class="product-info">
-        <div class="product-name">Binder System</div>
-        <div class="product-meta">
-            <div class="product-brand">Plotter</div>
-            <div class="product-designer">Plotter Team</div>
-            <div class="product-year">2017</div>
-        </div>
-    </div>
-</a>
+        <a href="products/craighill-wine-key.html" class="product-card">
+            <div class="product-image">
+                <img src="images/Craighill2.jpg" alt="Craighill Wine Key" loading="lazy">
+            </div>
+            <div class="product-info">
+                <div class="product-name">Craighill Wine Key</div>
+                <div class="product-meta">
+                    <div class="product-brand">Craighill</div>
+                    <div class="product-designer">Hunter Craighill</div>
+                    <div class="product-year">2021</div>
+                </div>
+            </div>
+        </a>
 
-</div>
+        <a href="products/plotter-leather-binder.html" class="product-card">
+            <div class="product-image">
+                <img src="images/Plotter_preview.PNG" alt="Plotter Leather Binder System" loading="lazy">
+            </div>
+            <div class="product-info">
+                <div class="product-name">Binder System</div>
+                <div class="product-meta">
+                    <div class="product-brand">Plotter</div>
+                    <div class="product-designer">Plotter Team</div>
+                    <div class="product-year">2017</div>
+                </div>
+            </div>
+        </a>
+    </div>
 
-<script>
-    // Home circle click functionality
-    document.querySelector('.home-circle').addEventListener('click', function() {
-        window.location.href = 'index.html';
-    });
-</script>
+    <script>
+        // Home circle click functionality
+        document.querySelector('.home-circle').addEventListener('click', function() {
+            window.location.href = 'https://jb-kang.com/index';
+        });
+    </script>
 
 </body>
 </html>
