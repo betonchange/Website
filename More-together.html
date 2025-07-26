@@ -87,7 +87,8 @@
             border-bottom-color: #FF6600;
         }
         
-        .project-title {
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
             font-size: 2.8rem;
             font-weight: 300;
             margin-bottom: 25px;
@@ -95,6 +96,7 @@
             letter-spacing: -0.02em;
         }
         
+        /* META SECTION - Use for project pages */
         .project-meta {
             display: flex;
             flex-wrap: wrap;
@@ -127,7 +129,8 @@
             font-weight: 400;
         }
         
-        .project-overview {
+        /* MAIN CONTENT SECTIONS */
+        .content-section {
             margin-bottom: 60px;
         }
         
@@ -138,17 +141,14 @@
             color: #000;
         }
         
-        .overview-text {
+        .section-text {
             font-size: 1.05rem;
             line-height: 1.8;
             color: #333;
             max-width: 700px;
         }
         
-        .project-media {
-            margin-bottom: 60px;
-        }
-        
+        /* MEDIA ELEMENTS */
         .media-grid {
             display: grid;
             gap: 30px;
@@ -178,10 +178,20 @@
             font-style: italic;
         }
         
-        .media-coverage {
-            margin-bottom: 60px;
+        .campaign-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
         }
         
+        .campaign-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* LINKS AND COVERAGE */
         .coverage-links {
             display: flex;
             flex-direction: column;
@@ -200,6 +210,7 @@
             color: #FF6600;
         }
         
+        /* FOOTER DISCLAIMER */
         .disclaimer {
             margin-top: 80px;
             padding: 20px 0;
@@ -209,19 +220,13 @@
             line-height: 1.5;
         }
         
-        .campaign-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             body {
                 padding: 20px 15px;
             }
             
-            .project-title {
+            .page-title {
                 font-size: 2.2rem;
             }
             
@@ -234,7 +239,7 @@
                 min-width: auto;
             }
             
-            .overview-text {
+            .section-text {
                 font-size: 1rem;
             }
             
@@ -249,18 +254,30 @@
             
             .nav {
                 font-size: 0.9rem;
+                flex-wrap: nowrap;
             }
             
             .nav-home-container {
-                margin-right: 15px;
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-home {
+                white-space: nowrap;
             }
             
             .nav-arrow {
-                margin-right: 15px;
+                margin-right: 5px;
+                flex-shrink: 0;
             }
             
             .nav-links {
-                gap: 12px;
+                gap: 5px;
+                flex-shrink: 1;
+            }
+            
+            .nav-links a {
+                white-space: nowrap;
             }
         }
     </style>
@@ -270,7 +287,7 @@
         <nav class="nav">
             <div class="nav-home-container">
                 <div class="home-circle"></div>
-                <a href="https://jb-kang.com/index" class="nav-home">JB Kang</a>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
             </div>
             <span class="nav-arrow">←</span>
             <div class="nav-links">
@@ -281,8 +298,9 @@
             </div>
         </nav>
 
-        <h1 class="project-title">More Together</h1>
+        <h1 class="page-title">More Together</h1>
         
+        <!-- FOR PROJECT PAGES: Include project meta -->
         <div class="project-meta">
             <div class="meta-item">
                 <div class="meta-label">Brand</div>
@@ -303,9 +321,10 @@
         </div>
     </div>
 
-    <div class="project-overview">
+    <!-- MAIN CONTENT SECTIONS -->
+    <div class="content-section">
         <h2 class="section-title">Project Overview</h2>
-        <div class="overview-text">
+        <div class="section-text">
             While Facebook was top of mind as a place to connect with friends and family, the value of the platform didn't stop there. More than 400 million people already belonged to a Facebook Group they found meaningful, and there was an opportunity to help more people discover and engage with others over their shared interests.
             <br><br>
             With the redesign of the Groups tab, we launched a new brand platform for Facebook called "More Together" — showing how people from all backgrounds can come together over shared interests and experiences.
@@ -314,7 +333,7 @@
         </div>
     </div>
 
-    <div class="project-media">
+    <div class="content-section">
         <h2 class="section-title">Creative Assets</h2>
         
         <div class="media-grid">
@@ -326,19 +345,19 @@
                     style="border-radius: 8px; aspect-ratio: 16/9; height: auto;"
                     title="More Together Campaign">
             </iframe>
-            <div class="media-caption">The principle of the work was to feature real members from the group, as a way to ensure authenticity and support the group. Film featuring the members of the DeafHoops Facebook Group.</div>
+            <div class="media-caption">The principle of the work was to feature real members from the group, as a way to ensure authenticity and support the group. Members of the DeafHoops Facebook Group.</div>
             
             <div class="campaign-images">
-                <img src="images/more-together-basset.jpeg" alt="Nothing Better Than A Basset - Beach Meetup" style="width: 100%; height: auto;">
-                <img src="images/more-together-cats.jpeg" alt="This Cat is Chonky - Indoor Gathering" style="width: 100%; height: auto;">
-                <img src="images/more-together-horses.jpeg" alt="Aging Horsewomen Intl. - Desert Adventure" style="width: 100%; height: auto;">
-                <img src="images/more-together-trees.jpeg" alt="Big Tree Seekers - Forest Exploration" style="width: 100%; height: auto;">
+                <img src="images/more-together-basset.jpeg" alt="Nothing Better Than A Basset - Beach Meetup">
+                <img src="images/more-together-cats.jpeg" alt="This Cat is Chonky - Indoor Gathering">
+                <img src="images/more-together-horses.jpeg" alt="Aging Horsewomen Intl. - Desert Adventure">
+                <img src="images/more-together-trees.jpeg" alt="Big Tree Seekers - Forest Exploration">
             </div>
             <div class="media-caption" style="margin-top: 10px;">Cats, Dogs, Horses and Trees - there's a Facebook Group for Everyone.</div>
         </div>
     </div>
 
-    <div class="media-coverage">
+    <div class="content-section">
         <h2 class="section-title">Media Coverage</h2>
         <div class="coverage-links">
             <a href="https://www.thedrum.com/news/2019/05/04/facebook-highlights-redesigned-groups-feature-with-more-together-campaign" class="coverage-link" target="_blank">Facebook highlights redesigned Groups feature with 'More Together' campaign - The Drum</a>
