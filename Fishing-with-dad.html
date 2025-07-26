@@ -162,6 +162,23 @@
             margin-top: 30px;
         }
         
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
         .media-item {
             background-color: #f8f8f8;
             border-radius: 8px;
@@ -207,6 +224,35 @@
             color: #FF6600;
         }
         
+        .campaign-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .campaign-images img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-placeholder {
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            border: 2px dashed #ddd;
+            transition: border-color 0.2s ease;
+            min-height: 200px;
+        }
+        
+        .image-placeholder:hover {
+            border-color: #FF6600;
+        }
+        
         .disclaimer {
             margin-top: 80px;
             padding: 20px 0;
@@ -240,6 +286,11 @@
             
             .media-grid {
                 gap: 20px;
+            }
+            
+            .campaign-images {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .nav {
@@ -323,15 +374,24 @@
         <h2 class="section-title">Campaign Assets</h2>
         
         <div class="media-grid">
-            <iframe src="https://player.vimeo.com/video/818140667?h=c45a9bcb92" 
-                    width="100%" 
-                    height="450" 
-                    frameborder="0" 
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-                    style="border-radius: 8px; aspect-ratio: 16/9;"
-                    title="Fishing with Dad">
-            </iframe>
+            <div class="video-container">
+                <iframe src="https://player.vimeo.com/video/818140667?h=c45a9bcb92" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                        title="Fishing with Dad">
+                </iframe>
+            </div>
             <div class="media-caption">The film was shot with Carlson and her dad, via fully remote settings. Documenting the shared VR experience took three crews working in tandem – one capturing the dad in Missouri. Another capturing the daughter in California. And a third capturing them fishing together inside the metaverse.</div>
+            
+            <div class="campaign-images">
+                <img src="images/fishing1.jpg" alt="Fishing with Dad Campaign - Behind the Scenes" loading="lazy">
+                <img src="images/fishing2.jpg" alt="Fishing with Dad Campaign - VR Setup" loading="lazy">
+                <img src="images/fishing3.jpg" alt="Fishing with Dad Campaign - Production" loading="lazy">
+                <img src="images/fishing4.jpg" alt="Fishing with Dad Campaign - Metaverse Fishing" loading="lazy">
+            </div>
+            <div class="media-caption" style="margin-top: 10px;">Behind-the-scenes and campaign materials from the Fishing with Dad project.</div>
         </div>
     </div>
 
