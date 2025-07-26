@@ -68,6 +68,13 @@
         .nav-arrow {
             color: #666;
             margin-right: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-arrow:hover {
+            color: #FF6600;
+            transform: translateX(-2px);
         }
         
         .nav-links {
@@ -260,9 +267,9 @@
                 <div class="home-circle"></div>
                 <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
             </div>
-            <span class="nav-arrow">←</span>
+            <span class="nav-arrow" onclick="goBack()">←</span>
             <div class="nav-links">
-                <a href="https://jb-kang.com/imperfect-work">Work</a>
+                <a href="https://jb-kang.com/selected-works">Work</a>
                 <a href="https://jb-kang.com/perfect-objects">Objects</a>
                 <a href="https://jb-kang.com/quotes" class="current">Quotes</a>
                 <a href="https://jb-kang.com/contacts">Contact</a>
@@ -735,6 +742,16 @@
         document.querySelector('.home-circle').addEventListener('click', function() {
             window.location.href = 'https://jb-kang.com/index';
         });
+        
+        // Back arrow functionality
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                // Fallback to homepage if no history
+                window.location.href = 'https://jb-kang.com/index';
+            }
+        }
     </script>
 </body>
 </html>
