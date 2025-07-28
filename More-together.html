@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>More Together - JB Kang</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#FF6600">
+    
     <style>
         * {
             margin: 0;
@@ -377,10 +386,14 @@
     </div>
 
     <script>
-        // Simple script for home circle hover effect
-        const homeCircle = document.querySelector('.home-circle');
-        homeCircle.addEventListener('click', () => {
-            window.location.href = 'https://jb-kang.com/index';
+        // Home circle click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
         });
         
         // Back arrow functionality
@@ -388,7 +401,6 @@
             if (document.referrer && document.referrer !== window.location.href) {
                 window.history.back();
             } else {
-                // Fallback to homepage if no history
                 window.location.href = 'https://jb-kang.com/index';
             }
         }
