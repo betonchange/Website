@@ -104,7 +104,6 @@
             border-bottom-color: #FF6600;
         }
         
-        /* CONSISTENT HEADER STYLING */
         .page-title {
             font-size: 2.8rem;
             font-weight: 300;
@@ -143,7 +142,6 @@
             color: #FF6600;
         }
         
-        /* SECTION DIVIDER */
         .section-divider {
             width: 100%;
             height: 1px;
@@ -151,7 +149,6 @@
             margin: 60px 0 40px 0;
         }
         
-        /* RESUME SECTION */
         .resume-section {
             margin-bottom: 60px;
         }
@@ -211,7 +208,6 @@
             color: #666;
         }
         
-        /* FOOTER */
         .footnote {
             font-size: 0.9rem;
             color: #666;
@@ -222,7 +218,6 @@
             line-height: 1.5;
         }
         
-        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             body {
                 padding: 20px 15px;
@@ -287,60 +282,12 @@
     <div class="section-divider"></div>
 
     <div class="resume-section">
-        <div class="resume-header">
+        <div class="resume-header" onclick="toggleExperience()">
             <span class="resume-title">Experience</span>
-            <span class="resume-toggle" id="resumeToggle">→</span>
+            <span class="resume-toggle" id="experienceToggle">→</span>
         </div>
         
-        <div class="resume-content" id="resumeContent">
-            <div class="role-item">
-                <div class="role-period">2023 — Now</div>
-                <div class="role-title">Global Integrated Marketing Lead</div>
-                <div class="role-company">Instagram, New York</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2022 — 2022</div>
-                <div class="role-title">Brand Manager, Corporate Brand</div>
-                <div class="role-company">Meta, New York</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2019 — 2022</div>
-                <div class="role-title">Brand Manager, Facebook App</div>
-                <div class="role-company">Meta, New York</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2018 — 2019</div>
-                <div class="role-title">Product Marketing Manager</div>
-                <div class="role-company">Meta, New York & Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2016 — 2018</div>
-                <div class="role-title">Business & Policy Marketing Manager, APAC</div>
-                <div class="role-company">Meta, Seoul & Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2015 — 2016</div>
-                <div class="role-title">Product Innovation Manager, SK-II</div>
-                <div class="role-company">Procter & Gamble, Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2012 — 2015</div>
-                <div class="role-title">Global Brand Manager, SK-II</div>
-                <div class="role-company">Procter & Gamble, Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2011 — 2012</div>
-                <div class="role-title">Country Manager, SK-II MEN</div>
-                <div class="role-company">Procter & Gamble, Seoul</div>
-            </div>
-        </div>
+        <div class="resume-content" id="experienceContent" style="display: none;">
             <div class="role-item">
                 <div class="role-period">2023 — Now</div>
                 <div class="role-title">Global Integrated Marketing Lead</div>
@@ -396,10 +343,14 @@
     </div>
 
     <script>
-        // Simple script for home circle hover effect
-        const homeCircle = document.querySelector('.home-circle');
-        homeCircle.addEventListener('click', () => {
-            window.location.href = 'https://jb-kang.com/index';
+        // Home circle click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
         });
         
         // Back arrow functionality
@@ -407,27 +358,23 @@
             if (document.referrer && document.referrer !== window.location.href) {
                 window.history.back();
             } else {
-                // Fallback to homepage if no history
                 window.location.href = 'https://jb-kang.com/index';
             }
         }
         
-        // Resume toggle functionality
-        function toggleResume() {
-            const content = document.getElementById('resumeContent');
-            const toggle = document.getElementById('resumeToggle');
+        // Experience toggle functionality
+        function toggleExperience() {
+            const content = document.getElementById('experienceContent');
+            const toggle = document.getElementById('experienceToggle');
             
-            if (content.classList.contains('expanded')) {
-                content.classList.remove('expanded');
-                toggle.textContent = '→';
-                toggle.style.transform = 'rotate(0deg)';
-            } else {
-                content.classList.add('expanded');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
                 toggle.textContent = '↓';
-                toggle.style.transform = 'rotate(0deg)';
-            </div>
+            } else {
+                content.style.display = 'none';
+                toggle.textContent = '→';
+            }
         }
     </script>
-
 </body>
 </html>
