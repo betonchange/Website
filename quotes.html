@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotes - JB Kang</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <style>
         * {
             margin: 0;
@@ -690,6 +698,14 @@
 
         // Load initial quote
         document.addEventListener('DOMContentLoaded', function() {
+            // Home circle click functionality
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
+            
             // Initialize the shuffled quotes array
             initializeShuffledQuotes();
             
@@ -724,11 +740,6 @@
                     quoteSource.style.display = 'none';
                 }
             }, 100);
-        });
-
-        // Home circle click functionality
-        document.querySelector('.home-circle').addEventListener('click', function() {
-            window.location.href = 'https://jb-kang.com/index';
         });
         
         // Back arrow functionality
