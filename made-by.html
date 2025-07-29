@@ -167,7 +167,7 @@
         /* MEDIA ELEMENTS */
         .media-grid {
             display: grid;
-            gap: 10px;
+            gap: 40px;
             margin-top: 30px;
         }
         
@@ -192,6 +192,11 @@
             color: #666;
             margin-top: 2px;
             font-style: italic;
+        }
+        
+        .media-section {
+            display: flex;
+            flex-direction: column;
         }
         
         .campaign-images {
@@ -359,28 +364,34 @@
         
         <div class="media-grid">
             <!-- Hero Image -->
-            <img src="images/madeby1.png" alt="Made by You, Loved by the World Hero Image" class="hero-image">
-            <div class="media-caption">The platform was designed with local application in mind to flex with local governments and businesses as co-marketing.</div>
+            <div class="media-section">
+                <img src="images/madeby1.png" alt="Made by You, Loved by the World Hero Image" class="hero-image">
+                <div class="media-caption">The platform was designed with local application in mind to flex with local governments and businesses as co-marketing.</div>
+            </div>
             
             <!-- Hero Video -->
-            <iframe src="https://player.vimeo.com/video/1105268881?controls=0&title=0&byline=0&portrait=0" 
-                    width="100%" 
-                    height="450" 
-                    frameborder="0" 
-                    allow="autoplay; fullscreen" 
-                    style="aspect-ratio: 16/9; height: auto;"
-                    title="Made by You, Loved by the World Campaign">
-            </iframe>
-            <div class="media-caption">Jenn, owner of Wanderlust, a Malaysian jewelry brand that recently opened her first US flagship store.</div>
+            <div class="media-section">
+                <iframe src="https://player.vimeo.com/video/1105268881?controls=0&title=0&byline=0&portrait=0" 
+                        width="100%" 
+                        height="450" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen" 
+                        style="aspect-ratio: 16/9; height: auto;"
+                        title="Made by You, Loved by the World Campaign">
+                </iframe>
+                <div class="media-caption">Jenn, owner of Wanderlust, a Malaysian jewelry brand that recently opened her first US flagship store.</div>
+            </div>
             
             <!-- 4 Supporting Images -->
-            <div class="campaign-images">
-                <img src="images/madebyyoufair1.jpeg" alt="Made by You Campaign Asset">
-                <img src="images/madeby2.jpg" alt="Made by You Campaign Asset 2">
-                <img src="images/madeby4.jpg" alt="Made by You Campaign Asset 4">
-                <img src="images/madebyyoufair2.jpg" alt="Made by You Campaign Asset">
+            <div class="media-section">
+                <div class="campaign-images">
+                    <img src="images/madebyyoufair1.jpeg" alt="Made by You Campaign Asset">
+                    <img src="images/madeby2.jpg" alt="Made by You Campaign Asset 2">
+                    <img src="images/madeby4.jpg" alt="Made by You Campaign Asset 4">
+                    <img src="images/madebyyoufair2.jpg" alt="Made by You Campaign Asset">
+                </div>
+                <div class="media-caption">Pictures of Made by You Fair in Korea, and Made by Taiwan launch event with President Tsai.</div>
             </div>
-            <div class="media-caption">Pictures of Made by You Fair in Korea, and Made by Taiwan launch event with President Tsai.</div>
         </div>
     </div>
 
