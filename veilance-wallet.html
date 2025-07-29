@@ -1,23 +1,4 @@
-<script>
-        // Home circle click functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const homeCircle = document.querySelector('.home-circle');
-            if (homeCircle) {
-                homeCircle.addEventListener('click', function() {
-                    window.location.href = 'https://jb-kang.com/index';
-                });
-            }
-        });
-        
-        // Back arrow functionality
-        function goBack() {
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.history.back();
-            } else {
-                window.location.href = 'https://jb-kang.com/perfect-objects';
-            }
-        }
-    </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -133,6 +114,14 @@
             color: #000;
         }
         
+        .product-overview {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            max-width: 600px;
+        }
+        
         h1 {
             font-size: 2.8rem;
             font-weight: 300;
@@ -200,6 +189,13 @@
             overflow: hidden;
             margin-bottom: 15px;
             border: 1px solid #e0e0e0;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .image-placeholder {
@@ -373,7 +369,7 @@
         </div>
         
         <div class="why-perfect">
-            There's something quietly satisfying about carrying this wallet. It's not trying to impress anyone - no logos, no flashy details, just thoughtful engineering made tangible. The leather molds to your cards over time, creating this perfect clam-like fit that feels custom-made. I love how it pairs with my iPhone - the rounded corners align perfectly, making them feel like they were designed together. Veilance removed everything unnecessary, even the stitches, leaving only what serves a purpose. It's the kind of object that makes you appreciate good design every time you reach for it.
+            A wallet that gets better with every day you carry it. Technical materials meet thoughtful design in something that feels inevitable once you hold it. The leather molds to your cards over time, creating this perfect clam-like fit that feels custom-made. I love how it pairs with my iPhone - the rounded corners align perfectly, making them feel like they were designed together. Veilance removed everything unnecessary, even the stitches, leaving only what serves a purpose. It's the kind of object that makes you appreciate good design every time you reach for it.
         </div>
     </div>
 
@@ -414,15 +410,6 @@
                     The rounded corners align perfectly with my iPhone's edges. They feel like they were designed to be held together - two objects that become one in your hand.
                 </div>
             </div>
-            
-            <div class="gallery-item">
-                <div class="image-container">
-                    <div class="image-placeholder">Quiet Confidence</div>
-                </div>
-                <div class="image-commentary">
-                    No logos, no flash. Just technical materials and thoughtful engineering that speaks to those who recognize good design. It doesn't need to announce itself.
-                </div>
-            </div>
         </div>
     </div>
 
@@ -433,7 +420,7 @@
 
     <div class="disclaimer-section">
         <p class="disclaimer-text">
-            Product images used for editorial/educational purposes. All images © their respective owners. Not affiliated with Arc'teryx or Veilance. Will remove upon request.
+            Product images used for editorial/educational purposes. All images © their respective owners. Not affiliated with Veilance or Arc'teryx. Will remove upon request.
         </p>
         <div class="sources">
             <p class="sources-title">Sources:</p>
