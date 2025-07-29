@@ -1,1 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make It Anyway - JB Kang</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#FF6600">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-arrow:hover {
+            color: #FF6600;
+            transform: translateX(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        /* META SECTION - Use for project pages */
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            min-width: 120px;
+        }
+        
+        .meta-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            white-space: nowrap;
+        }
+        
+        .meta-value {
+            font-size: 0.95rem;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        /* MAIN CONTENT SECTIONS */
+        .content-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .section-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            max-width: 700px;
+        }
+        
+        /* MEDIA ELEMENTS */
+        .media-grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .media-item {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+        }
+        
+        .media-item.large {
+            aspect-ratio: 16/9;
+        }
+        
+        .media-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 2px;
+            font-style: italic;
+        }
+        
+        .media-section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .campaign-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .campaign-images img,
+        .campaign-images .media-item {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        /* LINKS AND COVERAGE */
+        .coverage-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .coverage-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+        
+        .coverage-link:hover {
+            color: #FF6600;
+        }
+        
+        /* FOOTER DISCLAIMER */
+        .disclaimer {
+            margin-top: 80px;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .meta-item {
+                min-width: auto;
+            }
+            
+            .section-text {
+                font-size: 1rem;
+            }
+            
+            .media-grid {
+                gap: 20px;
+            }
+            
+            .campaign-images {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+                flex-wrap: nowrap;
+            }
+            
+            .nav-home-container {
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-home {
+                white-space: nowrap;
+            }
+            
+            .nav-arrow {
+                margin-right: 5px;
+                flex-shrink: 0;
+            }
+            
+            .nav-links {
+                gap: 5px;
+                flex-shrink: 1;
+            }
+            
+            .nav-links a {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
+            </div>
+            <span class="nav-arrow" onclick="goBack()">←</span>
+            <div class="nav-links">
+                <a href="https://jb-kang.com/selected-works">Work</a>
+                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
+            </div>
+        </nav>
+
+        <h1 class="page-title">Make It Anyway</h1>
+        
+        <!-- FOR PROJECT PAGES: Include project meta -->
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Instagram</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Type</div>
+                <div class="meta-value">Brand Platform</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">2025</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Audience</div>
+                <div class="meta-value">Creators, Artists, Emerging Talent</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT SECTIONS -->
+    <div class="content-section">
+        <h2 class="section-title">Campaign Overview</h2>
+        <div class="section-text">
+            As Instagram turned 15, we recognized a universal truth about creativity: the excitement and nervousness that comes with putting something out into the world. "Make It Anyway" celebrates the creative chances that fuel our mission—encouraging people to overcome barriers and take that leap of faith.
+            <br><br>
+            Our vision was to identify creators who truly embody taking creative chances—the 'team IG' mindset. We partnered with artists like Tyler, The Creator, Rosalía, Fred again.., Clint 419, and Slawn to showcase authentic stories of creative risk-taking. This was paired with tools that continue Instagram's democratizing mission: Trial Reels, the Edits video app, and programs like Drafts that support emerging creators.
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Creative Assets</h2>
+        
+        <div class="media-grid">
+            <!-- Hero Video -->
+            <div class="media-section">
+                <iframe width="100%" 
+                        height="450" 
+                        src="https://www.youtube.com/embed/aESDsB8kJ-c" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="aspect-ratio: 16/9; height: auto;">
+                </iframe>
+                <div class="media-caption">Tyler, The Creator leads the "Make It Anyway" campaign film.</div>
+            </div>
+            
+            <!-- 2 Supporting Images -->
+            <div class="media-section">
+                <div class="campaign-images">
+                    <img src="images/anyway1.jpg" alt="Make It Anyway Campaign Asset 1">
+                    <img src="images/anyway2.jpg" alt="Make It Anyway Campaign Asset 2">
+                </div>
+                <div class="media-caption">Supporting campaign visuals and creator spotlights.</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 1.05rem; color: #333; line-height: 1.8;">
+            Special thanks to <a href="https://www.vidahabibi.com/" target="_blank" style="color: #666; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease;" onmouseover="this.style.color='#FF6600'; this.style.borderBottomColor='#FF6600';" onmouseout="this.style.color='#666'; this.style.borderBottomColor='transparent';">Vida Habibi</a> for bringing this vision to life.
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Media Coverage</h2>
+        <div class="coverage-links">
+            <a href="https://about.fb.com/news/2025/06/inspiring-creativity-that-brings-people-together/" class="coverage-link" target="_blank">Meta - Inspiring Creativity That Brings People Together</a>
+            <a href="https://www.adweek.com/brand-marketing/instagrams-biggest-campaign-yet-urges-creators-to-ditch-self-doubt/" class="coverage-link" target="_blank">Adweek - Instagram's Biggest Campaign Yet Urges Creators to Ditch Self-Doubt</a>
+            <a href="https://www.complex.com/music/a/cmplxtara-mahadevan/tyler-creator-rosalia-cole-bennett-instagram-anyway" class="coverage-link" target="_blank">Complex - Tyler, the Creator, Rosalía, Cole Bennett and More Tapped For Instagram's 'ANYWAY' Initiatives</a>
+            <a href="https://hypebeast.com/2025/6/instagram-launches-new-brand-campaign-rosalia-clint419-tyler-the-creator-anyway" class="coverage-link" target="_blank">Hypebeast - Instagram Taps Rosalía, Clint419, Tyler, the Creator and More for its Latest Campaign</a>
+            <a href="https://www.hollywoodreporter.com/business/digital/instagram-new-features-anyway-ad-campaign-launch-creators-1236263668/" class="coverage-link" target="_blank">The Hollywood Reporter - Instagram New Features and Anyway Ad Launches to Support Creators</a>
+            <a href="https://www.essence.com/culture/instagram-anyway-campaign-creativity/" class="coverage-link" target="_blank">Essence - Instagram Wants You To Stop Overthinking—And Create Anyway</a>
+            <a href="https://www.thedrum.com/news/2025/06/16/instagram-taps-tyler-the-creator-biggest-brand-campaign-date" class="coverage-link" target="_blank">The Drum - Instagram taps Tyler, the Creator for biggest brand campaign to date</a>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work and respects brand intellectual property rights.
+    </div>
+
+    <script>
+        // Home circle click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
+        });
+        
+        // Back arrow functionality
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://jb-kang.com/index';
+            }
+        }
+    </script>
+
+</body>
+</html>
