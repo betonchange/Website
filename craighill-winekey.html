@@ -25,7 +25,7 @@
             color: #000;
             background-color: #fff;
             padding: 40px 20px;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
@@ -38,7 +38,6 @@
             align-items: center;
             margin-bottom: 40px;
             font-size: 0.95rem;
-            line-height: 1;
         }
         
         .nav-home-container {
@@ -68,8 +67,6 @@
             font-weight: 500;
             border-bottom: 1px solid transparent;
             transition: all 0.2s ease;
-            font-size: 0.95rem;
-            line-height: 1;
         }
         
         .nav-home:hover {
@@ -80,8 +77,6 @@
         .nav-arrow {
             color: #666;
             margin-right: 20px;
-            font-size: 0.95rem;
-            line-height: 1;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -94,7 +89,6 @@
         .nav-links {
             display: flex;
             gap: 15px;
-            line-height: 1;
         }
         
         .nav-links a {
@@ -102,7 +96,6 @@
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: all 0.2s ease;
-            font-size: 0.95rem;
         }
         
         .nav-links a:hover {
@@ -114,13 +107,13 @@
             color: #000;
         }
         
-        h1 {
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
             font-size: 2.8rem;
             font-weight: 300;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #000;
             letter-spacing: -0.02em;
-            line-height: 1.1;
         }
         
         .product-meta {
@@ -151,12 +144,12 @@
             font-weight: 400;
         }
         
-        .why-perfect {
-            font-size: 1.1rem;
-            line-height: 1.7;
+        .intro {
+            font-size: 1.05rem;
+            line-height: 1.8;
             color: #333;
             margin-bottom: 60px;
-            max-width: 750px;
+            max-width: 700px;
         }
         
         .gallery-section {
@@ -275,12 +268,12 @@
             border-bottom-color: #FF6600;
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             body {
                 padding: 20px 15px;
             }
             
-            h1 {
+            .page-title {
                 font-size: 2.2rem;
             }
             
@@ -289,7 +282,7 @@
                 gap: 20px;
             }
             
-            .why-perfect {
+            .intro {
                 font-size: 1rem;
                 margin-bottom: 40px;
             }
@@ -339,7 +332,7 @@
             </div>
         </nav>
 
-        <h1>Craighill Wine Key</h1>
+        <h1 class="page-title">Craighill Wine Key</h1>
         
         <div class="product-meta">
             <div class="meta-item">
@@ -360,7 +353,7 @@
             </div>
         </div>
         
-        <div class="why-perfect">
+        <div class="intro">
             Sometimes the best innovations come from questioning the established. Hunter Craighill and sommelier André Hueston Mack took a pass at advancing a very established product. The sommelier's wine key shape has been fixed for decades - everyone thought there wasn't more you could push, despite known problems. That's exactly what made it interesting. André brought real-world experience from behind the bar, Hunter brought design thinking. The result feels inevitable once you hold it - perfect weight, precisely angled foil knife, ratcheted mechanism that makes cork removal effortless. They proved that even the most established tools can be reimagined.
         </div>
     </div>
@@ -379,7 +372,7 @@
             <div class="gallery-item">
                 <div class="image-container">
                     <iframe 
-                        src="https://www.youtube.com/embed/19LeiwhPBDE" 
+                        src="https://www.youtube.com/embed/19LeiwhPBDE?modestbranding=1&showinfo=0&rel=0&controls=1&iv_load_policy=3" 
                         title="Craighill Wine Key Design Process" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
