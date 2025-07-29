@@ -114,14 +114,6 @@
             color: #000;
         }
         
-        .product-overview {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.5;
-            max-width: 600px;
-        }
-        
         h1 {
             font-size: 2.8rem;
             font-weight: 300;
@@ -191,15 +183,11 @@
             border: 1px solid #e0e0e0;
         }
         
-        .image-placeholder {
+        .image-container img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
+            object-fit: cover;
+            display: block;
         }
         
         .image-commentary {
@@ -370,7 +358,7 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <div class="image-container">
-                    <div class="image-placeholder">Meaningful Details</div>
+                    <img src="/images/Ricoh1.jpg" alt="Ricoh GR meaningful design details" loading="lazy">
                 </div>
                 <div class="image-commentary">
                     "Everything had a meaning" - designer Toshiya Inaba's philosophy. The oval shutter button isn't decorative; it increases contact area and positions perfectly for your finger. Even the ridge lines were refined based on actual user grip testing.
@@ -379,7 +367,7 @@
             
             <div class="gallery-item">
                 <div class="image-container">
-                    <div class="image-placeholder">Tool, Not Accessory</div>
+                    <img src="/images/Ricoh2.jpg" alt="Ricoh GR tool-focused design" loading="lazy">
                 </div>
                 <div class="image-commentary">
                     The GR concept rejects luxury aesthetics that prioritize shine over function. The matte finish and utilitarian design language communicate one thing: this is a tool for taking photos, not a decorative object.
@@ -388,7 +376,7 @@
             
             <div class="gallery-item">
                 <div class="image-container">
-                    <div class="image-placeholder">Generational Refinement</div>
+                    <img src="/images/Ricoh3.jpg" alt="Ricoh GR generational evolution" loading="lazy">
                 </div>
                 <div class="image-commentary">
                     Twenty-five years of iterative improvement while staying true to the original concept. Each generation refines ergonomics, optics, and usability without compromising the core philosophy of portable excellence.
@@ -397,7 +385,7 @@
             
             <div class="gallery-item">
                 <div class="image-container">
-                    <div class="image-placeholder">Japanese Craft Heritage</div>
+                    <img src="/images/Ricoh4.jpg" alt="Ricoh GR Japanese craft heritage" loading="lazy">
                 </div>
                 <div class="image-commentary">
                     Drawing inspiration from traditional Nambu ironware for body coloring, the GR connects modern technology with centuries-old Japanese craftsmanship traditions, creating timeless design that transcends trends.
