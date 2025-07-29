@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sony Walkman - JB Kang</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-arrow:hover {
+            color: #FF6600;
+            transform: translateX(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            line-height: 1;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-links a.current {
+            color: #000;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #000;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .product-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .meta-value {
+            font-size: 0.95rem;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .why-perfect {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 60px;
+            max-width: 750px;
+        }
+        
+        .why-perfect a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .why-perfect a:hover {
+            color: #FF6600;
+            border-bottom-color: #FF6600;
+        }
+        
+        .gallery-section {
+            margin-bottom: 60px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gallery-item.horizontal {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+        
+        .image-container {
+            aspect-ratio: 3/4;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .image-container.horizontal {
+            aspect-ratio: 16/9;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .image-commentary {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .navigation-footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-product {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-product:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-product.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .disclaimer-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .disclaimer-text {
+            font-size: 0.8rem;
+            color: #777;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .sources {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .sources-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        .sources-list {
+            line-height: 1.6;
+        }
+        
+        .source-link {
+            color: #777;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .source-link:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .product-meta {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .why-perfect {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .gallery-item.horizontal {
+                grid-column: auto;
+                margin-top: 0;
+            }
+            
+            .navigation-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+            }
+            
+            .nav-home-container {
+                margin-right: 15px;
+            }
+            
+            .nav-arrow {
+                margin-right: 15px;
+            }
+            
+            .nav-links {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
+            </div>
+            <span class="nav-arrow" onclick="goBack()">←</span>
+            <div class="nav-links">
+                <a href="https://jb-kang.com/selected-works">Work</a>
+                <a href="https://jb-kang.com/perfect-objects" class="current">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
+            </div>
+        </nav>
+
+        <h1>Cassette Player TPS-L2</h1>
+        
+        <div class="product-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Sony</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Designer</div>
+                <div class="meta-value">Nobutoshi Kihara</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Country</div>
+                <div class="meta-value">Japan</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">1979</div>
+            </div>
+        </div>
+        
+        <div class="why-perfect">
+            There's something magical about being able to choose the soundtrack to any moment. The Walkman changed music from something that happened to you into something you could shape your world with. I have this vivid memory of listening to <a href="https://www.youtube.com/watch?v=q3xy4p2JTfU" target="_blank" rel="noopener noreferrer">Seotaeji's songs</a> in the rain while climbing mountains with my dad - that kind of perfect pairing of place and music suddenly became possible. What I love most is how it wasn't selfish - two headphone jacks meant you could share the experience, and that simple orange button let you pause and talk. It understood that the best technology connects us rather than isolates us.
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/sony1.PNG" alt="Sony Walkman portable revolution" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    The birth of personal mobile entertainment. Suddenly you could pair any location with any music - music became the companion to life's moments.
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/sony2.JPG" alt="Sony Walkman two headphone jacks" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    Two headphone jacks for sharing music with a friend. Technology designed to connect people, not isolate them.
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/sony3.JPG" alt="Sony Walkman orange pause button" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    A simple orange button that invited conversation. Thoughtful design that valued human connection.
+                </div>
+            </div>
+            
+            <div class="gallery-item horizontal">
+                <div class="image-container horizontal">
+                    <img src="/images/sony4.JPG" alt="Sony Walkman cultural transformation" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    From communal, static listening to personal, mobile experience. The template for all portable entertainment.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-footer">
+        <a href="https://jb-kang.com/ricoh-gr" class="nav-product">← Previous: Ricoh GR</a>
+        <a href="veilance-wallet.html" class="nav-product">Next: Veilance Wallet →</a>
+    </div>
+
+    <div class="disclaimer-section">
+        <p class="disclaimer-text">
+            Product images used for editorial/educational purposes. All images © their respective owners. Not affiliated with Sony. Will remove upon request.
+        </p>
+        <div class="sources">
+            <p class="sources-title">Sources:</p>
+            <p class="sources-list">
+                [1] <a href="#" class="source-link">Sony Walkman TPS-L2 Historical Archive</a><br>
+                [2] <a href="#" class="source-link">Sony Corporation Official History</a><br>
+                [3] <a href="#" class="source-link">Walkman Design Documentation</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Home circle click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
+        });
+        
+        // Back arrow functionality
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://jb-kang.com/perfect-objects';
+            }
+        }
+    </script>
+</body>
+</html>
