@@ -181,6 +181,17 @@
             height: 100%;
         }
         
+        /* Force consistent width for OOH video */
+        .video-container.ooh-video {
+            padding-bottom: 56.25%; /* Force 16:9 aspect ratio */
+        }
+        
+        .video-container.ooh-video iframe {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
+        
         .media-caption {
             font-size: 0.9rem;
             color: #666;
@@ -348,7 +359,7 @@
         
         <div class="media-caption">In the short form films, our aim was to capture the everyday small moments, but potent with big feelings.</div>
         
-        <div class="video-container">
+        <div class="video-container ooh-video">
             <iframe src="https://player.vimeo.com/video/1105645862?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
