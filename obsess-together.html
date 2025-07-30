@@ -221,20 +221,31 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 40px;
+            align-items: end; /* Align to bottom */
         }
         
         .uniform-item {
             border-radius: 8px;
             overflow: hidden;
             background-color: #f8f8f8;
-            height: 250px; /* Fixed height for uniform appearance */
         }
         
         .uniform-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Will crop to fit */
-            object-position: center bottom; /* Crops from top, preserves bottom */
+            height: auto;
+            display: block;
+        }
+        
+        /* For the taller third image, add max-height and crop from top */
+        .uniform-item:nth-child(3) {
+            max-height: 620px; /* Approximate height of AR images (495x620) */
+            overflow: hidden;
+        }
+        
+        .uniform-item:nth-child(3) img {
+            object-fit: cover;
+            object-position: center bottom;
+            height: 620px;
         }
         
         /* LINKS AND COVERAGE */
