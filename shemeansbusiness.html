@@ -214,7 +214,6 @@
         .campaign-images .media-item {
             width: 100%;
             height: auto;
-            aspect-ratio: 16/9;
         }
         
         .hero-image {
@@ -357,11 +356,12 @@
         <div class="media-grid">
             <!-- Hero Campaign Video -->
             <div class="media-section">
-                <iframe src="https://player.vimeo.com/video/1104653847?title=0&byline=0&portrait=0" 
+                <iframe src="https://player.vimeo.com/video/1104653847" 
                         width="100%" 
                         height="450" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
                         style="aspect-ratio: 16/9; height: auto;"
                         title="She Means Business Campaign Video">
                 </iframe>
@@ -371,11 +371,11 @@
             <!-- Supporting Campaign Materials -->
             <div class="media-section">
                 <div class="hero-image-container">
-                    <img src="images/SMB1.png" alt="She Means Business Wide Campaign Image" style="width: 100%; height: auto; aspect-ratio: 21/9; object-fit: cover;">
+                    <img src="images/SMB2.png" alt="She Means Business Wide Campaign Image" style="width: 100%; height: auto; object-fit: contain;">
                 </div>
                 <div class="campaign-images">
-                    <img src="images/SMB2.png" alt="She Means Business Campaign Asset 1">
-                    <img src="images/SMB3.png" alt="She Means Business Campaign Asset 2">
+                    <img src="images/SMB3.png" alt="She Means Business Campaign Asset 1" style="object-fit: contain;">
+                    <img src="images/SMB4.png" alt="She Means Business Campaign Asset 2" style="object-fit: contain;">
                 </div>
                 <div class="media-caption">She Means Business campaign materials and event photography.</div>
             </div>
