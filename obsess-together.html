@@ -227,13 +227,14 @@
             border-radius: 8px;
             overflow: hidden;
             background-color: #f8f8f8;
+            height: 250px; /* Fixed height for uniform appearance */
         }
         
         .uniform-item img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
+            object-fit: cover; /* Will crop to fit */
+            object-position: center bottom; /* Crops from top, preserves bottom */
         }
         
         /* LINKS AND COVERAGE */
@@ -368,7 +369,7 @@
         <div class="section-text">
             At the end of the most challenging year in modern history, people were exhausted and looking for escape. We discovered that Facebook Groups had become the happy place people were seeking—for relief, and for some much-needed laughs. From this insight that people want to escape, and a deep dive into many Groups, it dawned on us: people in Groups are obsessed with the Groups they're in.
             <br><br>
-            "She Means Business" was created to bridge this gap, combining digital storytelling with tangible business support. Women business owners, local governments, and female empowerment groups all came together under the belief that "When women succeed, we all succeed." The initiative provided comprehensive resources from app development assistance to strategic consulting, while creating platforms for women to share their entrepreneurial journeys and connect with professional networks previously available only to larger corporations.
+            "Obsess Together" was created to bridge this gap, combining digital storytelling with tangible business support. Fandoms, alternate realities, odd hobbies, and the most-obsessed-over interests all exist in the ever-expanding universe that is Facebook Groups. The campaign celebrated the idea that Groups help us find people who love what we love, inviting people to find their own safe corners of the internet, spend as much time there as they damn well please, and encourage all their friends to come play.
             <br><br>
             We delivered a truly mobile-first approach that didn't just tell an obsession-worthy story, but immersed our audience within it. A rich mix of thumb-stopping videos, moving posters, AR filters, playable ads, and 360˚ experiences made up the campaign, treating Facebook Groups as modern-day, members-only social clubs where things get pretty damn fun.
         </div>
@@ -378,23 +379,19 @@
         <h2 class="section-title">Creative Assets</h2>
         
         <div class="media-grid">
-            <!-- Hero Campaign Video -->
-            <div class="media-section">
-                <iframe src="https://player.vimeo.com/video/1105899826" 
-                        width="100%" 
-                        height="450" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen
-                        style="aspect-ratio: 16/9; height: auto;"
-                        title="Obsess Together Campaign Video">
-                </iframe>
-                <div class="media-caption">We've created a world for each of the unique Facebook Groups we've found.</div>
-            </div>
-            
-            <!-- Masonry Grid for Variable-Sized Assets -->
+            <!-- Creative Assets Grid -->
             <div class="media-section">
                 <div class="assets-grid">
+                    <div class="asset-item">
+                        <iframe src="https://player.vimeo.com/video/1105899826" 
+                                width="100%" 
+                                height="300" 
+                                frameborder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture" 
+                                allowfullscreen
+                                title="Obsess Together Campaign Video">
+                        </iframe>
+                    </div>
                     <div class="asset-item">
                         <img src="obsess-9x16-medieval-min.gif" alt="Medieval Facebook Group Campaign">
                     </div>
@@ -440,6 +437,12 @@
                     </div>
                 </div>
                 <div class="media-caption">We've got the product teams to join the fun to create dedicated filters and a mobile game.</div>
+            </div>
+            
+            <!-- Takeover Image -->
+            <div class="media-section">
+                <img src="obsess-takeover.jpg" alt="Facebook Group Takeover Event" class="hero-image">
+                <div class="media-caption">...the admins of the pages joined the fun, running special events at their pages to welcome the new members.</div>
             </div>
         </div>
     </div>
