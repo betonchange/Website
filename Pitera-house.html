@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK-II Pitera House - JB Kang</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <style>
         * {
             margin: 0;
@@ -94,7 +102,12 @@
             border-bottom-color: #FF6600;
         }
         
-        .project-title {
+        .nav-links a.current {
+            color: #000;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
             font-size: 2.8rem;
             font-weight: 300;
             margin-bottom: 25px;
@@ -102,30 +115,27 @@
             letter-spacing: -0.02em;
         }
         
+        /* META SECTION - Use for project pages */
         .project-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 50px;
-            padding: 20px 0;
-            border-top: 1px solid #e0e0e0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
             border-bottom: 1px solid #e0e0e0;
         }
         
         .meta-item {
             display: flex;
-            align-items: baseline;
-            gap: 8px;
-            min-width: 120px;
+            flex-direction: column;
         }
         
         .meta-label {
             font-size: 0.8rem;
-            font-weight: 500;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #888;
-            white-space: nowrap;
+            margin-bottom: 5px;
         }
         
         .meta-value {
@@ -134,7 +144,8 @@
             font-weight: 400;
         }
         
-        .project-overview {
+        /* MAIN CONTENT SECTIONS */
+        .content-section {
             margin-bottom: 60px;
         }
         
@@ -145,17 +156,14 @@
             color: #000;
         }
         
-        .overview-text {
+        .section-text {
             font-size: 1.05rem;
             line-height: 1.8;
             color: #333;
             max-width: 700px;
         }
         
-        .project-media {
-            margin-bottom: 60px;
-        }
-        
+        /* MEDIA ELEMENTS */
         .media-grid {
             display: grid;
             gap: 30px;
@@ -216,34 +224,33 @@
             font-style: italic;
         }
         
+        /* FOOTER DISCLAIMER */
         .disclaimer {
             margin-top: 80px;
-            padding: 20px 0;
+            padding-top: 40px;
             border-top: 1px solid #e0e0e0;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: #777;
             line-height: 1.5;
+            font-style: italic;
         }
         
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             body {
                 padding: 20px 15px;
             }
             
-            .project-title {
+            .page-title {
                 font-size: 2.2rem;
             }
             
             .project-meta {
-                flex-direction: column;
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             
-            .meta-item {
-                min-width: auto;
-            }
-            
-            .overview-text {
+            .section-text {
                 font-size: 1rem;
             }
             
@@ -258,30 +265,18 @@
             
             .nav {
                 font-size: 0.9rem;
-                flex-wrap: nowrap;
             }
             
             .nav-home-container {
-                margin-right: 5px;
-                flex-shrink: 0;
-            }
-            
-            .nav-home {
-                white-space: nowrap;
+                margin-right: 15px;
             }
             
             .nav-arrow {
-                margin-right: 5px;
-                flex-shrink: 0;
+                margin-right: 15px;
             }
             
             .nav-links {
-                gap: 5px;
-                flex-shrink: 1;
-            }
-            
-            .nav-links a {
-                white-space: nowrap;
+                gap: 12px;
             }
         }
     </style>
@@ -295,14 +290,14 @@
             </div>
             <span class="nav-arrow" onclick="goBack()">←</span>
             <div class="nav-links">
-                <a href="https://jb-kang.com/selected-works">Work</a>
+                <a href="https://jb-kang.com/selected-works" class="current">Work</a>
                 <a href="https://jb-kang.com/perfect-objects">Objects</a>
                 <a href="https://jb-kang.com/quotes">Quotes</a>
                 <a href="https://jb-kang.com/contacts">Contact</a>
             </div>
         </nav>
 
-        <h1 class="project-title">SK-II Pitera House</h1>
+        <h1 class="page-title">SK-II Pitera House</h1>
         
         <div class="project-meta">
             <div class="meta-item">
@@ -324,9 +319,9 @@
         </div>
     </div>
 
-    <div class="project-overview">
+    <div class="content-section">
         <h2 class="section-title">Project Overview</h2>
-        <div class="overview-text">
+        <div class="section-text">
             Once Asia's leading premium skincare brand, SK-II faced the challenge of an aging demographic and declining department store foot traffic—traditionally their exclusive retail channel. To reverse this trend, we pioneered an innovative pop-up store concept, marking the first time a skincare brand ventured into experiential retail in high-traffic youth districts.
             <br><br>
             Designed as a retail entertainment experience, the Pitera House was strategically positioned as an extension of a popular Sinsa-dong café, meeting younger consumers where they naturally gathered. Visitors could measure their skin health using SK-II's proprietary technology, receive customized sample sets, and even participate in a national skin score ranking alongside SK-II's celebrity ambassadors.
@@ -335,7 +330,7 @@
         </div>
     </div>
 
-    <div class="project-media">
+    <div class="content-section">
         <h2 class="section-title">Experience Design</h2>
         
         <div class="media-grid">
@@ -365,10 +360,14 @@
     </div>
 
     <script>
-        // Simple script for home circle hover effect
-        const homeCircle = document.querySelector('.home-circle');
-        homeCircle.addEventListener('click', () => {
-            window.location.href = 'https://jb-kang.com/index';
+        // Home circle click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
         });
         
         // Back arrow functionality
@@ -376,7 +375,6 @@
             if (document.referrer && document.referrer !== window.location.href) {
                 window.history.back();
             } else {
-                // Fallback to homepage if no history
                 window.location.href = 'https://jb-kang.com/index';
             }
         }
