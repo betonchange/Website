@@ -1,1 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everyday Creativity - JB Kang</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-arrow:hover {
+            color: #FF6600;
+            transform: translateX(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+        
+        .nav-links a.current {
+            color: #000;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+        
+        /* META SECTION - Use for project pages */
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .meta-value {
+            font-size: 0.95rem;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        /* MAIN CONTENT SECTIONS */
+        .content-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .section-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            max-width: 700px;
+        }
+        
+        .section-text a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .section-text a:hover {
+            color: #FF6600;
+            border-bottom-color: #FF6600;
+        }
+        
+        /* MEDIA ELEMENTS */
+        .media-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .media-item {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+        }
+        
+        .campaign-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .campaign-images img,
+        .campaign-images .image-placeholder {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+        
+        .image-placeholder {
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            border: 2px dashed #ddd;
+            transition: border-color 0.2s ease;
+        }
+        
+        .image-placeholder:hover {
+            border-color: #FF6600;
+        }
+        
+        .media-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* LINKS AND COVERAGE */
+        .coverage-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .coverage-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+        
+        .coverage-link:hover {
+            color: #FF6600;
+        }
+        
+        /* FOOTER DISCLAIMER */
+        .disclaimer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.8rem;
+            color: #777;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .section-text {
+                font-size: 1rem;
+            }
+            
+            .media-grid {
+                gap: 20px;
+            }
+            
+            .campaign-images {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .nav {
+                font-size: 0.9rem;
+            }
+            
+            .nav-home-container {
+                margin-right: 15px;
+            }
+            
+            .nav-arrow {
+                margin-right: 15px;
+            }
+            
+            .nav-links {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
+            </div>
+            <span class="nav-arrow" onclick="goBack()">←</span>
+            <div class="nav-links">
+                <a href="https://jb-kang.com/selected-works" class="current">Work</a>
+                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
+            </div>
+        </nav>
+
+        <h1 class="page-title">Everyday Creativity</h1>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Instagram</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Type</div>
+                <div class="meta-value">Brand Campaign</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">2023</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Audience</div>
+                <div class="meta-value">Young Adults</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="section-text">
+            In a world saturated with polished content and professional creators, social media that can be a pressure to young people. Instead we wanted to celebrate the small, authentic moments of creativity that happen every day that can be a catalyst to friendship.
+            <br><br>
+            Because it's in these small moments - a like, sharing a story, putting in the courage to send a DM, adding a friend on close friends and tagging on your favorite memory - that Instagram is a tool for connection.
+            <br><br>
+            The brand strategy of 'everyday creativity' has been the northstar evolving the Instagram back to a place for creative expression helping drive the launch and adoption for Instagram's unique features incl. Add yours, Close friends and Notes.
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Campaign Assets</h2>
+        
+        <div class="media-grid">
+            <!-- First Video -->
+            <div class="video-container">
+                <iframe src="https://player.vimeo.com/video/852738531" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                        title="Everyday Creativity Film 1">
+                </iframe>
+            </div>
+            
+            <!-- Second Video -->
+            <div class="video-container">
+                <iframe src="https://player.vimeo.com/video/852738437" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                        title="Everyday Creativity Film 2">
+                </iframe>
+            </div>
+            <div class="media-caption">We've launched the campaign with two films, that follows a group of friends through their youth, a shared memory that everyone has.</div>
+            
+            <!-- Supporting Images -->
+            <div class="campaign-images">
+                <img src="images/creativity1.png" alt="Everyday Creativity Campaign Asset 1" loading="lazy">
+                <img src="images/creativity2.png" alt="Everyday Creativity Campaign Asset 2" loading="lazy">
+                <img src="images/creativity3.png" alt="Everyday Creativity Campaign Asset 3" loading="lazy">
+                <img src="images/creativity4.png" alt="Everyday Creativity Campaign Asset 4" loading="lazy">
+            </div>
+            <div class="media-caption">For more holistic assets please visit my creative partner <a href="https://veitmoeller.com/instagram" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">Veit Moeller's page</a>.</div>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work and respects brand intellectual property rights.
+    </div>
+
+    <script>
+        // Home circle click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
+        });
+        
+        // Back arrow functionality
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://jb-kang.com/index';
+            }
+        }
+    </script>
+
+</body>
+</html>
