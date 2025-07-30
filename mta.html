@@ -103,6 +103,10 @@
             border-bottom-color: #FF6600;
         }
         
+        .nav-links a.current {
+            color: #000;
+        }
+        
         /* CONSISTENT HEADER STYLING */
         .page-title {
             font-size: 2.8rem;
@@ -114,29 +118,25 @@
         
         /* META SECTION - Use for project pages */
         .project-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 50px;
-            padding: 20px 0;
-            border-top: 1px solid #e0e0e0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
             border-bottom: 1px solid #e0e0e0;
         }
         
         .meta-item {
             display: flex;
-            align-items: baseline;
-            gap: 8px;
-            min-width: 120px;
+            flex-direction: column;
         }
         
         .meta-label {
             font-size: 0.8rem;
-            font-weight: 500;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #888;
-            white-space: nowrap;
+            margin-bottom: 5px;
         }
         
         .meta-value {
@@ -162,6 +162,18 @@
             line-height: 1.8;
             color: #333;
             max-width: 700px;
+        }
+        
+        .section-text a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .section-text a:hover {
+            color: #FF6600;
+            border-bottom-color: #FF6600;
         }
         
         /* MEDIA ELEMENTS */
@@ -194,6 +206,27 @@
             font-style: italic;
         }
         
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .reel-video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9/16;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            border: 2px dashed #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
         .campaign-images {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -204,6 +237,17 @@
         .campaign-images img {
             width: 100%;
             height: auto;
+        }
+        
+        .campaign-images .image-placeholder {
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            border: 2px dashed #ddd;
+            aspect-ratio: 16/9;
         }
         
         /* LINKS AND COVERAGE */
@@ -228,11 +272,12 @@
         /* FOOTER DISCLAIMER */
         .disclaimer {
             margin-top: 80px;
-            padding: 20px 0;
+            padding-top: 40px;
             border-top: 1px solid #e0e0e0;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: #777;
             line-height: 1.5;
+            font-style: italic;
         }
         
         /* RESPONSIVE DESIGN */
@@ -246,12 +291,8 @@
             }
             
             .project-meta {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .meta-item {
-                min-width: auto;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             
             .section-text {
@@ -262,37 +303,30 @@
                 gap: 20px;
             }
             
+            .reels-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
             .campaign-images {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 15px;
             }
             
             .nav {
                 font-size: 0.9rem;
-                flex-wrap: nowrap;
             }
             
             .nav-home-container {
-                margin-right: 5px;
-                flex-shrink: 0;
-            }
-            
-            .nav-home {
-                white-space: nowrap;
+                margin-right: 15px;
             }
             
             .nav-arrow {
-                margin-right: 5px;
-                flex-shrink: 0;
+                margin-right: 15px;
             }
             
             .nav-links {
-                gap: 5px;
-                flex-shrink: 1;
-            }
-            
-            .nav-links a {
-                white-space: nowrap;
+                gap: 12px;
             }
         }
     </style>
@@ -306,7 +340,7 @@
             </div>
             <span class="nav-arrow" onclick="goBack()">←</span>
             <div class="nav-links">
-                <a href="https://jb-kang.com/selected-works">Work</a>
+                <a href="https://jb-kang.com/selected-works" class="current">Work</a>
                 <a href="https://jb-kang.com/perfect-objects">Objects</a>
                 <a href="https://jb-kang.com/quotes">Quotes</a>
                 <a href="https://jb-kang.com/contacts">Contact</a>
@@ -342,9 +376,9 @@
         <div class="section-text">
             The NYC subway system carries over 5 million riders daily, making it one of the largest captive audiences in the world. Instagram partnered with the Metropolitan Transportation Authority to transform the daily commute into an opportunity for creative discovery and community connection.
             <br><br>
-            We partnered with beloved New York creators to give them the ultimate canvas — the subway itself — to celebrate their creativity. Featured creators include <a href="https://instagram.com/subwaycreatures" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">@subwaycreatures</a>, <a href="https://instagram.com/whatisnewyork" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">@whatisnewyork</a> and <a href="https://instagram.com/subwayhands" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">@subwayhands</a>, showcasing the most unique-yet-relatable moments from the subway.
+            We partnered with beloved New York creators to give them the ultimate canvas — the subway itself — to celebrate their creativity. Featured creators include <a href="https://instagram.com/subwaycreatures" target="_blank">@subwaycreatures</a>, <a href="https://instagram.com/whatisnewyork" target="_blank">@whatisnewyork</a> and <a href="https://instagram.com/subwayhands" target="_blank">@subwayhands</a>, showcasing the most unique-yet-relatable moments from the subway.
             <br><br>
-            As the final celebration of this iconic piece of NYC history, we released the last ever branded Metrocard. We partnered with three iconic New York City creators <a href="https://instagram.com/newyorknico" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">@newyorknico</a>, <a href="https://instagram.com/subwaytakes" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">@subwaytakes</a> and <a href="https://instagram.com/overheardnewyork" target="_blank" style="color: #333; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s ease;">@overheardnewyork</a> to create limited edition cards that celebrate the spirit of creativity that lives in the underground of the NYC subway.
+            As the final celebration of this iconic piece of NYC history, we released the last ever branded Metrocard. We partnered with three iconic New York City creators <a href="https://instagram.com/newyorknico" target="_blank">@newyorknico</a>, <a href="https://instagram.com/subwaytakes" target="_blank">@subwaytakes</a> and <a href="https://instagram.com/overheardnewyork" target="_blank">@overheardnewyork</a> to create limited edition cards that celebrate the spirit of creativity that lives in the underground of the NYC subway.
         </div>
     </div>
 
@@ -365,30 +399,27 @@
             <div class="media-caption">Out-of-home campaign animation showcasing the subway takeover and creator collaborations.</div>
             
             <!-- Instagram Reels Row -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;">
-                <video style="width: 100%; height: auto; aspect-ratio: 9/16; border-radius: 8px;" autoplay muted loop playsinline>
-                    <source src="images/mta-reel-1.mp4" type="video/mp4">
+            <div class="reels-grid">
+                <div class="reel-video">
                     [Instagram Reel 1]
-                </video>
-                <video style="width: 100%; height: auto; aspect-ratio: 9/16; border-radius: 8px;" autoplay muted loop playsinline>
-                    <source src="images/mta-reel-2.mp4" type="video/mp4">
+                </div>
+                <div class="reel-video">
                     [Instagram Reel 2]
-                </video>
-                <video style="width: 100%; height: auto; aspect-ratio: 9/16; border-radius: 8px;" autoplay muted loop playsinline>
-                    <source src="images/mta-reel-3.mp4" type="video/mp4">
+                </div>
+                <div class="reel-video">
                     [Instagram Reel 3]
-                </video>
+                </div>
             </div>
             <div class="media-caption">Instagram Reels content featuring creator collaborations and behind-the-scenes moments.</div>
             
             <!-- 4 Images Grid -->
-            <div class="campaign-images" style="margin-top: 40px;">
-                <img src="images/instagram-mta-1.jpg" alt="Campaign Image 1" style="width: 100%; height: auto;">
-                <img src="images/instagram-mta-2.jpg" alt="Campaign Image 2" style="width: 100%; height: auto;">
-                <img src="images/instagram-mta-3.jpg" alt="Campaign Image 3" style="width: 100%; height: auto;">
-                <img src="images/instagram-mta-4.jpg" alt="Campaign Image 4" style="width: 100%; height: auto;">
+            <div class="campaign-images">
+                <div class="image-placeholder">Campaign Image 1</div>
+                <div class="image-placeholder">Campaign Image 2</div>
+                <div class="image-placeholder">Campaign Image 3</div>
+                <div class="image-placeholder">Campaign Image 4</div>
             </div>
-            <div class="media-caption" style="margin-top: 10px;">Additional campaign assets showcasing the partnership across multiple touchpoints in the NYC subway system.</div>
+            <div class="media-caption">Additional campaign assets showcasing the partnership across multiple touchpoints in the NYC subway system.</div>
         </div>
     </div>
 
