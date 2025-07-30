@@ -103,6 +103,10 @@
             border-bottom-color: #FF6600;
         }
         
+        .nav-links a.current {
+            color: #000;
+        }
+        
         /* CONSISTENT HEADER STYLING */
         .page-title {
             font-size: 2.8rem;
@@ -114,29 +118,25 @@
         
         /* META SECTION - Use for project pages */
         .project-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 50px;
-            padding: 20px 0;
-            border-top: 1px solid #e0e0e0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
             border-bottom: 1px solid #e0e0e0;
         }
         
         .meta-item {
             display: flex;
-            align-items: baseline;
-            gap: 8px;
-            min-width: 120px;
+            flex-direction: column;
         }
         
         .meta-label {
             font-size: 0.8rem;
-            font-weight: 500;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #888;
-            white-space: nowrap;
+            margin-bottom: 5px;
         }
         
         .meta-value {
@@ -228,11 +228,12 @@
         /* FOOTER DISCLAIMER */
         .disclaimer {
             margin-top: 80px;
-            padding: 20px 0;
+            padding-top: 40px;
             border-top: 1px solid #e0e0e0;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: #777;
             line-height: 1.5;
+            font-style: italic;
         }
         
         /* RESPONSIVE DESIGN */
@@ -246,12 +247,8 @@
             }
             
             .project-meta {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .meta-item {
-                min-width: auto;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             
             .section-text {
@@ -269,30 +266,18 @@
             
             .nav {
                 font-size: 0.9rem;
-                flex-wrap: nowrap;
             }
             
             .nav-home-container {
-                margin-right: 5px;
-                flex-shrink: 0;
-            }
-            
-            .nav-home {
-                white-space: nowrap;
+                margin-right: 15px;
             }
             
             .nav-arrow {
-                margin-right: 5px;
-                flex-shrink: 0;
+                margin-right: 15px;
             }
             
             .nav-links {
-                gap: 5px;
-                flex-shrink: 1;
-            }
-            
-            .nav-links a {
-                white-space: nowrap;
+                gap: 12px;
             }
         }
     </style>
@@ -306,7 +291,7 @@
             </div>
             <span class="nav-arrow" onclick="goBack()">←</span>
             <div class="nav-links">
-                <a href="https://jb-kang.com/selected-works">Work</a>
+                <a href="https://jb-kang.com/selected-works" class="current">Work</a>
                 <a href="https://jb-kang.com/perfect-objects">Objects</a>
                 <a href="https://jb-kang.com/quotes">Quotes</a>
                 <a href="https://jb-kang.com/contacts">Contact</a>
