@@ -183,71 +183,50 @@
             margin-top: 30px;
         }
         
-        .media-item {
-            background-color: #f8f8f8;
-            border-radius: 8px;
-            aspect-ratio: 16/10;
+        .media-section {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 1rem;
-            border: 2px dashed #ddd;
-        }
-        
-        .media-item.large {
-            aspect-ratio: 16/9;
+            flex-direction: column;
         }
         
         .media-caption {
             font-size: 0.9rem;
             color: #666;
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: italic;
         }
         
-        .reels-grid {
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* INSTAGRAM EMBEDS ROW */
+        .instagram-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         
-        .reel-video {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 9/16;
+        .instagram-embed {
             border-radius: 8px;
+            overflow: hidden;
             background-color: #f8f8f8;
-            border: 2px dashed #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+        
+        .instagram-embed blockquote {
+            margin: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .creator-name {
+            font-size: 0.85rem;
             color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .campaign-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .campaign-images img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .campaign-images .image-placeholder {
-            background-color: #f8f8f8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-            border: 2px dashed #ddd;
-            aspect-ratio: 16/9;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
         
         /* LINKS AND COVERAGE */
@@ -303,12 +282,7 @@
                 gap: 20px;
             }
             
-            .reels-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .campaign-images {
+            .instagram-row {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
@@ -383,43 +357,47 @@
     </div>
 
     <div class="content-section">
-        <h2 class="section-title">Creative Execution</h2>
+        <h2 class="section-title">Creative Assets</h2>
         
         <div class="media-grid">
             <!-- Hero Image -->
-            <div class="media-item large">
-                [Limited Edition MetroCards Hero Image]
+            <div class="media-section">
+                <img src="images/mta-hero-metrocards.jpg" alt="Limited Edition MetroCards" class="hero-image">
+                <div class="media-caption">The last ever branded MetroCards featuring collaborations with @newyorknico, @subwaytakes and @overheardnewyork.</div>
             </div>
-            <div class="media-caption">The last ever branded MetroCards featuring collaborations with @newyorknico, @subwaytakes and @overheardnewyork.</div>
             
-            <!-- Auto-playing Video -->
-            <div class="media-item large">
-                [Auto-playing OOH Animation Video]
+            <!-- OOH Video -->
+            <div class="media-section">
+                <iframe src="https://player.vimeo.com/video/1105924662" 
+                        width="100%" 
+                        height="450" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
+                        style="aspect-ratio: 16/9; height: auto; border-radius: 8px;"
+                        title="MTA OOH Campaign Video">
+                </iframe>
+                <div class="media-caption">Out-of-home campaign animation showcasing the subway takeover and creator collaborations.</div>
             </div>
-            <div class="media-caption">Out-of-home campaign animation showcasing the subway takeover and creator collaborations.</div>
             
-            <!-- Instagram Reels Row -->
-            <div class="reels-grid">
-                <div class="reel-video">
-                    [Instagram Reel 1]
+            <!-- Instagram Embeds Row -->
+            <div class="media-section">
+                <div class="instagram-row">
+                    <div class="instagram-embed">
+                        <div class="creator-name">@newyorknico</div>
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DDM2DKHxhu-/?hl=en" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="instagram-embed">
+                        <div class="creator-name">@subwaytakes</div>
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DDxVWElyNbH/?hl=en" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="instagram-embed">
+                        <div class="creator-name">@adammosseri</div>
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DDfEbzcvVJu/?img_index=1" data-instgrm-version="14"></blockquote>
+                    </div>
                 </div>
-                <div class="reel-video">
-                    [Instagram Reel 2]
-                </div>
-                <div class="reel-video">
-                    [Instagram Reel 3]
-                </div>
+                <div class="media-caption">Instagram content featuring creator collaborations and behind-the-scenes moments from the campaign launch.</div>
             </div>
-            <div class="media-caption">Instagram Reels content featuring creator collaborations and behind-the-scenes moments.</div>
-            
-            <!-- 4 Images Grid -->
-            <div class="campaign-images">
-                <div class="image-placeholder">Campaign Image 1</div>
-                <div class="image-placeholder">Campaign Image 2</div>
-                <div class="image-placeholder">Campaign Image 3</div>
-                <div class="image-placeholder">Campaign Image 4</div>
-            </div>
-            <div class="media-caption">Additional campaign assets showcasing the partnership across multiple touchpoints in the NYC subway system.</div>
         </div>
     </div>
 
@@ -436,6 +414,7 @@
         <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work completed at Instagram and respects brand intellectual property rights.
     </div>
 
+    <script async src="//www.instagram.com/embed.js"></script>
     <script>
         // Home circle click functionality
         document.addEventListener('DOMContentLoaded', function() {
