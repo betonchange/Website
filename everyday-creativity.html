@@ -167,13 +167,18 @@
         .video-container {
             position: relative;
             width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
             margin-bottom: 30px;
         }
         
         .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 450px;
-            display: block;
+            height: 100%;
         }
         
         .media-caption {
@@ -296,7 +301,7 @@
         <h2 class="section-title">Campaign Films</h2>
         
         <div class="video-container">
-            <iframe src="https://player.vimeo.com/video/852738531?title=0&byline=0&portrait=0&controls=0&autoplay=0&loop=0&muted=0&background=0&transparent=0&responsive=1" 
+            <iframe src="https://player.vimeo.com/video/852738531?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                     title="Small Fries">
@@ -304,7 +309,7 @@
         </div>
         
         <div class="video-container">
-            <iframe src="https://player.vimeo.com/video/852738437?title=0&byline=0&portrait=0&controls=0&autoplay=0&loop=0&muted=0&background=0&transparent=0&responsive=1" 
+            <iframe src="https://player.vimeo.com/video/852738437?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                     title="Send Off">
@@ -318,7 +323,7 @@
         <h2 class="section-title">Campaign Assets</h2>
         
         <div class="video-container">
-            <iframe src="https://player.vimeo.com/video/1105645922?title=0&byline=0&portrait=0&controls=0&autoplay=0&loop=0&muted=0&background=0&transparent=0&responsive=1" 
+            <iframe src="https://player.vimeo.com/video/1105645922?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                     title="Campaign Asset Video 1">
@@ -326,7 +331,7 @@
         </div>
         
         <div class="video-container">
-            <iframe src="https://player.vimeo.com/video/1105645916?title=0&byline=0&portrait=0&controls=0&autoplay=0&loop=0&muted=0&background=0&transparent=0&responsive=1" 
+            <iframe src="https://player.vimeo.com/video/1105645916?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                     title="Campaign Asset Video 2">
@@ -334,7 +339,7 @@
         </div>
         
         <div class="video-container">
-            <iframe src="https://player.vimeo.com/video/1105645908?title=0&byline=0&portrait=0&controls=0&autoplay=0&loop=0&muted=0&background=0&transparent=0&responsive=1" 
+            <iframe src="https://player.vimeo.com/video/1105645908?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                     title="Campaign Asset Video 3">
@@ -344,7 +349,7 @@
         <div class="media-caption">In the short form films, our aim was to capture the everyday small moments, but potent with big feelings.</div>
         
         <div class="video-container">
-            <iframe src="https://player.vimeo.com/video/1105645862?title=0&byline=0&portrait=0&controls=0&autoplay=0&loop=0&muted=0&background=0&transparent=0&responsive=1" 
+            <iframe src="https://player.vimeo.com/video/1105645862?title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                     title="OOH Video">
