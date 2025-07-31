@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JB Kang</title>
+    <title>Veilance Seque Card Wallet - JB Kang</title>
     
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -27,8 +27,6 @@
             padding: 40px 20px;
             max-width: 800px;
             margin: 0 auto;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
         }
         
         .header {
@@ -56,6 +54,7 @@
             margin-right: 8px;
             cursor: pointer;
             transition: transform 0.2s ease;
+            flex-shrink: 0;
         }
         
         .home-circle:hover {
@@ -63,7 +62,7 @@
         }
         
         .nav-home {
-            color: #000;
+            color: #666;
             text-decoration: none;
             font-weight: 500;
             border-bottom: 1px solid transparent;
@@ -104,6 +103,11 @@
             border-bottom-color: #FF6600;
         }
         
+        .nav-links a.current {
+            color: #000;
+        }
+        
+        /* CONSISTENT HEADER STYLING */
         .page-title {
             font-size: 2.8rem;
             font-weight: 300;
@@ -112,7 +116,35 @@
             letter-spacing: -0.02em;
         }
         
-        .intro-text {
+        .product-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .meta-value {
+            font-size: 0.95rem;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .intro {
             font-size: 1.05rem;
             line-height: 1.8;
             color: #333;
@@ -120,102 +152,120 @@
             max-width: 700px;
         }
         
-        .intro-text p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .highlight {
-            font-weight: 500;
-            color: #000;
-        }
-        
-        .citation {
-            color: #999;
-            text-decoration: none;
-            font-size: 0.7rem;
-            vertical-align: super;
-            transition: color 0.2s ease;
-            margin-left: 1px;
-        }
-        
-        .citation:hover {
-            color: #FF6600;
-        }
-        
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background-color: #e0e0e0;
-            margin: 60px 0 40px 0;
-        }
-        
-        .resume-section {
+        .gallery-section {
             margin-bottom: 60px;
         }
         
-        .resume-header {
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .image-container {
+            aspect-ratio: 4/3;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .image-commentary {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .navigation-footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            margin-bottom: 20px;
+        }
+        
+        .nav-product {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
             transition: all 0.2s ease;
         }
         
-        .resume-header:hover {
-            color: #FF6600;
-        }
-        
-        .resume-header:hover .resume-toggle {
-            color: #FF6600;
-        }
-        
-        .resume-title {
-            font-size: 1.4rem;
+        .nav-product:hover {
             color: #000;
-            font-weight: 500;
+            border-bottom-color: #FF6600;
         }
         
-        .resume-toggle {
-            font-size: 1.2rem;
-            color: #666;
-            transition: transform 0.2s ease;
+        .nav-product.disabled {
+            opacity: 0.3;
+            pointer-events: none;
         }
         
-        .resume-content {
-            margin-top: 30px;
-        }
-        
-        .role-item {
-            margin-bottom: 40px;
-        }
-        
-        .role-period {
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 4px;
-        }
-        
-        .role-title {
-            font-size: 1rem;
-            color: #000;
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-        
-        .role-company {
-            font-size: 1rem;
-            color: #666;
-        }
-        
-        .footnote {
-            font-size: 0.9rem;
-            color: #666;
-            text-align: center;
-            margin-top: 80px;
-            padding-top: 20px;
+        .disclaimer-section {
+            margin-top: 60px;
+            padding-top: 40px;
             border-top: 1px solid #e0e0e0;
+        }
+        
+        .disclaimer-text {
+            font-size: 0.8rem;
+            color: #777;
             line-height: 1.5;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .sources {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .sources-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        .sources-list {
+            line-height: 1.6;
+        }
+        
+        .source-link {
+            color: #777;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .source-link:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
         }
         
         @media (max-width: 768px) {
@@ -227,9 +277,25 @@
                 font-size: 2.2rem;
             }
             
-            .intro-text {
+            .product-meta {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .intro {
                 font-size: 1rem;
                 margin-bottom: 40px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .navigation-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
             }
             
             .nav {
@@ -260,86 +326,95 @@
             <span class="nav-arrow" onclick="goBack()">←</span>
             <div class="nav-links">
                 <a href="https://jb-kang.com/selected-works">Work</a>
-                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/perfect-objects" class="current">Objects</a>
                 <a href="https://jb-kang.com/quotes">Quotes</a>
                 <a href="https://jb-kang.com/contacts">Contact</a>
             </div>
         </nav>
 
-        <h1 class="page-title">JB (Jong Beom) Kang</h1>
+        <h1 class="page-title">Seque Card Wallet</h1>
         
-        <div class="intro-text">
-            <p>I started my career at P&G in Asia, helping grow SK-II as the #1 prestige skincare brand in Asia. I've since spent 9 years growing with Meta in various marketing roles - Brand, Product, Policy, Business - and currently <span class="highlight">Integrated Marketing Lead on Instagram</span>, based in NYC.</p>
-            
-            <p>I've been lucky to work on brands through transformational phases; building enduring brand strategy & platforms <a href="change-destiny.html" class="citation">[1]</a><a href="more-together.html" class="citation">[2]</a><a href="everyday-creativity.html" class="citation">[3]</a>, launching new products <a href="rewards.html" class="citation">[4]</a>, new retail spaces <a href="pitera-house.html" class="citation">[5]</a>, and sharing the canvas with great businesses and creators <a href="she-means-business.html" class="citation">[6]</a><a href="made-by.html" class="citation">[7]</a><a href="mta.html" class="citation">[8]</a>. It's always been getting closer to the audience and telling the story from their perspective.</p>
-            
-            <p>I'm a designer at heart. I have a deep appreciation for thoughtfully designed products <a href="https://jb-kang.com/perfect-objects" class="citation">[9]</a>, and hope to leave one behind. Ultimately, without a great product - there's no great brand.</p>
-            
-            <p>It's important to me that technology creates positive change. I will continue to choose to build and fix problems from within, and tell stories that inspire more good.</p>
+        <div class="product-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Veilance</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Designer</div>
+                <div class="meta-value">Arc'teryx Design Team</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Country</div>
+                <div class="meta-value">Canada</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">2018</div>
+            </div>
+        </div>
+        
+        <div class="intro">
+            A wallet that gets better with every day you carry it. Technical materials meet thoughtful design in something that feels inevitable once you hold it. The leather molds to your cards over time, creating this perfect clam-like fit that feels custom-made. I love how it pairs with my iPhone - the rounded corners align perfectly, making them feel like they were designed together. Veilance removed everything unnecessary, even the stitches, leaving only what serves a purpose. It's the kind of object that makes you appreciate good design every time you reach for it.
         </div>
     </div>
 
-    <div class="section-divider"></div>
-
-    <div class="resume-section">
-        <div class="resume-header" onclick="toggleExperience()">
-            <span class="resume-title">Experience</span>
-            <span class="resume-toggle" id="experienceToggle">→</span>
-        </div>
-        
-        <div class="resume-content" id="experienceContent" style="display: none;">
-            <div class="role-item">
-                <div class="role-period">2023 — Now</div>
-                <div class="role-title">Global Integrated Marketing Lead</div>
-                <div class="role-company">Instagram, New York</div>
+    <div class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/veilance1.JPG" alt="Veilance wallet no unnecessary details" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    Even the stitches were removed. It's pure function without ornament - the kind of restraint that makes everyday objects feel special.
+                </div>
             </div>
             
-            <div class="role-item">
-                <div class="role-period">2022 — 2022</div>
-                <div class="role-title">Brand Manager, Corporate Brand</div>
-                <div class="role-company">Meta, New York</div>
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/veilance2.JPG" alt="Veilance wallet quiet confidence" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    The leather learns from your cards, creating this perfect clam-like enclosure. After months of use, it feels custom-made for exactly what you carry. Incredibly satisfying to touch.
+                </div>
             </div>
             
-            <div class="role-item">
-                <div class="role-period">2019 — 2022</div>
-                <div class="role-title">Brand Manager, Facebook App</div>
-                <div class="role-company">Meta, New York</div>
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/veilance3.jpg" alt="Veilance wallet iPhone companion" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    The rounded corners align perfectly with my iPhone's edges. They feel like they were designed to be held together - two objects that become one in your hand.
+                </div>
             </div>
             
-            <div class="role-item">
-                <div class="role-period">2018 — 2019</div>
-                <div class="role-title">Product Marketing Manager</div>
-                <div class="role-company">Meta, New York & Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2016 — 2018</div>
-                <div class="role-title">Business & Policy Marketing Manager, APAC</div>
-                <div class="role-company">Meta, Seoul & Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2015 — 2016</div>
-                <div class="role-title">Product Innovation Manager, SK-II</div>
-                <div class="role-company">Procter & Gamble, Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2012 — 2015</div>
-                <div class="role-title">Global Brand Manager, SK-II</div>
-                <div class="role-company">Procter & Gamble, Singapore</div>
-            </div>
-            
-            <div class="role-item">
-                <div class="role-period">2011 — 2012</div>
-                <div class="role-title">Country Manager, SK-II MEN</div>
-                <div class="role-company">Procter & Gamble, Seoul</div>
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="/images/veilance4.jpg" alt="Veilance art based in science" loading="lazy">
+                </div>
+                <div class="image-commentary">
+                    The product is a prime example of Veilance designer **Taka Kasuga's vision, that "veilance is art based in science" - essential shapes reinvented by rethinking how it's made. **
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="footnote">
-        This website was made with the help of Claude<span style="color: #FF6600;">*</span>
+    <div class="navigation-footer">
+        <a href="https://jb-kang.com/sony-walkman" class="nav-product">← Previous: Sony Walkman</a>
+        <a href="https://jb-kang.com/obsess-together" class="nav-product">Next: Beosound 9000 →</a>
+    </div>
+
+    <div class="disclaimer-section">
+        <p class="disclaimer-text">
+            Product images used for editorial/educational purposes. All images © their respective owners. Not affiliated with Veilance or Arc'teryx. Will remove upon request.
+        </p>
+        <div class="sources">
+            <p class="sources-title">Sources:</p>
+            <p class="sources-list">
+                [1] <a href="https://veilance.com/us/en/shop/seque-card-wallet" class="source-link" target="_blank" rel="noopener noreferrer">Veilance Seque Card Wallet Official Product Page</a><br>
+                [2] <a href="https://www.arcteryx.com/us/en/explore/advanced-materials" class="source-link" target="_blank" rel="noopener noreferrer">Arc'teryx Design Philosophy</a><br>
+                [3] <a href="https://www.carryology.com/reviews/wallets/veilance-seque-card-wallet-review/" class="source-link" target="_blank" rel="noopener noreferrer">Carryology - Veilance Seque Card Wallet Review</a>
+            </p>
+        </div>
     </div>
 
     <script>
@@ -358,21 +433,7 @@
             if (document.referrer && document.referrer !== window.location.href) {
                 window.history.back();
             } else {
-                window.location.href = 'https://jb-kang.com/index';
-            }
-        }
-        
-        // Experience toggle functionality
-        function toggleExperience() {
-            const content = document.getElementById('experienceContent');
-            const toggle = document.getElementById('experienceToggle');
-            
-            if (content.style.display === 'none' || content.style.display === '') {
-                content.style.display = 'block';
-                toggle.textContent = '↓';
-            } else {
-                content.style.display = 'none';
-                toggle.textContent = '→';
+                window.location.href = 'https://jb-kang.com/perfect-objects';
             }
         }
     </script>
