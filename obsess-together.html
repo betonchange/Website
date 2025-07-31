@@ -228,24 +228,15 @@
             border-radius: 8px;
             overflow: hidden;
             background-color: #f8f8f8;
+            height: 400px; /* Set consistent height for all items */
         }
         
         .uniform-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
-        }
-        
-        /* For the taller third image, add max-height and crop from top */
-        .uniform-item:nth-child(3) {
-            max-height: 620px; /* Approximate height of AR images (495x620) */
-            overflow: hidden;
-        }
-        
-        .uniform-item:nth-child(3) img {
             object-fit: cover;
-            object-position: center bottom;
-            height: 620px;
+            object-position: center bottom; /* Crop from top, keep bottom */
         }
         
         /* LINKS AND COVERAGE */
@@ -452,7 +443,7 @@
             
             <!-- Takeover Image -->
             <div class="media-section">
-                <img src="obsess-together4.png" alt="Facebook Group Takeover Event" class="hero-image">
+                <img src="/images/obsess-together4.png" alt="Facebook Group Takeover Event" class="hero-image">
                 <div class="media-caption">...the admins of the pages joined the fun, running special events at their pages to welcome the new members.</div>
             </div>
         </div>
