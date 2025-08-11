@@ -307,163 +307,95 @@
     </div>
 
     <script>
-        class QuoteManager {
-            constructor() {
-                this.quotes = [];
-                this.shuffledQuotes = [];
-                this.currentShuffleIndex = 0;
-                this.isLoading = false;
-                this.quotesUrl = '/quotes.json';
+        // Simple, direct approach
+        let quotes = [];
+        let currentIndex = 0;
+
+        // Load quotes immediately
+        async function loadQuotes() {
+            try {
+                console.log('Starting to load quotes...');
+                const response = await fetch('/quotes.json');
+                const data = await response.json();
+                quotes = data.quotes || [];
                 
-                this.fallbackQuotes = [
+                console.log('Loaded', quotes.length, 'quotes');
+                
+                if (quotes.length > 0) {
+                    // Shuffle quotes
+                    for (let i = quotes.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [quotes[i], quotes[j]] = [quotes[j], quotes[i]];
+                    }
+                    
+                    // Show first quote immediately
+                    showQuote(quotes[0]);
+                } else {
+                    console.error('No quotes found in data');
+                }
+            } catch (error) {
+                console.error('Failed to load quotes:', error);
+                // Use fallback
+                quotes = [
                     {
                         text: "We cannot direct the wind, but we can adjust our sails",
                         author: "Aristotle",
                         occupation: "",
                         source: "",
                         source_url: ""
-                    },
-                    {
-                        text: "Think of yourself as dead. You have lived your life. Now take what's left and live it properly.",
-                        author: "Marcus Aurelius",
-                        occupation: "Roman Emperor",
-                        source: "",
-                        source_url: ""
                     }
                 ];
-                
-                this.initializeQuotes();
+                showQuote(quotes[0]);
             }
+        }
 
-            async initializeQuotes() {
-                try {
-                    this.isLoading = true;
-                    
-                    const response = await fetch(this.quotesUrl);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    this.quotes = data.quotes || [];
-                    
-                    if (this.quotes.length > 0) {
-                        this.initializeShuffledQuotes();
-                        this.displayInitialQuote();
-                    } else {
-                        throw new Error('No quotes found');
-                    }
-                    
-                } catch (error) {
-                    console.error('Failed to load quotes:', error);
-                    this.useFallbackQuotes();
-                } finally {
-                    this.isLoading = false;
-                }
-            }
-
-            useFallbackQuotes() {
-                this.quotes = this.fallbackQuotes;
-                this.initializeShuffledQuotes();
-                this.displayInitialQuote();
-            }
-
-            shuffleArray(array) {
-                const shuffled = [...array];
-                for (let i = shuffled.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-                }
-                return shuffled;
-            }
-
-            initializeShuffledQuotes() {
-                this.shuffledQuotes = this.shuffleArray(this.quotes);
-                this.currentShuffleIndex = 0;
-            }
-
-            getNextQuote() {
-                if (this.isLoading || this.quotes.length === 0) return null;
-                
-                if (this.currentShuffleIndex >= this.shuffledQuotes.length) {
-                    this.initializeShuffledQuotes();
-                }
-
-                const quote = this.shuffledQuotes[this.currentShuffleIndex];
-                this.currentShuffleIndex++;
-                return quote;
-            }
-
-            displayInitialQuote() {
-                const selectedQuote = this.getNextQuote();
-                if (selectedQuote) {
-                    // Show quote immediately, no delays
-                    setTimeout(() => {
-                        this.updateQuoteDisplay(selectedQuote);
-                    }, 50); // Very short delay to ensure DOM is ready
-                }
-            }
-
-            updateQuoteDisplay(quote) {
-                const quoteText = document.getElementById('quoteText');
-                const quoteAuthor = document.getElementById('quoteAuthor');
-                const quoteSource = document.getElementById('quoteSource');
-                
-                console.log('Updating quote display with:', quote);
-                
-                if (!quoteText) {
-                    console.error('Quote text element not found');
-                    return;
-                }
-                
+        function showQuote(quote) {
+            console.log('Showing quote:', quote);
+            
+            const quoteText = document.getElementById('quoteText');
+            const quoteAuthor = document.getElementById('quoteAuthor');
+            const quoteSource = document.getElementById('quoteSource');
+            
+            if (quoteText) {
                 quoteText.textContent = `"${quote.text}"`;
-                
-                let authorText = quote.author || '';
-                if (quote.occupation && quote.occupation.trim()) {
-                    authorText += `, ${quote.occupation}`;
-                }
-                
-                if (authorText && quoteAuthor) {
+                console.log('Updated quote text');
+            } else {
+                console.error('Quote text element not found');
+            }
+            
+            let authorText = quote.author || '';
+            if (quote.occupation && quote.occupation.trim()) {
+                authorText += `, ${quote.occupation}`;
+            }
+            
+            if (quoteAuthor) {
+                if (authorText) {
                     quoteAuthor.textContent = authorText;
                     quoteAuthor.style.display = 'block';
-                } else if (quoteAuthor) {
+                } else {
                     quoteAuthor.style.display = 'none';
                 }
-                
-                if (quote.source && quote.source.trim() && quoteSource) {
+            }
+            
+            if (quoteSource) {
+                if (quote.source && quote.source.trim()) {
                     if (quote.source_url && quote.source_url.trim()) {
                         quoteSource.innerHTML = `<a href="${quote.source_url}" target="_blank" rel="noopener noreferrer">${quote.source}</a>`;
                     } else {
                         quoteSource.textContent = quote.source;
                     }
                     quoteSource.style.display = 'block';
-                } else if (quoteSource) {
+                } else {
                     quoteSource.style.display = 'none';
                 }
-                
-                console.log('Quote display updated successfully');
             }
         }
 
-        // Global variable
-        let quoteManager;
-
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            quoteManager = new QuoteManager();
-            
-            // Home circle click functionality
-            const homeCircle = document.querySelector('.home-circle');
-            if (homeCircle) {
-                homeCircle.addEventListener('click', function() {
-                    window.location.href = 'https://jb-kang.com/index';
-                });
-            }
-        });
-
-        // Get random quote function
         function getRandomQuote() {
-            if (!quoteManager) return;
+            if (quotes.length === 0) {
+                console.log('No quotes available');
+                return;
+            }
             
             const quoteText = document.getElementById('quoteText');
             const quoteAttribution = document.getElementById('quoteAttribution');
@@ -476,16 +408,10 @@
             quoteAttribution.style.opacity = '0';
 
             setTimeout(() => {
-                const selectedQuote = quoteManager.getNextQuote();
-                if (!selectedQuote) {
-                    nextNoteBtn.disabled = false;
-                    nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
-                    return;
-                }
-
+                currentIndex = (currentIndex + 1) % quotes.length;
+                showQuote(quotes[currentIndex]);
+                
                 setTimeout(() => {
-                    quoteManager.updateQuoteDisplay(selectedQuote);
-                    
                     quoteText.style.opacity = '1';
                     quoteAttribution.style.opacity = '1';
                     
@@ -494,6 +420,22 @@
                 }, 200);
             }, 400);
         }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting initialization...');
+            
+            // Home circle click functionality
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
+            
+            // Load quotes
+            loadQuotes();
+        });
 
         // Back arrow functionality
         function goBack() {
