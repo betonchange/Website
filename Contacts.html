@@ -1,286 +1,288 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - JB Kang</title>
-    
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="shortcut icon" href="/images/favicon.ico">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
+<!-- Favicon and App Icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background-color: #fff;
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-bottom: 50px;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+    }
+    
+    .nav-home-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .home-circle {
+        width: 12px;
+        height: 12px;
+        background-color: #FF6600;
+        border-radius: 50%;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    
+    .home-circle:hover {
+        transform: scale(1.2);
+    }
+    
+    .nav-home {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-home:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-arrow {
+        color: #666;
+        margin-right: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-arrow:hover {
+        color: #FF6600;
+        transform: translateX(-2px);
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .nav-links a {
+        color: #666;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-links a:hover {
+        color: #000;
+        border-bottom-color: #FF6600;
+    }
+    
+    .nav-links a.current {
+        color: #000;
+    }
+    
+    /* CONSISTENT HEADER STYLING */
+    .page-title {
+        font-size: 2.8rem;
+        font-weight: 300;
+        margin-bottom: 25px;
+        color: #000;
+        letter-spacing: -0.02em;
+    }
+    
+    .intro {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 60px;
+        max-width: 700px;
+    }
+    
+    /* CONTACT LIST STYLING */
+    .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 500px;
+    }
+    
+    .contact-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+    }
+    
+    .contact-label {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #000;
+    }
+    
+    .contact-link {
+        color: #666;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    
+    .contact-link:hover {
+        color: #FF6600;
+    }
+    
+    .contact-arrow {
+        color: #666;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+    
+    .contact-arrow:hover {
+        color: #FF6600;
+    }
+    
+    /* WAVING HAND FEATURE */
+    .wave-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+    }
+    
+    .wave-button {
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .wave-button:hover {
+        transform: scale(1.05);
+    }
+    
+    .wave-button.waving {
+        animation: wave 0.6s ease-in-out;
+    }
+    
+    @keyframes wave {
+        0%, 100% { transform: rotate(0deg) scale(1.05); }
+        25% { transform: rotate(20deg) scale(1.1); }
+        75% { transform: rotate(-20deg) scale(1.1); }
+    }
+    
+    /* FACE PREVIEW */
+    .face-preview {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .face-preview.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .face-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #000;
-            background-color: #fff;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 20px 15px;
         }
         
-        .header {
-            margin-bottom: 50px;
-        }
-        
-        .nav {
-            display: flex;
-            align-items: center;
-            margin-bottom: 40px;
-            font-size: 0.95rem;
-        }
-        
-        .nav-home-container {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-        
-        .home-circle {
-            width: 12px;
-            height: 12px;
-            background-color: #FF6600;
-            border-radius: 50%;
-            margin-right: 8px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .home-circle:hover {
-            transform: scale(1.2);
-        }
-        
-        .nav-home {
-            color: #666;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-        
-        .nav-home:hover {
-            color: #000;
-            border-bottom-color: #FF6600;
-        }
-        
-        .nav-arrow {
-            color: #666;
-            margin-right: 20px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .nav-arrow:hover {
-            color: #FF6600;
-            transform: translateX(-2px);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .nav-links a {
-            color: #666;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #000;
-            border-bottom-color: #FF6600;
-        }
-        
-        .nav-links a.current {
-            color: #000;
-        }
-        
-        /* CONSISTENT HEADER STYLING */
         .page-title {
-            font-size: 2.8rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            color: #000;
-            letter-spacing: -0.02em;
+            font-size: 2.2rem;
         }
         
         .intro {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 60px;
-            max-width: 700px;
+            font-size: 1rem;
+            margin-bottom: 40px;
         }
         
-        /* CONTACT LIST STYLING */
-        .contact-list {
-            display: flex;
-            flex-direction: column;
+        .nav {
+            font-size: 0.9rem;
+        }
+        
+        .nav-home-container {
+            margin-right: 15px;
+        }
+        
+        .nav-arrow {
+            margin-right: 15px;
+        }
+        
+        .nav-links {
             gap: 12px;
-            max-width: 500px;
+        }
+        
+        .contact-list {
+            gap: 10px;
         }
         
         .contact-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
+            padding: 5px 0;
         }
         
-        .contact-label {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #000;
-        }
-        
-        .contact-link {
-            color: #666;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        
-        .contact-link:hover {
-            color: #FF6600;
-        }
-        
-        .contact-arrow {
-            color: #666;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-        
-        .contact-arrow:hover {
-            color: #FF6600;
-        }
-        
-        /* WAVING HAND FEATURE */
         .wave-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
+            bottom: 20px;
+            right: 20px;
         }
         
         .wave-button {
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .wave-button:hover {
-            transform: scale(1.05);
-        }
-        
-        .wave-button.waving {
-            animation: wave 0.6s ease-in-out;
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg) scale(1.05); }
-            25% { transform: rotate(20deg) scale(1.1); }
-            75% { transform: rotate(-20deg) scale(1.1); }
-        }
-        
-        /* FACE PREVIEW */
-        .face-preview {
-            position: absolute;
-            bottom: 60px;
-            right: 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .face-preview.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem;
         }
         
         .face-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            width: 130px;
+            height: 130px;
         }
-        
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 15px;
-            }
-            
-            .page-title {
-                font-size: 2.2rem;
-            }
-            
-            .intro {
-                font-size: 1rem;
-                margin-bottom: 40px;
-            }
-            
-            .nav {
-                font-size: 0.9rem;
-            }
-            
-            .nav-home-container {
-                margin-right: 15px;
-            }
-            
-            .nav-arrow {
-                margin-right: 15px;
-            }
-            
-            .nav-links {
-                gap: 12px;
-            }
-            
-            .contact-list {
-                gap: 10px;
-            }
-            
-            .contact-item {
-                padding: 5px 0;
-            }
-            
-            .wave-container {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .wave-button {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-            
-            .face-image {
-                width: 130px;
-                height: 130px;
-            }
-        }
-    </style>
+    }
+</style>
+
 </head>
 <body>
     <div class="header">
@@ -298,98 +300,98 @@
             </div>
         </nav>
 
-        <h1 class="page-title">Contact</h1>
-    </div>
+    <h1 class="page-title">Contact</h1>
+</div>
 
-    <div class="contact-list">
-        <div class="contact-item">
-            <span class="contact-label">Email</span>
-            <a href="mailto:betonchange@gmail.com" class="contact-link">betonchange@gmail.com</a>
-        </div>
-        
-        <div class="contact-item">
-            <span class="contact-label">LinkedIn</span>
-            <a href="https://www.linkedin.com/in/betonchange" target="_blank" rel="noopener noreferrer" class="contact-arrow">→</a>
-        </div>
-        
-        <div class="contact-item">
-            <span class="contact-label">Instagram</span>
-            <a href="https://instagram.com/betonchange" target="_blank" rel="noopener noreferrer" class="contact-arrow">→</a>
-        </div>
-        
-        <div class="contact-item">
-            <span class="contact-label">Resume</span>
-            <a href="resume.pdf" target="_blank" class="contact-arrow">→</a>
-        </div>
+<div class="contact-list">
+    <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <a href="mailto:betonchange@gmail.com" class="contact-link">betonchange@gmail.com</a>
     </div>
-
-    <!-- Waving Hand Button -->
-    <div class="wave-container">
-        <div class="wave-button" id="waveButton">
-            👋
-        </div>
-        
-        <!-- Face Preview -->
-        <div class="face-preview" id="facePreview">
-            <img src="/images/jb.png" alt="JB Kang" class="face-image">
-        </div>
+    
+    <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/betonchange" target="_blank" rel="noopener noreferrer" class="contact-arrow">→</a>
     </div>
+    
+    <div class="contact-item">
+        <span class="contact-label">Instagram</span>
+        <a href="https://instagram.com/betonchange" target="_blank" rel="noopener noreferrer" class="contact-arrow">→</a>
+    </div>
+    
+    <div class="contact-item">
+        <span class="contact-label">Download Resume</span>
+        <a href="JB_Kang_Resume.pdf" target="_blank" class="contact-arrow">→</a>
+    </div>
+</div>
 
-    <script>
-        // Home circle click functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const homeCircle = document.querySelector('.home-circle');
-            if (homeCircle) {
-                homeCircle.addEventListener('click', function() {
-                    window.location.href = 'https://jb-kang.com/index';
-                });
-            }
-        });
-        
-        // Back arrow functionality
-        function goBack() {
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.history.back();
-            } else {
-                // Fallback to homepage if no history
+<!-- Waving Hand Button -->
+<div class="wave-container">
+    <div class="wave-button" id="waveButton">
+        👋
+    </div>
+    
+    <!-- Face Preview -->
+    <div class="face-preview" id="facePreview">
+        <img src="/images/jb.png" alt="JB Kang" class="face-image">
+    </div>
+</div>
+
+<script>
+    // Home circle click functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const homeCircle = document.querySelector('.home-circle');
+        if (homeCircle) {
+            homeCircle.addEventListener('click', function() {
                 window.location.href = 'https://jb-kang.com/index';
-            }
+            });
         }
+    });
+    
+    // Back arrow functionality
+    function goBack() {
+        if (document.referrer && document.referrer !== window.location.href) {
+            window.history.back();
+        } else {
+            // Fallback to homepage if no history
+            window.location.href = 'https://jb-kang.com/index';
+        }
+    }
 
-        // Waving hand functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const waveButton = document.getElementById('waveButton');
-            const facePreview = document.getElementById('facePreview');
-            let isPreviewVisible = false;
+    // Waving hand functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const waveButton = document.getElementById('waveButton');
+        const facePreview = document.getElementById('facePreview');
+        let isPreviewVisible = false;
 
-            // Add wave animation on hover
-            waveButton.addEventListener('mouseenter', function() {
-                this.classList.add('waving');
-            });
-
-            waveButton.addEventListener('animationend', function() {
-                this.classList.remove('waving');
-            });
-
-            // Toggle face preview on click
-            waveButton.addEventListener('click', function() {
-                isPreviewVisible = !isPreviewVisible;
-                if (isPreviewVisible) {
-                    facePreview.classList.add('active');
-                } else {
-                    facePreview.classList.remove('active');
-                }
-            });
-
-            // Hide preview when clicking elsewhere
-            document.addEventListener('click', function(e) {
-                if (!waveButton.contains(e.target) && !facePreview.contains(e.target) && isPreviewVisible) {
-                    facePreview.classList.remove('active');
-                    isPreviewVisible = false;
-                }
-            });
+        // Add wave animation on hover
+        waveButton.addEventListener('mouseenter', function() {
+            this.classList.add('waving');
         });
-    </script>
+
+        waveButton.addEventListener('animationend', function() {
+            this.classList.remove('waving');
+        });
+
+        // Toggle face preview on click
+        waveButton.addEventListener('click', function() {
+            isPreviewVisible = !isPreviewVisible;
+            if (isPreviewVisible) {
+                facePreview.classList.add('active');
+            } else {
+                facePreview.classList.remove('active');
+            }
+        });
+
+        // Hide preview when clicking elsewhere
+        document.addEventListener('click', function(e) {
+            if (!waveButton.contains(e.target) && !facePreview.contains(e.target) && isPreviewVisible) {
+                facePreview.classList.remove('active');
+                isPreviewVisible = false;
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
