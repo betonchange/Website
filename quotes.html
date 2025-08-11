@@ -285,10 +285,10 @@
 
     <div class="quote-display" id="quoteDisplay">
         <div class="current-quote">
-            <div class="quote-text" id="quoteText">
-                "Loading your first quote..."
+            <div class="quote-text" id="quoteText" style="opacity: 0;">
+                ""
             </div>
-            <div class="quote-attribution" id="quoteAttribution">
+            <div class="quote-attribution" id="quoteAttribution" style="opacity: 0;">
                 <div class="quote-author" id="quoteAuthor" style="display: none;">
                 </div>
                 <div class="quote-source" id="quoteSource" style="display: none;">
@@ -314,12 +314,9 @@
         // Load quotes immediately
         async function loadQuotes() {
             try {
-                console.log('Starting to load quotes...');
                 const response = await fetch('/quotes.json');
                 const data = await response.json();
                 quotes = data.quotes || [];
-                
-                console.log('Loaded', quotes.length, 'quotes');
                 
                 if (quotes.length > 0) {
                     // Shuffle quotes
@@ -330,8 +327,6 @@
                     
                     // Show first quote immediately
                     showQuote(quotes[0]);
-                } else {
-                    console.error('No quotes found in data');
                 }
             } catch (error) {
                 console.error('Failed to load quotes:', error);
@@ -350,17 +345,16 @@
         }
 
         function showQuote(quote) {
-            console.log('Showing quote:', quote);
-            
             const quoteText = document.getElementById('quoteText');
+            const quoteAttribution = document.getElementById('quoteAttribution');
             const quoteAuthor = document.getElementById('quoteAuthor');
             const quoteSource = document.getElementById('quoteSource');
             
             if (quoteText) {
                 quoteText.textContent = `"${quote.text}"`;
-                console.log('Updated quote text');
-            } else {
-                console.error('Quote text element not found');
+                // Fade in the quote smoothly
+                quoteText.style.opacity = '1';
+                quoteAttribution.style.opacity = '1';
             }
             
             let authorText = quote.author || '';
@@ -392,10 +386,7 @@
         }
 
         function getRandomQuote() {
-            if (quotes.length === 0) {
-                console.log('No quotes available');
-                return;
-            }
+            if (quotes.length === 0) return;
             
             const quoteText = document.getElementById('quoteText');
             const quoteAttribution = document.getElementById('quoteAttribution');
@@ -412,9 +403,6 @@
                 showQuote(quotes[currentIndex]);
                 
                 setTimeout(() => {
-                    quoteText.style.opacity = '1';
-                    quoteAttribution.style.opacity = '1';
-                    
                     nextNoteBtn.disabled = false;
                     nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
                 }, 200);
@@ -423,8 +411,6 @@
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, starting initialization...');
-            
             // Home circle click functionality
             const homeCircle = document.querySelector('.home-circle');
             if (homeCircle) {
