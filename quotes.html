@@ -286,7 +286,7 @@
     <div class="quote-display" id="quoteDisplay">
         <div class="current-quote">
             <div class="quote-text" id="quoteText">
-                ""
+                "Loading your first quote..."
             </div>
             <div class="quote-attribution" id="quoteAttribution">
                 <div class="quote-author" id="quoteAuthor" style="display: none;">
@@ -346,8 +346,13 @@
                     
                     const data = await response.json();
                     this.quotes = data.quotes || [];
-                    this.initializeShuffledQuotes();
-                    this.displayInitialQuote();
+                    
+                    if (this.quotes.length > 0) {
+                        this.initializeShuffledQuotes();
+                        this.displayInitialQuote();
+                    } else {
+                        throw new Error('No quotes found');
+                    }
                     
                 } catch (error) {
                     console.error('Failed to load quotes:', error);
@@ -390,20 +395,12 @@
             }
 
             displayInitialQuote() {
-                // Wait for DOM to be ready
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', () => {
-                        this.showQuote();
-                    });
-                } else {
-                    this.showQuote();
-                }
-            }
-
-            showQuote() {
                 const selectedQuote = this.getNextQuote();
                 if (selectedQuote) {
-                    this.updateQuoteDisplay(selectedQuote);
+                    // Show quote immediately, no delays
+                    setTimeout(() => {
+                        this.updateQuoteDisplay(selectedQuote);
+                    }, 50); // Very short delay to ensure DOM is ready
                 }
             }
 
@@ -412,7 +409,12 @@
                 const quoteAuthor = document.getElementById('quoteAuthor');
                 const quoteSource = document.getElementById('quoteSource');
                 
-                if (!quoteText) return; // Safety check
+                console.log('Updating quote display with:', quote);
+                
+                if (!quoteText) {
+                    console.error('Quote text element not found');
+                    return;
+                }
                 
                 quoteText.textContent = `"${quote.text}"`;
                 
@@ -421,23 +423,25 @@
                     authorText += `, ${quote.occupation}`;
                 }
                 
-                if (authorText) {
+                if (authorText && quoteAuthor) {
                     quoteAuthor.textContent = authorText;
                     quoteAuthor.style.display = 'block';
-                } else {
+                } else if (quoteAuthor) {
                     quoteAuthor.style.display = 'none';
                 }
                 
-                if (quote.source && quote.source.trim()) {
+                if (quote.source && quote.source.trim() && quoteSource) {
                     if (quote.source_url && quote.source_url.trim()) {
                         quoteSource.innerHTML = `<a href="${quote.source_url}" target="_blank" rel="noopener noreferrer">${quote.source}</a>`;
                     } else {
                         quoteSource.textContent = quote.source;
                     }
                     quoteSource.style.display = 'block';
-                } else {
+                } else if (quoteSource) {
                     quoteSource.style.display = 'none';
                 }
+                
+                console.log('Quote display updated successfully');
             }
         }
 
