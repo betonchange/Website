@@ -381,8 +381,8 @@
                 this.currentShuffleIndex = 0;
                 this.isLoading = false;
                 
-                // 🔥 UPDATE THIS PATH TO MATCH WHERE YOU UPLOAD THE PROXY FILE 🔥
-                this.sheetUrl = '/quotes-proxy.php';
+                // Static JSON file approach (works on any server)
+                this.sheetUrl = '/quotes.json';
                 
                 // Fallback quotes in case the proxy fails
                 this.fallbackQuotes = [
