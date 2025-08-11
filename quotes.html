@@ -381,8 +381,8 @@
                 this.currentShuffleIndex = 0;
                 this.isLoading = false;
                 
-                // Your Google Sheet CSV export URL
-                this.sheetUrl = 'https://docs.google.com/spreadsheets/d/123zFQMukWs8YwSkUMUinicJPW4kEbm-fgLFnv0YdMx8/export?format=csv&gid=0';
+                // Your Google Apps Script web app URL
+                this.sheetUrl = 'https://script.google.com/macros/s/AKfycbxSg9xkrxXgFWYw9q_0rIXfHfXPxMLwx-Rh3h2_xj5z9wrLsJ7IgFnWLr2yERXx7nrR/exec';
                 
                 // Fallback quotes in case the sheet fails to load
                 this.fallbackQuotes = [
@@ -440,8 +440,15 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                const csvText = await response.text();
-                this.quotes = this.parseCSV(csvText);
+                // Check if this is a Google Apps Script URL (returns JSON)
+                if (this.sheetUrl.includes('script.google.com')) {
+                    const data = await response.json();
+                    this.quotes = data.quotes;
+                } else {
+                    // Handle CSV format
+                    const csvText = await response.text();
+                    this.quotes = this.parseCSV(csvText);
+                }
                 
                 if (this.quotes.length === 0) {
                     throw new Error('No quotes found in sheet');
