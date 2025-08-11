@@ -1,43 +1,4 @@
-// Get random quote function
-        function getRandomQuote() {
-            if (!quoteManager) return;
-            
-            const quoteText = document.getElementById('quoteText');
-            const quoteAttribution = document.getElementById('quoteAttribution');
-            const nextNoteBtn = document.getElementById('nextNoteBtn');
-
-            nextNoteBtn.disabled = true;
-            nextNoteBtn.innerHTML = 'loading...';
-
-            quoteText.style.opacity = '0';
-            quoteAttribution.style.opacity = '0';
-
-            setTimeout(() => {
-                const selectedQuote = quoteManager.getNextQuote();
-                if (!selectedQuote) {
-                    nextNoteBtn.disabled = false;
-                    nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
-                    return;
-                }
-
-                setTimeout(() => {
-                    quoteManager.updateQuoteDisplay(selectedQuote);
-                    
-                    quoteText.style.opacity = '1';
-                    quoteAttribution.style.opacity = '1';
-                    
-                    nextNoteBtn.disabled = false;
-                    nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
-                }, 200);
-            }, 400);
-        }
-
-        // Refresh quotes function
-        function refreshQuotes() {
-            if (quoteManager) {
-                quoteManager.refreshQuotes();
-            }
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -145,7 +106,6 @@
             color: #000;
         }
         
-        /* CONSISTENT HEADER STYLING */
         .page-title {
             font-size: 2.8rem;
             font-weight: 300;
@@ -162,7 +122,6 @@
             max-width: 700px;
         }
 
-        /* Quote Display */
         .quote-display {
             max-width: 700px;
             margin: 0 auto;
@@ -181,10 +140,12 @@
             color: #000;
             margin-bottom: 32px;
             letter-spacing: -0.01em;
+            transition: opacity 0.4s ease;
         }
 
         .quote-attribution {
             text-align: center;
+            transition: opacity 0.4s ease;
         }
 
         .quote-author {
@@ -212,7 +173,6 @@
             border-bottom-color: #FF6600;
         }
 
-        /* Quote Controls */
         .quote-controls {
             border-top: 1px solid #e0e0e0;
             padding-top: 30px;
@@ -259,43 +219,7 @@
             transform: translateX(2px);
         }
 
-        .refresh-btn {
-            display: none;
-        }
-
-        /* Status indicator */
-        .status-indicator {
-            font-size: 0.8rem;
-            color: #999;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .status-indicator.loading {
-            color: #FF6600;
-        }
-
-        .status-indicator.error {
-            color: #e74c3c;
-        }
-
-        .status-indicator.success {
-            color: #27ae60;
-        }
-
-        /* Loading State */
-        .loading .current-quote {
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Fade Transition */
-        .fade-transition {
-            transition: opacity 0.4s ease;
-        }
-
-        /* RESPONSIVE DESIGN */
-            @media (max-width: 768px) {
+        @media (max-width: 768px) {
             body {
                 padding: 20px 15px;
             }
@@ -361,10 +285,10 @@
 
     <div class="quote-display" id="quoteDisplay">
         <div class="current-quote">
-            <div class="quote-text fade-transition" id="quoteText">
+            <div class="quote-text" id="quoteText">
                 ""
             </div>
-            <div class="quote-attribution fade-transition" id="quoteAttribution">
+            <div class="quote-attribution" id="quoteAttribution">
                 <div class="quote-author" id="quoteAuthor" style="display: none;">
                 </div>
                 <div class="quote-source" id="quoteSource" style="display: none;">
@@ -379,8 +303,6 @@
                     <span class="btn-arrow">→</span>
                 </button>
             </div>
-            <div class="status-indicator" id="statusIndicator" style="display: none;">
-            </div>
         </div>
     </div>
 
@@ -391,11 +313,8 @@
                 this.shuffledQuotes = [];
                 this.currentShuffleIndex = 0;
                 this.isLoading = false;
-                
-                // Path to your JSON file
                 this.quotesUrl = '/quotes.json';
                 
-                // Fallback quotes in case the JSON file fails to load
                 this.fallbackQuotes = [
                     {
                         text: "We cannot direct the wind, but we can adjust our sails",
@@ -410,13 +329,6 @@
                         occupation: "Roman Emperor",
                         source: "",
                         source_url: ""
-                    },
-                    {
-                        text: "Pain + Reflection = Progress",
-                        author: "",
-                        occupation: "",
-                        source: "",
-                        source_url: ""
                     }
                 ];
                 
@@ -426,7 +338,6 @@
             async initializeQuotes() {
                 try {
                     this.isLoading = true;
-                    this.updateStatus('Loading quotes database...', 'loading');
                     
                     const response = await fetch(this.quotesUrl);
                     if (!response.ok) {
@@ -434,22 +345,13 @@
                     }
                     
                     const data = await response.json();
-                    
-                    if (data.error) {
-                        throw new Error(data.error);
-                    }
-                    
                     this.quotes = data.quotes || [];
                     this.initializeShuffledQuotes();
                     this.displayInitialQuote();
                     
-                    const updateTime = data.updated ? new Date(data.updated).toLocaleDateString() : 'recently';
-                    this.hideStatus();
                 } catch (error) {
-                    console.error('Failed to load quotes from JSON:', error);
-                    this.updateStatus('Using offline quotes (check console for details)', 'error');
+                    console.error('Failed to load quotes:', error);
                     this.useFallbackQuotes();
-                    setTimeout(() => this.hideStatus(), 5000);
                 } finally {
                     this.isLoading = false;
                 }
@@ -488,17 +390,29 @@
             }
 
             displayInitialQuote() {
+                // Wait for DOM to be ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => {
+                        this.showQuote();
+                    });
+                } else {
+                    this.showQuote();
+                }
+            }
+
+            showQuote() {
                 const selectedQuote = this.getNextQuote();
-                if (!selectedQuote) return;
-                
-                // Immediately show the quote without delay
-                this.updateQuoteDisplay(selectedQuote);
+                if (selectedQuote) {
+                    this.updateQuoteDisplay(selectedQuote);
+                }
             }
 
             updateQuoteDisplay(quote) {
                 const quoteText = document.getElementById('quoteText');
                 const quoteAuthor = document.getElementById('quoteAuthor');
                 const quoteSource = document.getElementById('quoteSource');
+                
+                if (!quoteText) return; // Safety check
                 
                 quoteText.textContent = `"${quote.text}"`;
                 
@@ -514,13 +428,10 @@
                     quoteAuthor.style.display = 'none';
                 }
                 
-                // Handle source with optional URL
                 if (quote.source && quote.source.trim()) {
                     if (quote.source_url && quote.source_url.trim()) {
-                        // Create clickable link
                         quoteSource.innerHTML = `<a href="${quote.source_url}" target="_blank" rel="noopener noreferrer">${quote.source}</a>`;
                     } else {
-                        // Just text
                         quoteSource.textContent = quote.source;
                     }
                     quoteSource.style.display = 'block';
@@ -528,61 +439,15 @@
                     quoteSource.style.display = 'none';
                 }
             }
-
-            async refreshQuotes() {
-                const refreshBtn = document.getElementById('refreshBtn');
-                refreshBtn.disabled = true;
-                refreshBtn.textContent = 'refreshing...';
-                
-                try {
-                    this.updateStatus('Checking for updates...', 'loading');
-                    
-                    // Add timestamp to bypass cache
-                    const refreshUrl = this.quotesUrl + '?t=' + Date.now();
-                    const response = await fetch(refreshUrl);
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    
-                    if (data.error) {
-                        throw new Error(data.error);
-                    }
-                    
-                    this.quotes = data.quotes || [];
-                    this.initializeShuffledQuotes();
-                    
-                    this.hideStatus();
-                } catch (error) {
-                    console.error('Failed to refresh quotes:', error);
-                    this.updateStatus('Refresh failed - using existing quotes', 'error');
-                    setTimeout(() => this.hideStatus(), 5000);
-                } finally {
-                    refreshBtn.disabled = false;
-                    refreshBtn.textContent = 'refresh';
-                }
-            }
-
-            updateStatus(message, type = '') {
-                const statusIndicator = document.getElementById('statusIndicator');
-                statusIndicator.textContent = message;
-                statusIndicator.className = `status-indicator ${type}`;
-                statusIndicator.style.display = 'block';
-            }
-
-            hideStatus() {
-                const statusIndicator = document.getElementById('statusIndicator');
-                statusIndicator.style.display = 'none';
-            }
         }
 
-        // Initialize the quote manager after DOM is ready
+        // Global variable
         let quoteManager;
 
-        // Initialize page
+        // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
+            quoteManager = new QuoteManager();
+            
             // Home circle click functionality
             const homeCircle = document.querySelector('.home-circle');
             if (homeCircle) {
@@ -590,11 +455,42 @@
                     window.location.href = 'https://jb-kang.com/index';
                 });
             }
-            
-            // Initialize quotes after DOM is ready
-            quoteManager = new QuoteManager();
         });
-        
+
+        // Get random quote function
+        function getRandomQuote() {
+            if (!quoteManager) return;
+            
+            const quoteText = document.getElementById('quoteText');
+            const quoteAttribution = document.getElementById('quoteAttribution');
+            const nextNoteBtn = document.getElementById('nextNoteBtn');
+
+            nextNoteBtn.disabled = true;
+            nextNoteBtn.innerHTML = 'loading...';
+
+            quoteText.style.opacity = '0';
+            quoteAttribution.style.opacity = '0';
+
+            setTimeout(() => {
+                const selectedQuote = quoteManager.getNextQuote();
+                if (!selectedQuote) {
+                    nextNoteBtn.disabled = false;
+                    nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
+                    return;
+                }
+
+                setTimeout(() => {
+                    quoteManager.updateQuoteDisplay(selectedQuote);
+                    
+                    quoteText.style.opacity = '1';
+                    quoteAttribution.style.opacity = '1';
+                    
+                    nextNoteBtn.disabled = false;
+                    nextNoteBtn.innerHTML = 'next quote <span class="btn-arrow">→</span>';
+                }, 200);
+            }, 400);
+        }
+
         // Back arrow functionality
         function goBack() {
             if (document.referrer && document.referrer !== window.location.href) {
