@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Coffee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #2c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .section {
+            background: white;
+            border: 1px solid #e5e5e5;
+            margin-bottom: 40px;
+            padding: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.3em;
+            font-weight: 400;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff7b54;
+        }
+
+        .timetable {
+            margin-top: 15px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .timetable-header {
+            display: grid;
+            grid-template-columns: 100px repeat(7, 1fr);
+            background: #f9f9f9;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .timetable-header div {
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9em;
+            color: #555;
+            border-right: 1px solid #e5e5e5;
+        }
+
+        .timetable-header div:last-child {
+            border-right: none;
+        }
+
+        .timetable-row {
+            display: grid;
+            grid-template-columns: 100px repeat(7, 1fr);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .timetable-row:last-child {
+            border-bottom: none;
+        }
+
+        .timetable-time {
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+            background: #fafafa;
+            border-right: 1px solid #e5e5e5;
+            font-weight: 500;
+        }
+
+        .timetable-cell {
+            padding: 8px;
+            text-align: center;
+            border-right: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+        }
+
+        .timetable-cell:last-child {
+            border-right: none;
+        }
+
+        .timetable-cell:hover {
+            background: #f9f9f9;
+        }
+
+        .timetable-cell input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .timetable-cell input[type="checkbox"]:checked {
+            accent-color: #ff7b54;
+        }
+
+        .btn {
+            background: #ff7b54;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.95em;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #e66a42;
+        }
+
+        .btn-secondary {
+            background: #333;
+            margin-right: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #555;
+        }
+
+        .participants-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .participant {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 20px 0;
+        }
+
+        .participant:last-child {
+            border-bottom: none;
+        }
+
+        .participant-name {
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+        }
+
+        .participant-details {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .match-pair {
+            border: 1px solid #f0f0f0;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: #fafafa;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .match-person {
+            text-align: center;
+        }
+
+        .match-person-name {
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+        }
+
+        .match-person-email {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .match-person-time {
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        .match-connector {
+            font-size: 1.5em;
+            color: #ff7b54;
+        }
+
+        .status-message {
+            text-align: center;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+            border: 1px solid #e5e5e5;
+            background: #f9f9f9;
+        }
+
+        .status-success {
+            background: #f0f8f0;
+            color: #2d5f2d;
+            border-color: #d4edda;
+        }
+
+        .status-info {
+            background: #f0f4ff;
+            color: #2d4f5f;
+            border-color: #d1ecf1;
+        }
+
+        .admin-actions {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 40px;
+        }
+
+        .match-info {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85em;
+            color: #999;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .email-preview {
+            margin-top: 30px;
+            border: 1px solid #e5e5e5;
+            background: #f9f9f9;
+            padding: 30px;
+        }
+
+        .email-item {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .email-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .email-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .email-body {
+            font-size: 0.9em;
+            color: #555;
+            white-space: pre-line;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .integration-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0f4ff;
+            border: 1px solid #d1ecf1;
+        }
+
+        .integration-info h4 {
+            color: #2d4f5f;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .integration-info ul {
+            color: #2d4f5f;
+            font-size: 0.9em;
+            margin-left: 20px;
+        }
+
+        .integration-info p {
+            color: #2d4f5f;
+            font-size: 0.85em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .match-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .match-connector {
+                transform: rotate(90deg);
+            }
+            
+            .timetable {
+                overflow-x: auto;
+            }
+            
+            .timetable-header,
+            .timetable-row {
+                min-width: 600px;
+            }
+
+            .admin-actions {
+                text-align: left;
+            }
+
+            .admin-actions .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Random Coffee</h1>
+            <p>Connect over virtual coffee to get to know other members</p>
+        </div>
+
+        <div class="section">
+            <h2>Join</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timezone">Timezone</label>
+                    <select id="timezone" name="timezone" required>
+                        <option value="">Select your timezone...</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Available times</label>
+                    <div id="timetable"></div>
+                </div>
+                
+                <button type="submit" class="btn">Join Random Coffee</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Participants</h2>
+            <div id="participantsList" class="participants-list">
+                <div class="empty-state">No participants yet</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Weekly Matches</h2>
+            <div class="admin-actions">
+                <button id="generateMatches" class="btn btn-secondary">Generate Matches</button>
+                <button id="viewEmails" class="btn" onclick="showEmailPreview()">View Emails</button>
+                <p style="font-size: 0.85em; color: #999; margin-top: 15px;">
+                    Matches generated automatically every Friday
+                </p>
+            </div>
+            <div id="matchesContainer"></div>
+            <div id="emailPreview" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // App state stored in memory
+        let participants = [];
+        let currentMatches = [];
+        let matchHistory = []; // Track previous matches to avoid repeats
+
+        // Timezone data
+        const timezones = [
+            'UTC-12:00 (Baker Island)',
+            'UTC-11:00 (Hawaii)',
+            'UTC-10:00 (Alaska)',
+            'UTC-09:00 (Pacific)',
+            'UTC-08:00 (Mountain)',
+            'UTC-07:00 (Central)',
+            'UTC-06:00 (Eastern)',
+            'UTC-05:00 (Atlantic)',
+            'UTC-04:00 (Brazil)',
+            'UTC-03:00 (Argentina)',
+            'UTC-02:00 (Mid-Atlantic)',
+            'UTC-01:00 (Azores)',
+            'UTC+00:00 (London)',
+            'UTC+01:00 (Berlin)',
+            'UTC+02:00 (Cairo)',
+            'UTC+03:00 (Moscow)',
+            'UTC+04:00 (Dubai)',
+            'UTC+05:00 (Karachi)',
+            'UTC+05:30 (India)',
+            'UTC+06:00 (Bangladesh)',
+            'UTC+07:00 (Bangkok)',
+            'UTC+08:00 (Singapore)',
+            'UTC+09:00 (Tokyo)',
+            'UTC+10:00 (Sydney)',
+            'UTC+11:00 (Magadan)',
+            'UTC+12:00 (New Zealand)'
+        ];
+
+        // Days and time slots for timetable
+        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        const timeSlots = [
+            '7:00 AM',
+            '8:00 AM',
+            '9:00 AM',
+            '10:00 AM', 
+            '11:00 AM',
+            '12:00 PM',
+            '1:00 PM',
+            '2:00 PM',
+            '3:00 PM',
+            '4:00 PM',
+            '5:00 PM',
+            '6:00 PM',
+            '7:00 PM',
+            '8:00 PM',
+            '9:00 PM',
+            '10:00 PM',
+            '11:00 PM'
+        ];
+
+        // Initialize the app
+        function initApp() {
+            renderTimezoneDropdown();
+            renderTimetable();
+            setupEventListeners();
+            renderParticipants();
+        }
+
+        function renderTimezoneDropdown() {
+            const select = document.getElementById('timezone');
+            timezones.forEach(tz => {
+                const option = document.createElement('option');
+                option.value = tz;
+                option.textContent = tz;
+                select.appendChild(option);
+            });
+        }
+
+        function renderTimetable() {
+            const container = document.getElementById('timetable');
+            
+            let html = `
+                <div class="timetable">
+                    <div class="timetable-header">
+                        <div>Time</div>
+                        ${days.map(day => `<div>${day}</div>`).join('')}
+                    </div>
+            `;
+
+            timeSlots.forEach(time => {
+                html += `
+                    <div class="timetable-row">
+                        <div class="timetable-time">${time}</div>
+                        ${days.map(day => `
+                            <div class="timetable-cell">
+                                <input type="checkbox" 
+                                       name="availability" 
+                                       value="${day}-${time}" 
+                                       id="${day}-${time}">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function setupEventListeners() {
+            document.getElementById('registrationForm').addEventListener('submit', handleRegistration);
+            document.getElementById('generateMatches').addEventListener('click', generateMatches);
+        }
+
+        function handleRegistration(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const selectedTimezone = formData.get('timezone');
+            const selectedAvailability = Array.from(document.querySelectorAll('input[name="availability"]:checked')).map(cb => cb.value);
+            
+            if (!selectedTimezone) {
+                alert('Please select your timezone');
+                return;
+            }
+            
+            if (selectedAvailability.length === 0) {
+                alert('Please select at least one available time slot');
+                return;
+            }
+
+            const participant = {
+                id: Date.now(),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                timezone: selectedTimezone,
+                availability: selectedAvailability,
+                joinDate: new Date().toLocaleDateString()
+            };
+
+            // Check if email already exists
+            if (participants.some(p => p.email === participant.email)) {
+                alert('This email is already registered!');
+                return;
+            }
+
+            participants.push(participant);
+            
+            // Reset form
+            e.target.reset();
+            
+            // Show success message
+            showStatusMessage('Successfully registered for Random Coffee', 'success');
+            
+            renderParticipants();
+        }
+
+        function renderParticipants() {
+            const container = document.getElementById('participantsList');
+            
+            if (participants.length === 0) {
+                container.innerHTML = '<div class="empty-state">No participants yet</div>';
+                return;
+            }
+
+            container.innerHTML = participants.map(participant => `
+                <div class="participant">
+                    <div class="participant-name">${participant.name}</div>
+                    <div class="participant-details">
+                        ${participant.email}<br>
+                        ${participant.timezone}<br>
+                        Available: ${formatAvailability(participant.availability)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatAvailability(availability) {
+            if (availability.length === 0) return 'No times selected';
+            
+            // Group by day
+            const byDay = {};
+            availability.forEach(slot => {
+                const [day, time] = slot.split('-');
+                if (!byDay[day]) byDay[day] = [];
+                byDay[day].push(time);
+            });
+            
+            const summary = Object.entries(byDay).map(([day, times]) => {
+                if (times.length <= 2) {
+                    return `${day}: ${times.join(', ')}`;
+                } else {
+                    return `${day}: ${times.slice(0, 2).join(', ')} +${times.length - 2} more`;
+                }
+            });
+            
+            return summary.slice(0, 3).join(' | ') + (summary.length > 3 ? ' ...' : '');
+        }
+
+        function generateMatches() {
+            if (participants.length < 2) {
+                showStatusMessage('Need at least 2 participants to generate matches', 'info');
+                return;
+            }
+
+            // Smart matching with history awareness
+            const matches = createSmartMatches();
+            
+            if (matches.length === 0) {
+                showStatusMessage('Unable to create new matches - all combinations have been tried recently', 'info');
+                return;
+            }
+
+            currentMatches = matches;
+            
+            // Add matches to history
+            matches.forEach(match => {
+                const pair = [match.person1.id, match.person2.id].sort();
+                matchHistory.push({
+                    pair: pair,
+                    date: new Date().toISOString(),
+                    week: getWeekNumber()
+                });
+                
+                if (match.person3) {
+                    const trio1 = [match.person1.id, match.person3.id].sort();
+                    const trio2 = [match.person2.id, match.person3.id].sort();
+                    matchHistory.push(
+                        { pair: trio1, date: new Date().toISOString(), week: getWeekNumber() },
+                        { pair: trio2, date: new Date().toISOString(), week: getWeekNumber() }
+                    );
+                }
+            });
+
+            renderMatches();
+            sendMatchEmails(matches);
+            showStatusMessage(`Generated ${matches.length} matches with smart randomization`, 'success');
+        }
+
+        function createSmartMatches() {
+            const availableParticipants = [...participants];
+            const matches = [];
+            const currentWeek = getWeekNumber();
+            
+            // Clean old history (older than 4 weeks)
+            matchHistory = matchHistory.filter(entry => currentWeek - entry.week < 4);
+
+            while (availableParticipants.length >= 2) {
+                let bestMatch = null;
+                let bestScore = -1;
+
+                // Find best available pairing
+                for (let i = 0; i < availableParticipants.length - 1; i++) {
+                    for (let j = i + 1; j < availableParticipants.length; j++) {
+                        const person1 = availableParticipants[i];
+                        const person2 = availableParticipants[j];
+                        const pair = [person1.id, person2.id].sort();
+                        
+                        // Check if this pair has been matched recently
+                        const recentMatch = matchHistory.find(entry => 
+                            entry.pair[0] === pair[0] && entry.pair[1] === pair[1] &&
+                            currentWeek - entry.week < 2 // Avoid repeats within 2 weeks
+                        );
+
+                        if (!recentMatch) {
+                            const score = calculateMatchScore(person1, person2);
+                            if (score > bestScore) {
+                                bestScore = score;
+                                bestMatch = { person1, person2, indices: [i, j] };
+                            }
+                        }
+                    }
+                }
+
+                if (bestMatch) {
+                    matches.push({
+                        person1: bestMatch.person1,
+                        person2: bestMatch.person2,
+                        matchScore: bestScore,
+                        matchDate: new Date().toLocaleDateString()
+                    });
+
+                    // Remove matched participants (reverse order to maintain indices)
+                    availableParticipants.splice(Math.max(...bestMatch.indices), 1);
+                    availableParticipants.splice(Math.min(...bestMatch.indices), 1);
+                } else {
+                    // No valid pairs found without repeats, break to avoid infinite loop
+                    break;
+                }
+            }
+
+            // Handle remaining participant by adding to first match
+            if (availableParticipants.length === 1 && matches.length > 0) {
+                matches[0].person3 = availableParticipants[0];
+            }
+
+            return matches;
+        }
+
+        function getWeekNumber() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 1);
+            return Math.ceil((((now - start) / 86400000) + start.getDay() + 1) / 7);
+        }
+
+        function calculateMatchScore(person1, person2) {
+            let score = Math.random() * 10; // Base randomization
+            
+            // Bonus for same timezone
+            if (person1.timezone === person2.timezone) {
+                score += 20;
+            }
+            
+            // Bonus for overlapping availability
+            const commonSlots = person1.availability.filter(slot => person2.availability.includes(slot));
+            score += commonSlots.length * 3;
+            
+            return score;
+        }
+
+        function renderMatches() {
+            const container = document.getElementById('matchesContainer');
+            
+            if (currentMatches.length === 0) {
+                container.innerHTML = '<div class="empty-state">No matches generated yet</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div style="margin: 30px 0;">
+                    ${currentMatches.map(match => `
+                        <div class="match-pair">
+                            <div class="match-grid">
+                                <div class="match-person">
+                                    <div class="match-person-name">${match.person1.name}</div>
+                                    <div class="match-person-email">${match.person1.email}</div>
+                                    <div class="match-person-time">${match.person1.timezone}</div>
+                                </div>
+                                <div class="match-connector">☕</div>
+                                <div class="match-person">
+                                    <div class="match-person-name">${match.person2.name}</div>
+                                    <div class="match-person-email">${match.person2.email}</div>
+                                    <div class="match-person-time">${match.person2.timezone}</div>
+                                </div>
+                            </div>
+                            ${match.person3 ? `
+                                <div class="match-info">
+                                    + ${match.person3.name} (${match.person3.email})
+                                </div>
+                            ` : ''}
+                            <div class="match-info">
+                                ${getMatchInfo(match.person1, match.person2)}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function getMatchInfo(person1, person2) {
+            const sameTimezone = person1.timezone === person2.timezone;
+            const commonSlots = person1.availability.filter(slot => person2.availability.includes(slot));
+            
+            let info = sameTimezone ? `Same timezone: ${person1.timezone}` : 'Different timezones - please coordinate';
+            
+            if (commonSlots.length > 0) {
+                info += ` | Common availability: ${formatCommonSlots(commonSlots)}`;
+            }
+            
+            return info;
+        }
+
+        function sendMatchEmails(matches) {
+            matches.forEach(match => {
+                const emailContent1 = generateEmailContent(match.person1, match.person2, match.person3);
+                const emailContent2 = generateEmailContent(match.person2, match.person1, match.person3);
+                
+                sendEmailNotification(match.person1.email, emailContent1);
+                sendEmailNotification(match.person2.email, emailContent2);
+                
+                if (match.person3) {
+                    const emailContent3 = generateEmailContent(match.person3, match.person1, match.person2);
+                    sendEmailNotification(match.person3.email, emailContent3);
+                }
+            });
+        }
+
+        function generateEmailContent(recipient, partner, thirdPerson = null) {
+            const sameTimezone = recipient.timezone === partner.timezone;
+            const commonSlots = recipient.availability.filter(slot => partner.availability.includes(slot));
+            
+            const subject = "Your Random Coffee match is ready";
+            const body = `Hi ${recipient.name},
+
+Your Random Coffee match for this week is here.
+
+${thirdPerson ? 
+    `You've been matched with ${partner.name} and ${thirdPerson.name} for a group coffee chat.` :
+    `You've been matched with ${partner.name} for a coffee chat.`
+}
+
+Contact details:
+${partner.name}: ${partner.email}
+${thirdPerson ? `${thirdPerson.name}: ${thirdPerson.email}` : ''}
+
+Timezone information:
+Your timezone: ${recipient.timezone}
+${partner.name}'s timezone: ${partner.timezone}
+${thirdPerson ? `${thirdPerson.name}'s timezone: ${thirdPerson.timezone}` : ''}
+
+${sameTimezone ? 
+    `You're both in the same timezone.` :
+    `You're in different timezones - please coordinate a time that works.`
+}
+
+${commonSlots.length > 0 ? 
+    `Common availability: ${formatCommonSlots(commonSlots)}` :
+    `Please compare schedules to find a convenient time.`
+}
+
+Tips:
+• Schedule for 30-45 minutes
+• Use video call
+• Prepare conversation starters
+• Be open to learning about each other
+
+Best,
+Random Coffee Team`;
+
+            return { subject, body };
+        }
+
+        function formatCommonSlots(slots) {
+            if (slots.length === 0) return 'None';
+            
+            // Group by day and format nicely
+            const byDay = {};
+            slots.forEach(slot => {
+                const [day, time] = slot.split('-');
+                if (!byDay[day]) byDay[day] = [];
+                byDay[day].push(time);
+            });
+            
+            return Object.entries(byDay)
+                .map(([day, times]) => `${day}: ${times.join(', ')}`)
+                .slice(0, 3)
+                .join(' | ');
+        }
+
+        function sendEmailNotification(email, emailContent) {
+            console.log(`Email to ${email}:`, emailContent);
+            
+            // Create mailto link for demonstration
+            const mailto = `mailto:${email}?subject=${encodeURIComponent(emailContent.subject)}&body=${encodeURIComponent(emailContent.body)}`;
+            
+            // Store for preview
+            if (!window.pendingEmails) window.pendingEmails = [];
+            window.pendingEmails.push({ email, content: emailContent, mailto });
+        }
+
+        function showEmailPreview() {
+            if (!window.pendingEmails || window.pendingEmails.length === 0) {
+                showStatusMessage('Generate matches first to see email preview', 'info');
+                return;
+            }
+
+            const emailPreview = document.getElementById('emailPreview');
+            const emails = window.pendingEmails;
+
+            emailPreview.innerHTML = `
+                <div class="email-preview">
+                    <h3>Email Preview (${emails.length} emails)</h3>
+                    ${emails.map((emailData, index) => `
+                        <div class="email-item">
+                            <div class="email-header">
+                                <strong>To: ${emailData.email}</strong>
+                                <button onclick="window.open('${emailData.mailto}')" class="btn" style="padding: 8px 16px; font-size: 0.85em;">
+                                    Open Email Client
+                                </button>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong>Subject:</strong> ${emailData.content.subject}
+                            </div>
+                            <div class="email-body">${emailData.content.body}</div>
+                        </div>
+                    `).join('')}
+                    <div class="integration-info">
+                        <h4>Production Integration Options:</h4>
+                        <ul>
+                            <li><strong>Backend API:</strong> Send email data to your server</li>
+                            <li><strong>SendGrid:</strong> Transactional email API</li>
+                            <li><strong>AWS SES:</strong> Scalable email service</li>
+                            <li><strong>Mailgun:</strong> Email API service</li>
+                        </ul>
+                        <p>Currently showing demo emails - click buttons above to test locally</p>
+                    </div>
+                </div>
+            `;
+
+            emailPreview.style.display = 'block';
+            emailPreview.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showStatusMessage(message, type) {
+            const existing = document.querySelector('.status-message');
+            if (existing) existing.remove();
+
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.textContent = message;
+            
+            document.querySelector('.container').appendChild(statusDiv);
+            
+            setTimeout(() => {
+                statusDiv.remove();
+            }, 4000);
+        }
+
+        // Initialize app when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
