@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram: Your Algorithm - JB Kang</title>
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#FF6600">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 50px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+
+        .nav-home-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .home-circle {
+            width: 12px;
+            height: 12px;
+            background-color: #FF6600;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .home-circle:hover {
+            transform: scale(1.2);
+        }
+
+        .nav-home {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .nav-home:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+
+        .nav-arrow {
+            color: #666;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            color: #FF6600;
+            transform: translateX(-2px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+            border-bottom-color: #FF6600;
+        }
+
+        .nav-links a.current {
+            color: #000;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-size: 0.95rem;
+            color: #000;
+            font-weight: 400;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .section-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            max-width: 700px;
+        }
+
+        .section-text a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .section-text a:hover {
+            color: #FF6600;
+            border-bottom-color: #FF6600;
+        }
+
+        /* RESULTS GRID */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .result-item {
+            text-align: left;
+        }
+
+        .result-number {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #000;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .result-context {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        .results-divider {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 30px 0;
+        }
+
+        .results-secondary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* MEDIA ELEMENTS */
+        .media-grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .media-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .subsection-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        /* INSTAGRAM EMBEDS */
+        .instagram-embed {
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f8f8;
+        }
+
+        .instagram-embed blockquote {
+            margin: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* TASTEMAKER GRID */
+        .tastemaker-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tastemaker-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* COVERAGE LINKS */
+        .coverage-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .coverage-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .coverage-link:hover {
+            color: #FF6600;
+        }
+
+        /* FOOTER DISCLAIMER */
+        .disclaimer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.8rem;
+            color: #777;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .section-text {
+                font-size: 1rem;
+            }
+
+            .results-grid,
+            .results-secondary {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .result-number {
+                font-size: 1.8rem;
+            }
+
+            .media-grid {
+                gap: 30px;
+            }
+
+            .tastemaker-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .nav {
+                font-size: 0.9rem;
+            }
+
+            .nav-home-container {
+                margin-right: 15px;
+            }
+
+            .nav-arrow {
+                margin-right: 15px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav class="nav">
+            <div class="nav-home-container">
+                <div class="home-circle"></div>
+                <a href="https://jb-kang.com/index" class="nav-home">JB&nbsp;Kang</a>
+            </div>
+            <span class="nav-arrow" onclick="goBack()">&#8592;</span>
+            <div class="nav-links">
+                <a href="https://jb-kang.com/selected-works" class="current">Work</a>
+                <a href="https://jb-kang.com/perfect-objects">Objects</a>
+                <a href="https://jb-kang.com/quotes">Quotes</a>
+                <a href="https://jb-kang.com/contacts">Contact</a>
+            </div>
+        </nav>
+
+        <h1 class="page-title">Instagram: Your Algorithm</h1>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Brand</div>
+                <div class="meta-value">Instagram</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Type</div>
+                <div class="meta-value">Product Launch</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Year</div>
+                <div class="meta-value">2026</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Audience</div>
+                <div class="meta-value">Global English-speaking users</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT OVERVIEW -->
+    <div class="content-section">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="section-text">
+            Instagram gave users something platforms rarely offer: actual control over what they see. "Your Algorithm" lets people customize their Reels feed by adding or removing interest topics and setting priority categories &mdash; a direct response to years of user frustration about opaque recommendation systems.
+            <br><br>
+            We intentionally anchored the launch to the beginning of the year with a "Build Your 2026 Algorithm" concept, deliberately juxtaposing against the year-end review trend (like Spotify Wrapped). While other platforms showed users a static snapshot of the past, we empowered them to actively shape their future. The timing emphasized a key distinction: you're not just seeing your algorithm keywords &mdash; you're customizing them based on your evolving interests.
+            <br><br>
+            The consumer GTM was a close collaboration between Comms, Social, Marketing, and Partnerships. We launched "Algo Confessions" &mdash; a series giving an inside look at celebrity algorithms &mdash; kicking off with <a href="https://www.instagram.com/reel/DTdh1VvElFF/" target="_blank">A$AP Rocky</a> (20M followers), timed with his album release. The creative partnership turned a product feature story into a cultural moment, with Rocky's line "My Explore Page Is Mainly Me" becoming the headline across press coverage.
+            <br><br>
+            We seeded the Reel and feature news with press and new media, then enlisted TAYA celebrities &mdash; <a href="https://www.instagram.com/sunisalee/" target="_blank">Suni Lee</a>, <a href="https://www.instagram.com/flaujae/" target="_blank">Flau'Jae</a>, <a href="https://www.instagram.com/eemtriplin/" target="_blank">Eem Triplin</a>, <a href="https://www.instagram.com/yoon_ambush/" target="_blank">Yoon Ambush</a> and others &mdash; to post their own algorithms on Stories, triggering a massive wave of organic mimicry. We also partnered with 10+ creators including <a href="https://www.instagram.com/nassnyc/" target="_blank">@nassnyc</a>, <a href="https://www.instagram.com/archived.dreams/" target="_blank">@archived.dreams</a>, and <a href="https://www.instagram.com/frostedjake/" target="_blank">@frostedjake</a> to put their own spin on the feature.
+        </div>
+    </div>
+
+    <!-- CREATIVE -->
+    <div class="content-section">
+        <h2 class="section-title">Creative</h2>
+
+        <div class="media-grid">
+            <!-- 1. A$AP Rocky Algo Confessions -->
+            <div class="media-section">
+                <h3 class="subsection-title">Algo Confessions</h3>
+                <div class="instagram-embed">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTdh1VvElFF/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    </blockquote>
+                </div>
+                <div class="media-caption">A$AP Rocky breaks down his Instagram algorithm in the launch episode, timed with the release of "Don't Be Dumb."</div>
+            </div>
+
+            <!-- 2. Campaign Amplification -->
+            <div class="media-section">
+                <h3 class="subsection-title">Campaign Amplification</h3>
+                <div class="instagram-embed">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTdwWDdEshz/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    </blockquote>
+                </div>
+                <div class="media-caption">Campaign launch post introducing the "Build Your 2026 Algorithm" concept.</div>
+            </div>
+
+            <!-- 3. Tastemaker Algorithm Shares -->
+            <div class="media-section">
+                <h3 class="subsection-title">Tastemaker Algorithm Shares</h3>
+                <div class="tastemaker-grid">
+                    <img src="images/@yoon_ambush_1.13.26_story(1).png" alt="Yoon Ambush algorithm - fashion and luxury">
+                    <img src="images/@nigelsylvester_1.13.26_story(2).png" alt="Nigel Sylvester algorithm - streetwear and fitness">
+                    <img src="images/@gabrielomoses_1.13.26_story.png" alt="Gabriel Moses algorithm - lifestyle and family">
+                    <img src="images/@eemtriplin_1.13.26_story.png" alt="Eem Triplin algorithm - humor and travel">
+                    <img src="images/@cbrickley603_1.13.26_story(1).png" alt="Brickley algorithm - basketball and wellness">
+                    <img src="images/@flaujae_1.13.26_story(2).png" alt="Flau'jae algorithm - sports and music">
+                </div>
+                <div class="media-caption">Tastemakers across diverse interest groups &mdash; from fashion and sports to music and lifestyle &mdash; shared their personalized algorithms, demonstrating the feature's broad appeal and triggering organic adoption.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="content-section">
+        <h2 class="section-title">Results</h2>
+        <div class="section-text" style="margin-bottom: 25px;">
+            The A$AP Rocky collaboration reel exceeded Instagram's performance benchmarks by nearly 2x. But the real story was the behavioral impact &mdash; the celebrity and creator activations triggered unprecedented organic adoption of the feature. The campaign achieved 89% positive press sentiment with zero negative coverage across 36 articles, with users celebrating the transparency and calling for competitors to adopt similar features.
+        </div>
+
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="result-number">31.18M</div>
+                <div class="result-label">Reach</div>
+                <div class="result-context">Benchmark: 18.5M</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">537K</div>
+                <div class="result-label">Engagements</div>
+                <div class="result-context">Benchmark: 297K</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">4.17%</div>
+                <div class="result-label">E.R. among U.S. TAYA</div>
+                <div class="result-context">1.46% overall</div>
+            </div>
+        </div>
+
+        <hr class="results-divider">
+
+        <div class="results-secondary">
+            <div class="result-item">
+                <div class="result-number">800x</div>
+                <div class="result-label">Story shares increase</div>
+                <div class="result-context">60/hr to 46,000/hr</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">12x</div>
+                <div class="result-label">Algorithm page visits at peak</div>
+                <div class="result-context">vs. pre-launch</div>
+            </div>
+            <div class="result-item">
+                <div class="result-number">10x</div>
+                <div class="result-label">Interest adds at peak</div>
+                <div class="result-context">vs. pre-launch</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MEDIA COVERAGE -->
+    <div class="content-section">
+        <h2 class="section-title">Media Coverage</h2>
+        <div class="coverage-links">
+            <a href="https://www.complex.com/music/a/jaelaniturnerwilliams/asap-rocky-instagram-algorithm" class="coverage-link" target="_blank">ASAP Rocky Jokes About His Instagram Algorithm: 'My Explore Page Is Mainly Me' &mdash; Complex</a>
+            <a href="https://www.engadget.com/social-media/instagram-wants-you-to-personalize-your-reels-algorithm-for-2026-215252736.html" class="coverage-link" target="_blank">Instagram wants you to personalize your Reels algorithm for 2026 &mdash; Engadget</a>
+            <a href="https://www.socialmediatoday.com/news/instagram-rolls-out-algorithm-control-option-to-all-english-speaking-users/809524/" class="coverage-link" target="_blank">Instagram Rolls Out Algorithm Control Option to All English-Speaking Users &mdash; Social Media Today</a>
+            <a href="https://www.digitaltrends.com/social-media/you-can-now-choose-the-kind-of-content-you-see-on-instagram-reels/" class="coverage-link" target="_blank">You can now choose the kind of content you see on Instagram Reels &mdash; Digital Trends</a>
+            <a href="https://www.neowin.net/news/heres-how-you-can-tweak-your-instagram-algorithm-the-official-way/" class="coverage-link" target="_blank">Here's how you can tweak your Instagram algorithm, the official way &mdash; Neowin</a>
+            <a href="https://www.techtimes.com/articles/314031/20260113/instagram-reels-build-your-2026-algorithm-now-live-all-english-users-personalize-feed.htm" class="coverage-link" target="_blank">Instagram Reels: 'Build Your 2026 Algorithm' Now Live &mdash; Tech Times</a>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Portfolio Use Only:</strong> This work is presented for portfolio purposes. All content represents professional work completed at Instagram and respects brand intellectual property rights.
+    </div>
+
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeCircle = document.querySelector('.home-circle');
+            if (homeCircle) {
+                homeCircle.addEventListener('click', function() {
+                    window.location.href = 'https://jb-kang.com/index';
+                });
+            }
+        });
+
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://jb-kang.com/index';
+            }
+        }
+    </script>
+
+</body>
+</html>
